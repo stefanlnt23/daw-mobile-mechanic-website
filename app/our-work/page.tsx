@@ -2,8 +2,8 @@
 
 import { useEffect, useRef, useState } from "react"
 import Link from "next/link"
-import { ArrowLeft, Phone, Star, X } from "lucide-react"
-import { motion, AnimatePresence } from "framer-motion"
+import { ArrowLeft, Phone, Star } from "lucide-react"
+import { Lightbox } from "@/components/lightbox"
 
 function useGalleryImages() {
   const [images, setImages] = useState<string[]>([])
@@ -18,7 +18,7 @@ function useGalleryImages() {
 
 function InfiniteGallery({ images }: { images: string[] }) {
   const portalRef = useRef<HTMLDivElement>(null)
-  const [lightboxSrc, setLightboxSrc] = useState<string | null>(null)
+  const [lightboxIdx, setLightboxIdx] = useState<number | null>(null)
 
   const stateRef = useRef({
     offsetX: 0,
@@ -30,12 +30,11 @@ function InfiniteGallery({ images }: { images: string[] }) {
     lastX: 0,
     lastY: 0,
     paused: false,
-    pressedSrc: null as string | null,
+    pressedIdx: -1,
     items: [] as Array<{ el: HTMLDivElement; baseX: number; baseY: number }>,
     rafId: 0,
   })
 
-  // Slowed down — mobile should feel calm, not frantic
   const IMG_SIZE = 190
   const GAP = 10
   const COLS = 2
@@ -49,17 +48,13 @@ function InfiniteGallery({ images }: { images: string[] }) {
 
   useEffect(() => {
     if (!images.length || !portalRef.current) return
-
-    // Defer one frame — ensures flex layout has resolved clientWidth/clientHeight
-    const frameId = requestAnimationFrame(() => {
-    if (!portalRef.current) return
     const portal = portalRef.current
     const s = stateRef.current
 
     portal.innerHTML = ""
     s.items = []
 
-    const W = portal.clientWidth  || 390
+    const W = portal.clientWidth || 390
     const H = portal.clientHeight || 480
     s.offsetX = (W - TILE_W) / 2
     s.offsetY = (H - TILE_H) / 2
@@ -82,10 +77,7 @@ function InfiniteGallery({ images }: { images: string[] }) {
             `
             img.draggable = false
 
-            // Record pressed image before portal captures the pointer
-            wrap.addEventListener("pointerdown", () => {
-              s.pressedSrc = img.src
-            })
+            wrap.addEventListener("pointerdown", () => { s.pressedIdx = imgIdx })
 
             wrap.appendChild(img)
             portal.appendChild(wrap)
@@ -142,34 +134,29 @@ function InfiniteGallery({ images }: { images: string[] }) {
     }
     const onUp = () => {
       s.isDragging = false
-      if (!s.didDrag && s.pressedSrc) {
+      if (!s.didDrag && s.pressedIdx >= 0) {
         s.paused = true
         s.velX = 0
         s.velY = 0
-        setLightboxSrc(s.pressedSrc)
+        setLightboxIdx(s.pressedIdx)
       }
-      s.pressedSrc = null
+      s.pressedIdx = -1
     }
 
     portal.addEventListener("pointerdown", onDown)
     portal.addEventListener("pointermove", onMove)
     portal.addEventListener("pointerup", onUp)
 
-    }) // end requestAnimationFrame
-
     return () => {
-      cancelAnimationFrame(frameId)
-      cancelAnimationFrame(stateRef.current.rafId)
-      if (portalRef.current) {
-        portalRef.current.removeEventListener("pointerdown", onDown)
-        portalRef.current.removeEventListener("pointermove", onMove)
-        portalRef.current.removeEventListener("pointerup", onUp)
-      }
+      cancelAnimationFrame(s.rafId)
+      portal.removeEventListener("pointerdown", onDown)
+      portal.removeEventListener("pointermove", onMove)
+      portal.removeEventListener("pointerup", onUp)
     }
   }, [images])
 
   function closeLightbox() {
-    setLightboxSrc(null)
+    setLightboxIdx(null)
     stateRef.current.paused = false
   }
 
@@ -206,68 +193,13 @@ function InfiniteGallery({ images }: { images: string[] }) {
         />
       </div>
 
-      {/* Lightbox — pure React state */}
-      <AnimatePresence>
-        {lightboxSrc && (
-          <motion.div
-            key="lb"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.22 }}
-            onClick={closeLightbox}
-            style={{
-              position: "fixed",
-              inset: 0,
-              background: "rgba(0,0,0,0.93)",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              zIndex: 200,
-              cursor: "zoom-out",
-            }}
-          >
-            <motion.img
-              key={lightboxSrc}
-              src={lightboxSrc}
-              alt="Work detail"
-              initial={{ scale: 0.87, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.87, opacity: 0 }}
-              transition={{ duration: 0.28, ease: [0.2, 0.8, 0.2, 1] }}
-              onClick={(e) => e.stopPropagation()}
-              style={{
-                maxWidth: "90%",
-                maxHeight: "78vh",
-                borderRadius: 18,
-                boxShadow: "0 30px 80px rgba(0,0,0,0.9)",
-                cursor: "default",
-              }}
-            />
-            <button
-              onClick={closeLightbox}
-              style={{
-                position: "absolute",
-                top: 18,
-                right: 18,
-                width: 40,
-                height: 40,
-                borderRadius: "50%",
-                background: "rgba(255,255,255,0.15)",
-                border: "1.5px solid rgba(255,255,255,0.28)",
-                color: "#fff",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                cursor: "pointer",
-                backdropFilter: "blur(8px)",
-              }}
-            >
-              <X size={17} />
-            </button>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <Lightbox
+        images={images}
+        currentIndex={lightboxIdx}
+        onClose={closeLightbox}
+        onNext={() => setLightboxIdx((i) => (i === null ? null : (i + 1) % images.length))}
+        onPrev={() => setLightboxIdx((i) => (i === null ? null : (i - 1 + images.length) % images.length))}
+      />
     </>
   )
 }
@@ -299,20 +231,20 @@ export default function OurWorkPage() {
       </div>
 
       {/* Hero text */}
-      <div className="px-6 pt-8 pb-5 text-center">
+      <div className="px-6 pt-6 pb-4 text-center">
         <p className="text-xs font-bold uppercase tracking-widest text-primary mb-2">
           Real jobs · Real results
         </p>
         <h1 className="text-3xl font-black uppercase tracking-tight text-foreground leading-tight">
           Convince Yourself
         </h1>
-        <p className="mt-3 text-muted-foreground text-sm leading-relaxed max-w-xs mx-auto">
+        <p className="mt-2 text-muted-foreground text-sm leading-relaxed max-w-xs mx-auto">
           Every photo below is a job Aaron completed at a customer&apos;s door — no garage, no middleman.
         </p>
       </div>
 
       {/* Trust pills */}
-      <div className="flex gap-2.5 px-6 pb-5 justify-center flex-wrap">
+      <div className="flex gap-2.5 px-6 pb-4 justify-center flex-wrap">
         {[
           { icon: "🔧", text: "10+ yrs experience" },
           { icon: "📍", text: "Comes to you" },
@@ -329,26 +261,23 @@ export default function OurWorkPage() {
         ))}
       </div>
 
-      {/* Infinite gallery — fills remaining screen */}
-      <div
-        className="flex-1 mx-0 mb-3 overflow-hidden relative"
-        style={{ minHeight: 300 }}
-      >
+      {/* Infinite gallery — fills remaining screen height */}
+      <div className="flex-1 overflow-hidden relative" style={{ minHeight: 280 }}>
         {images.length > 0 ? (
           <InfiniteGallery images={images} />
         ) : (
-          <div className="w-full h-full flex items-center justify-center text-muted-foreground text-sm bg-muted/20 min-h-[380px]">
+          <div className="w-full h-full flex items-center justify-center text-muted-foreground text-sm bg-muted/20 min-h-[280px]">
             Loading…
           </div>
         )}
       </div>
 
-      <p className="text-center text-xs text-muted-foreground pb-2 opacity-55">
+      <p className="text-center text-xs text-muted-foreground py-2 opacity-55">
         Drag to explore · tap any photo to enlarge
       </p>
 
       {/* Star rating */}
-      <div className="px-6 py-4 border-t border-border">
+      <div className="px-6 py-3 border-t border-border">
         <div className="flex items-center justify-center gap-1 mb-1">
           {[...Array(5)].map((_, i) => (
             <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />

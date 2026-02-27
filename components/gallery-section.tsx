@@ -1,9 +1,10 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion } from "framer-motion"
 import Link from "next/link"
-import { ArrowRight, X } from "lucide-react"
+import { ArrowRight } from "lucide-react"
+import { Lightbox } from "./lightbox"
 
 function useGalleryImages() {
   const [images, setImages] = useState<string[]>([])
@@ -21,7 +22,7 @@ function useGalleryImages() {
 ───────────────────────────────────────────── */
 function DesktopGallery({ images }: { images: string[] }) {
   const portalRef = useRef<HTMLDivElement>(null)
-  const [lightboxSrc, setLightboxSrc] = useState<string | null>(null)
+  const [lightboxIdx, setLightboxIdx] = useState<number | null>(null)
 
   const stateRef = useRef({
     offsetX: 0,
@@ -33,7 +34,7 @@ function DesktopGallery({ images }: { images: string[] }) {
     lastX: 0,
     lastY: 0,
     paused: false,
-    pressedSrc: null as string | null,   // track which img was pressed
+    pressedIdx: -1,
     items: [] as Array<{ el: HTMLDivElement; baseX: number; baseY: number }>,
     rafId: 0,
   })
@@ -68,8 +69,6 @@ function DesktopGallery({ images }: { images: string[] }) {
             wrap.style.cssText = "position:absolute;top:0;left:0;will-change:transform;cursor:pointer;"
 
             const img = document.createElement("img")
-            // Index must be based only on (row, col) — same slot in every tile
-            // repeat shows the same photo so the wrap-around is invisible
             const imgIdx = (row * COLS + col) % images.length
             img.src = `/gallery/${images[imgIdx]}`
             img.style.cssText = `
@@ -81,10 +80,7 @@ function DesktopGallery({ images }: { images: string[] }) {
             `
             img.draggable = false
 
-            // Record which img was pressed BEFORE portal captures the pointer
-            wrap.addEventListener("pointerdown", () => {
-              s.pressedSrc = img.src
-            })
+            wrap.addEventListener("pointerdown", () => { s.pressedIdx = imgIdx })
 
             wrap.addEventListener("pointerenter", () => {
               wrap.style.zIndex = "100"
@@ -141,8 +137,6 @@ function DesktopGallery({ images }: { images: string[] }) {
       s.didDrag = false
       s.lastX = e.clientX
       s.lastY = e.clientY
-      // setPointerCapture redirects all future pointer events to portal —
-      // that's why we track pressedSrc on pointerdown (above) before this runs
       portal.setPointerCapture(e.pointerId)
     }
     const onMove = (e: PointerEvent) => {
@@ -157,36 +151,34 @@ function DesktopGallery({ images }: { images: string[] }) {
     }
     const onUp = () => {
       s.isDragging = false
-      // Open lightbox if this was a tap (not a drag) on an image
-      if (!s.didDrag && s.pressedSrc) {
+      if (!s.didDrag && s.pressedIdx >= 0) {
         s.paused = true
         s.velX = 0
         s.velY = 0
-        setLightboxSrc(s.pressedSrc)
+        setLightboxIdx(s.pressedIdx)
       }
-      s.pressedSrc = null
+      s.pressedIdx = -1
     }
 
     portal.addEventListener("pointerdown", onDown)
-    window.addEventListener("pointermove", onMove)
+    portal.addEventListener("pointermove", onMove)
     portal.addEventListener("pointerup", onUp)
 
     return () => {
       cancelAnimationFrame(s.rafId)
       portal.removeEventListener("pointerdown", onDown)
-      window.removeEventListener("pointermove", onMove)
+      portal.removeEventListener("pointermove", onMove)
       portal.removeEventListener("pointerup", onUp)
     }
   }, [images])
 
   function closeLightbox() {
-    setLightboxSrc(null)
+    setLightboxIdx(null)
     stateRef.current.paused = false
   }
 
   return (
     <>
-      {/* Wrapper — CSS mask creates the fade, no hard clip so photos bleed out */}
       <div
         style={{
           position: "relative",
@@ -218,69 +210,13 @@ function DesktopGallery({ images }: { images: string[] }) {
         />
       </div>
 
-      {/* Lightbox */}
-      <AnimatePresence>
-        {lightboxSrc && (
-          <motion.div
-            key="lightbox"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.22 }}
-            onClick={closeLightbox}
-            style={{
-              position: "fixed",
-              inset: 0,
-              background: "rgba(0,0,0,0.92)",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              zIndex: 2000,
-              cursor: "zoom-out",
-            }}
-          >
-            <motion.img
-              key={lightboxSrc}
-              src={lightboxSrc}
-              alt="Work photo enlarged"
-              initial={{ scale: 0.85, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.85, opacity: 0 }}
-              transition={{ duration: 0.28, ease: [0.2, 0.8, 0.2, 1] }}
-              onClick={(e) => e.stopPropagation()}
-              style={{
-                maxWidth: "82%",
-                maxHeight: "82vh",
-                borderRadius: 22,
-                boxShadow: "0 40px 100px rgba(0,0,0,0.9)",
-                cursor: "default",
-              }}
-            />
-            <button
-              onClick={closeLightbox}
-              style={{
-                position: "fixed",
-                top: 22,
-                right: 26,
-                width: 44,
-                height: 44,
-                borderRadius: "50%",
-                background: "rgba(255,255,255,0.13)",
-                border: "1.5px solid rgba(255,255,255,0.28)",
-                color: "#fff",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                cursor: "pointer",
-                backdropFilter: "blur(8px)",
-                zIndex: 2100,
-              }}
-            >
-              <X size={18} />
-            </button>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <Lightbox
+        images={images}
+        currentIndex={lightboxIdx}
+        onClose={closeLightbox}
+        onNext={() => setLightboxIdx((i) => (i === null ? null : (i + 1) % images.length))}
+        onPrev={() => setLightboxIdx((i) => (i === null ? null : (i - 1 + images.length) % images.length))}
+      />
     </>
   )
 }
@@ -290,7 +226,7 @@ function DesktopGallery({ images }: { images: string[] }) {
 ───────────────────────────────────────────── */
 function MobileStrip({ images }: { images: string[] }) {
   const portalRef = useRef<HTMLDivElement>(null)
-  const [lightboxSrc, setLightboxSrc] = useState<string | null>(null)
+  const [lightboxIdx, setLightboxIdx] = useState<number | null>(null)
 
   const stateRef = useRef({
     offsetX: 0,
@@ -299,7 +235,7 @@ function MobileStrip({ images }: { images: string[] }) {
     didDrag: false,
     lastX: 0,
     paused: false,
-    pressedSrc: null as string | null,
+    pressedIdx: -1,
     items: [] as Array<{ el: HTMLDivElement; baseX: number }>,
     rafId: 0,
   })
@@ -307,10 +243,10 @@ function MobileStrip({ images }: { images: string[] }) {
   const IMG_W = 155
   const IMG_H = 155
   const GAP = 10
-  const COLS = 5                    // photos per tile repeat
-  const CELL = IMG_W + GAP          // 165px
-  const TILE_W = COLS * CELL        // 825px — must be > screen width
-  const AUTO_X = 0.15               // slow drift
+  const COLS = 5
+  const CELL = IMG_W + GAP
+  const TILE_W = COLS * CELL
+  const AUTO_X = 0.15
   const FRICTION = 0.91
 
   useEffect(() => {
@@ -325,7 +261,6 @@ function MobileStrip({ images }: { images: string[] }) {
     const PORTAL_H = portal.clientHeight || IMG_H + 20
     const TOP = Math.round((PORTAL_H - IMG_H) / 2)
 
-    // tx range: enough tiles so the canvas is never empty while scrolling
     for (let tx = -2; tx <= 3; tx++) {
       for (let col = 0; col < COLS; col++) {
         const wrap = document.createElement("div")
@@ -342,7 +277,7 @@ function MobileStrip({ images }: { images: string[] }) {
         `
         img.draggable = false
 
-        wrap.addEventListener("pointerdown", () => { s.pressedSrc = img.src })
+        wrap.addEventListener("pointerdown", () => { s.pressedIdx = imgIdx })
 
         wrap.appendChild(img)
         portal.appendChild(wrap)
@@ -360,7 +295,7 @@ function MobileStrip({ images }: { images: string[] }) {
         if (!s.isDragging) s.velX *= FRICTION
         s.offsetX += AUTO_X + s.velX
         snapOffset()
-        s.items.forEach(item => {
+        s.items.forEach((item) => {
           item.el.style.transform = `translate3d(${item.baseX + s.offsetX}px,0,0)`
         })
       }
@@ -383,12 +318,12 @@ function MobileStrip({ images }: { images: string[] }) {
     }
     const onUp = () => {
       s.isDragging = false
-      if (!s.didDrag && s.pressedSrc) {
+      if (!s.didDrag && s.pressedIdx >= 0) {
         s.paused = true
         s.velX = 0
-        setLightboxSrc(s.pressedSrc)
+        setLightboxIdx(s.pressedIdx)
       }
-      s.pressedSrc = null
+      s.pressedIdx = -1
     }
 
     portal.addEventListener("pointerdown", onDown)
@@ -404,7 +339,7 @@ function MobileStrip({ images }: { images: string[] }) {
   }, [images])
 
   function closeLightbox() {
-    setLightboxSrc(null)
+    setLightboxIdx(null)
     stateRef.current.paused = false
   }
 
@@ -425,57 +360,20 @@ function MobileStrip({ images }: { images: string[] }) {
             width: "100%",
             height: "100%",
             position: "relative",
-            touchAction: "none",    // needed for pointer capture drag to work on mobile
+            touchAction: "none",
             userSelect: "none",
             cursor: "grab",
           }}
         />
       </div>
 
-      <AnimatePresence>
-        {lightboxSrc && (
-          <motion.div
-            key="lb-mobile"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.22 }}
-            onClick={closeLightbox}
-            style={{
-              position: "fixed", inset: 0,
-              background: "rgba(0,0,0,0.93)",
-              display: "flex", justifyContent: "center", alignItems: "center",
-              zIndex: 2000, cursor: "zoom-out",
-            }}
-          >
-            <motion.img
-              key={lightboxSrc}
-              src={lightboxSrc}
-              alt="Work photo enlarged"
-              initial={{ scale: 0.85, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.85, opacity: 0 }}
-              transition={{ duration: 0.28, ease: [0.2, 0.8, 0.2, 1] }}
-              onClick={(e) => e.stopPropagation()}
-              style={{ maxWidth: "90%", maxHeight: "80vh", borderRadius: 18, boxShadow: "0 30px 80px rgba(0,0,0,0.9)", cursor: "default" }}
-            />
-            <button
-              onClick={closeLightbox}
-              style={{
-                position: "fixed", top: 20, right: 20,
-                width: 40, height: 40, borderRadius: "50%",
-                background: "rgba(255,255,255,0.15)",
-                border: "1.5px solid rgba(255,255,255,0.28)",
-                color: "#fff", display: "flex", alignItems: "center",
-                justifyContent: "center", cursor: "pointer",
-                backdropFilter: "blur(8px)", zIndex: 2100,
-              }}
-            >
-              <X size={17} />
-            </button>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <Lightbox
+        images={images}
+        currentIndex={lightboxIdx}
+        onClose={closeLightbox}
+        onNext={() => setLightboxIdx((i) => (i === null ? null : (i + 1) % images.length))}
+        onPrev={() => setLightboxIdx((i) => (i === null ? null : (i - 1 + images.length) % images.length))}
+      />
     </>
   )
 }
@@ -545,12 +443,11 @@ export function GallerySection() {
               <ArrowRight className="w-4 h-4" />
             </Link>
             <p className="mt-3 text-xs text-muted-foreground">
-              {images.length} jobs documented · tap to explore the full gallery
+              {images.length} jobs documented · tap any photo to enlarge
             </p>
           </div>
         </div>
       </div>
-
     </section>
   )
 }
