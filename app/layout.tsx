@@ -15,21 +15,8 @@ export const metadata: Metadata = {
   description: 'Expert mobile mechanic serving Wem, Market Drayton & a 30-mile radius. Timing chains, advanced diagnostics, dealer PDI work, and dealer-level servicing without the garage price tag.',
   generator: 'v0.app',
   icons: {
-    icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: '/apple-icon.png',
+    icon: '/favicon.png',
+    apple: '/favicon.png',
   },
 }
 

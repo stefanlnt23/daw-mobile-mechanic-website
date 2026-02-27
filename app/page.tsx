@@ -1,32 +1,33 @@
 "use client"
 
-import { useState } from "react"
 import { Header } from "@/components/header"
 import { Hero } from "@/components/hero"
 import { TrustBar } from "@/components/trust-bar"
 import { Services } from "@/components/services"
+import { WarningLights } from "@/components/warning-lights"
 import { Process } from "@/components/process"
 import { ContactCta } from "@/components/contact-cta"
 import { Footer } from "@/components/footer"
 import { MobileBar } from "@/components/mobile-bar"
-import { DemoModal } from "@/components/demo-modal"
+import { WhatsAppFloat } from "@/components/whatsapp-float"
+import { PrivacyBanner } from "@/components/privacy-banner"
 
 export default function Home() {
-  const [modalOpen, setModalOpen] = useState(false)
-
   return (
     <>
       <Header />
       <main className="pb-16 md:pb-0">
         <Hero />
         <TrustBar />
-        <Services onBookNow={() => setModalOpen(true)} />
+        <Services />
+        <WarningLights />
         <Process />
         <ContactCta />
       </main>
       <Footer />
+      <WhatsAppFloat />
       <MobileBar />
-      <DemoModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
+      <PrivacyBanner />
     </>
   )
 }

@@ -2,31 +2,28 @@
 
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Wrench, Phone, Menu, X } from "lucide-react"
+import { Phone, Menu, X } from "lucide-react"
+import Image from "next/image"
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border">
-      <div className="mx-auto max-w-7xl flex items-center justify-between px-4 py-3 lg:px-8">
-        <a href="#" className="flex items-center gap-3">
-          <div className="flex items-center justify-center w-11 h-11 rounded-full bg-primary/10 border-2 border-primary">
-            <Wrench className="w-5 h-5 text-primary" />
+      <div className="mx-auto max-w-7xl flex items-center justify-between px-4 py-2 lg:px-8">
+        <a href="#" className="relative flex items-center gap-3">
+          <div className="absolute left-0 top-1/2 -translate-y-1/2 w-44 h-44 pointer-events-none">
+            <Image src="/images/adl-logo.png" alt="ADL Mobile Mechanic" fill className="object-contain" />
           </div>
-          <div className="flex items-baseline gap-1.5">
-            <span className="text-2xl font-black tracking-tight text-primary">
-              ADL
-            </span>
-            <span className="text-sm font-bold text-foreground uppercase tracking-widest">
-              Mobile Mechanic
-            </span>
-          </div>
+          <div className="w-12 flex-shrink-0" />
         </a>
 
         <nav className="hidden md:flex items-center gap-8">
           <a href="#services" className="text-sm font-bold uppercase tracking-wider text-muted-foreground hover:text-primary transition-colors">
             Services
+          </a>
+          <a href="#warning-lights" className="text-sm font-bold uppercase tracking-wider text-muted-foreground hover:text-red-500 transition-colors">
+            Warning Lights
           </a>
           <a href="#process" className="text-sm font-bold uppercase tracking-wider text-muted-foreground hover:text-primary transition-colors">
             Process
@@ -70,6 +67,13 @@ export function Header() {
                 className="text-sm font-bold uppercase tracking-wider text-muted-foreground hover:text-primary transition-colors"
               >
                 Services
+              </a>
+              <a
+                href="#warning-lights"
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-sm font-bold uppercase tracking-wider text-muted-foreground hover:text-red-500 transition-colors"
+              >
+                Warning Lights
               </a>
               <a
                 href="#process"

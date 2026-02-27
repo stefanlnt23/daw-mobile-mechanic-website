@@ -67,20 +67,22 @@ export function Process() {
               className="relative group"
             >
               <div className="bg-card border border-border rounded-xl p-6 h-full hover:border-primary/40 transition-all">
-                {/* Step number */}
-                <span className="text-5xl font-black text-border group-hover:text-primary/20 transition-colors">
-                  {step.step}
-                </span>
+                <div className="flex items-start justify-between">
+                  {/* Step number */}
+                  <span className="text-5xl font-black text-border group-hover:text-primary/20 transition-colors">
+                    {step.step}
+                  </span>
 
-                <div className="mt-4 flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10 border border-primary/20">
-                  <step.icon className="w-6 h-6 text-primary" />
+                  <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10 border border-primary/20">
+                    <step.icon className="w-6 h-6 text-primary" />
+                  </div>
                 </div>
 
-                <h3 className="mt-4 text-lg font-black uppercase tracking-wider text-foreground">
+                <h3 className="mt-4 text-lg sm:text-xl font-black uppercase tracking-wider text-foreground">
                   {step.title}
                 </h3>
 
-                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                <p className="mt-2 text-sm sm:text-base text-muted-foreground leading-relaxed">
                   {step.description}
                 </p>
               </div>
