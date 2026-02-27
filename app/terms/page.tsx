@@ -3,8 +3,10 @@ import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Terms & Conditions | ADL Mobile Mechanic",
-  description: "Terms and Conditions for ADL Mobile Mechanic services.",
+  title: "Terms & Conditions",
+  description: "Terms and Conditions for ADL Mobile Mechanic mobile vehicle repair and servicing services in Shropshire.",
+  alternates: { canonical: '/terms' },
+  robots: { index: true, follow: true },
 }
 
 export default function TermsAndConditions() {

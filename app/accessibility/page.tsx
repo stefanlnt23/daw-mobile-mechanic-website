@@ -3,8 +3,10 @@ import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Accessibility Statement | ADL Mobile Mechanic",
-  description: "Accessibility Statement for the ADL Mobile Mechanic website.",
+  title: "Accessibility Statement",
+  description: "Accessibility Statement for the ADL Mobile Mechanic website. Our commitment to WCAG 2.1 AA accessibility standards.",
+  alternates: { canonical: '/accessibility' },
+  robots: { index: true, follow: true },
 }
 
 export default function AccessibilityStatement() {

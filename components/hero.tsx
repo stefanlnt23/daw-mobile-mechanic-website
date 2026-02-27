@@ -6,7 +6,7 @@ import Image from "next/image"
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden carbon-fiber pt-16">
+    <section aria-label="ADL Mobile Mechanic — The expert workshop that comes to you" className="relative min-h-screen flex items-center justify-center overflow-hidden carbon-fiber pt-16">
       {/* Background image */}
       <div className="absolute inset-0">
         <Image

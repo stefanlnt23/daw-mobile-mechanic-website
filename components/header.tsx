@@ -18,7 +18,7 @@ export function Header() {
           <div className="w-12 flex-shrink-0" />
         </a>
 
-        <nav className="hidden md:flex items-center gap-8">
+        <nav aria-label="Main navigation" className="hidden md:flex items-center gap-8">
           <a href="#services" className="text-sm font-bold uppercase tracking-wider text-muted-foreground hover:text-primary transition-colors">
             Services
           </a>

@@ -3,8 +3,10 @@ import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | ADL Mobile Mechanic",
-  description: "Privacy Policy for ADL Mobile Mechanic. How we collect, use, and protect your personal data.",
+  title: "Privacy Policy",
+  description: "Privacy Policy for ADL Mobile Mechanic. How we collect, use, and protect your personal data under UK GDPR.",
+  alternates: { canonical: '/privacy' },
+  robots: { index: true, follow: true },
 }
 
 export default function PrivacyPolicy() {

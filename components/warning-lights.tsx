@@ -50,7 +50,7 @@ const severityColors: Record<string, string> = {
 
 export function WarningLights() {
   return (
-    <section id="warning-lights" className="relative py-20 lg:py-28 carbon-fiber">
+    <section id="warning-lights" aria-label="Dashboard warning light guide" className="relative py-20 lg:py-28 carbon-fiber">
       <div className="mx-auto max-w-7xl px-4 lg:px-8">
         {/* Section header */}
         <motion.div

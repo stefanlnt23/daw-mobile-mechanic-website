@@ -191,7 +191,7 @@ export function Services() {
   ]
 
   return (
-    <section id="services" className="relative py-20 lg:py-28 carbon-fiber">
+    <section id="services" aria-label="Mobile mechanic services in Shropshire" className="relative py-20 lg:py-28 carbon-fiber">
       <div className="mx-auto max-w-7xl px-4 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
