@@ -152,7 +152,7 @@ function InfiniteGallery({ images }: { images: string[] }) {
     }
 
     portal.addEventListener("pointerdown", onDown)
-    window.addEventListener("pointermove", onMove)
+    portal.addEventListener("pointermove", onMove)
     portal.addEventListener("pointerup", onUp)
 
     }) // end requestAnimationFrame
@@ -161,10 +161,10 @@ function InfiniteGallery({ images }: { images: string[] }) {
       cancelAnimationFrame(frameId)
       cancelAnimationFrame(stateRef.current.rafId)
       if (portalRef.current) {
-        portalRef.current.removeEventListener("pointerdown", () => {})
-        portalRef.current.removeEventListener("pointerup", () => {})
+        portalRef.current.removeEventListener("pointerdown", onDown)
+        portalRef.current.removeEventListener("pointermove", onMove)
+        portalRef.current.removeEventListener("pointerup", onUp)
       }
-      window.removeEventListener("pointermove", () => {})
     }
   }, [images])
 
@@ -276,7 +276,7 @@ export default function OurWorkPage() {
   const images = useGalleryImages()
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <div className="bg-background flex flex-col" style={{ height: "100dvh" }}>
       {/* Top bar */}
       <div className="flex items-center justify-between px-4 py-3 border-b border-border bg-background/95 backdrop-blur-md sticky top-0 z-50">
         <Link
@@ -332,7 +332,7 @@ export default function OurWorkPage() {
       {/* Infinite gallery — fills remaining screen */}
       <div
         className="flex-1 mx-0 mb-3 overflow-hidden relative"
-        style={{ minHeight: 380 }}
+        style={{ minHeight: 300 }}
       >
         {images.length > 0 ? (
           <InfiniteGallery images={images} />

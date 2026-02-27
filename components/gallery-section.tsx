@@ -310,7 +310,7 @@ function MobileStrip({ images }: { images: string[] }) {
   const COLS = 5                    // photos per tile repeat
   const CELL = IMG_W + GAP          // 165px
   const TILE_W = COLS * CELL        // 825px — must be > screen width
-  const AUTO_X = 0.28               // slow drift
+  const AUTO_X = 0.15               // slow drift
   const FRICTION = 0.91
 
   useEffect(() => {
@@ -392,13 +392,13 @@ function MobileStrip({ images }: { images: string[] }) {
     }
 
     portal.addEventListener("pointerdown", onDown)
-    window.addEventListener("pointermove", onMove)
+    portal.addEventListener("pointermove", onMove)
     portal.addEventListener("pointerup", onUp)
 
     return () => {
       cancelAnimationFrame(s.rafId)
       portal.removeEventListener("pointerdown", onDown)
-      window.removeEventListener("pointermove", onMove)
+      portal.removeEventListener("pointermove", onMove)
       portal.removeEventListener("pointerup", onUp)
     }
   }, [images])
@@ -425,7 +425,7 @@ function MobileStrip({ images }: { images: string[] }) {
             width: "100%",
             height: "100%",
             position: "relative",
-            touchAction: "pan-y",   // vertical page scroll still works
+            touchAction: "none",    // needed for pointer capture drag to work on mobile
             userSelect: "none",
             cursor: "grab",
           }}
