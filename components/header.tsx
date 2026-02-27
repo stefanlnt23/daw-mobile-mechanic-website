@@ -10,15 +10,15 @@ export function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border">
       <div className="mx-auto max-w-7xl flex items-center justify-between px-4 py-3 lg:px-8">
-        <a href="#" className="flex items-center gap-2">
-          <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-primary">
-            <Wrench className="w-5 h-5 text-primary-foreground" />
+        <a href="#" className="flex items-center gap-3">
+          <div className="flex items-center justify-center w-11 h-11 rounded-full bg-primary/10 border-2 border-primary">
+            <Wrench className="w-5 h-5 text-primary" />
           </div>
-          <div>
-            <span className="text-lg font-bold tracking-tight text-foreground">
+          <div className="flex items-baseline gap-1.5">
+            <span className="text-2xl font-black tracking-tight text-primary">
               ADL
             </span>
-            <span className="text-xs block text-muted-foreground uppercase tracking-widest -mt-1">
+            <span className="text-sm font-bold text-foreground uppercase tracking-widest">
               Mobile Mechanic
             </span>
           </div>

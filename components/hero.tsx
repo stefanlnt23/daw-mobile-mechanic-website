@@ -33,6 +33,15 @@ export function Hero() {
             </span>
           </div>
 
+          <div className="mb-4 flex items-center justify-center gap-3">
+            <span className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-primary">
+              ADL
+            </span>
+            <span className="text-xl sm:text-2xl md:text-3xl font-bold uppercase tracking-widest text-foreground">
+              Mobile Mechanic
+            </span>
+          </div>
+
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black uppercase leading-none tracking-tight text-foreground text-balance">
             The Expert Workshop
             <br />
