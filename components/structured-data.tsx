@@ -2,15 +2,15 @@ export function StructuredData() {
   const localBusiness = {
     "@context": "https://schema.org",
     "@type": "AutoRepair",
-    "@id": "https://adlmobilemechanic.co.uk/#business",
+    "@id": "https://adlmechanic.uk/#business",
     name: "ADL Mobile Mechanic",
     alternateName: "ADL Mobile Mechanic Shropshire",
     description:
       "Expert mobile mechanic serving Wem, Market Drayton & a 30-mile radius across Shropshire. Timing chain specialist, advanced diagnostics, full servicing, MOT prep, clutch & flywheel, suspension & brakes, and dealer PDI work at your home or workplace.",
-    url: "https://adlmobilemechanic.co.uk",
+    url: "https://adlmechanic.uk",
     telephone: "+447426443009",
-    image: "https://adlmobilemechanic.co.uk/images/aaron-fixv2.png",
-    logo: "https://adlmobilemechanic.co.uk/images/adl-logo.png",
+    image: "https://adlmechanic.uk/images/aaron-fixv2.png",
+    logo: "https://adlmechanic.uk/images/adl-logo.png",
     priceRange: "££",
     currenciesAccepted: "GBP",
     paymentAccepted: "Cash, Bank Transfer",
@@ -197,10 +197,10 @@ export function StructuredData() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "ADL Mobile Mechanic",
-    url: "https://adlmobilemechanic.co.uk",
+    url: "https://adlmechanic.uk",
     description: "Expert mobile mechanic serving Shropshire",
     publisher: {
-      "@id": "https://adlmobilemechanic.co.uk/#business",
+      "@id": "https://adlmechanic.uk/#business",
     },
   }
 

@@ -6,9 +6,9 @@ Everything you need to do to get your website ranking on Google. Follow these st
 
 ## IMPORTANT: Domain Name
 
-The site is currently configured to use `adlmobilemechanic.co.uk`. If your actual domain is different, do a **find and replace** across the codebase:
+The site is currently configured to use `adlmechanic.uk`. If your actual domain is different, do a **find and replace** across the codebase:
 
-Search for: `adlmobilemechanic.co.uk`
+Search for: `adlmechanic.uk`
 Replace with: `your-actual-domain.co.uk`
 
 Files that contain it:
@@ -53,10 +53,10 @@ This lets you monitor how Google sees your site and submit your sitemap.
 
 1. Go to **https://search.google.com/search-console**
 2. Click **"Add property"**
-3. Choose **"URL prefix"** and enter your full website URL (e.g., `https://adlmobilemechanic.co.uk`)
+3. Choose **"URL prefix"** and enter your full website URL (e.g., `https://adlmechanic.uk`)
 4. Verify ownership (if on Vercel, DNS verification is easiest)
 5. Once verified, go to **Sitemaps** in the left menu
-6. Submit: `https://adlmobilemechanic.co.uk/sitemap.xml`
+6. Submit: `https://adlmechanic.uk/sitemap.xml`
 7. Google will now crawl and index your site — this can take a few days to a couple of weeks
 
 ---
@@ -67,7 +67,7 @@ Don't skip Bing — it also powers Yahoo, DuckDuckGo, and Alexa.
 
 1. Go to **https://www.bing.com/webmasters**
 2. You can import directly from Google Search Console (easiest option)
-3. Submit your sitemap: `https://adlmobilemechanic.co.uk/sitemap.xml`
+3. Submit your sitemap: `https://adlmechanic.uk/sitemap.xml`
 
 ---
 

@@ -4,7 +4,7 @@ import { Analytics } from '@vercel/analytics/next'
 import { StructuredData } from '@/components/structured-data'
 import './globals.css'
 
-const SITE_URL = 'https://adlmobilemechanic.co.uk'
+const SITE_URL = 'https://adlmechanic.uk'
 
 const _robotoCondensed = Roboto_Condensed({
   subsets: ["latin"],
