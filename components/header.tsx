@@ -4,6 +4,7 @@ import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Phone, Menu, X } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -31,6 +32,9 @@ export function Header() {
           <a href="#contact" className="text-sm font-bold uppercase tracking-wider text-muted-foreground hover:text-primary transition-colors">
             Contact
           </a>
+          <Link href="/our-work" className="text-sm font-bold uppercase tracking-wider text-muted-foreground hover:text-primary transition-colors">
+            Our Work
+          </Link>
         </nav>
 
         <div className="hidden md:flex items-center gap-3">
@@ -89,6 +93,13 @@ export function Header() {
               >
                 Contact
               </a>
+              <Link
+                href="/our-work"
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-sm font-bold uppercase tracking-wider text-primary hover:text-primary/80 transition-colors"
+              >
+                Our Work →
+              </Link>
             </nav>
           </motion.div>
         )}

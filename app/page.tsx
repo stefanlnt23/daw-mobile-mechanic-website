@@ -12,6 +12,7 @@ import { Footer } from "@/components/footer"
 import { MobileBar } from "@/components/mobile-bar"
 import { WhatsAppFloat } from "@/components/whatsapp-float"
 import { PrivacyBanner } from "@/components/privacy-banner"
+import { GallerySection } from "@/components/gallery-section"
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
         <TrustBar />
         <BreakdownCta className="md:hidden" />
         <Services />
+        <GallerySection />
         <WarningLights />
         <Process />
         <ContactCta />
