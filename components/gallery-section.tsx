@@ -61,6 +61,7 @@ function DesktopGallery({ images }: { images: string[] }) {
     s.offsetX = (portal.clientWidth - TILE_W) / 2
     s.offsetY = (portal.clientHeight - TILE_H) / 2
 
+    let imgCounter = 0
     for (let ty = -1; ty <= 1; ty++) {
       for (let tx = -1; tx <= 1; tx++) {
         for (let row = 0; row < ROWS; row++) {
@@ -69,7 +70,8 @@ function DesktopGallery({ images }: { images: string[] }) {
             wrap.style.cssText = "position:absolute;top:0;left:0;will-change:transform;cursor:pointer;"
 
             const img = document.createElement("img")
-            const imgIdx = (row * COLS + col) % images.length
+            const imgIdx = imgCounter % images.length
+            imgCounter++
             img.src = `/gallery/${images[imgIdx]}`
             img.style.cssText = `
               display:block;width:${IMG_SIZE}px;height:${IMG_SIZE}px;
@@ -261,13 +263,15 @@ function MobileStrip({ images }: { images: string[] }) {
     const PORTAL_H = portal.clientHeight || IMG_H + 20
     const TOP = Math.round((PORTAL_H - IMG_H) / 2)
 
+    let imgCounter = 0
     for (let tx = -2; tx <= 3; tx++) {
       for (let col = 0; col < COLS; col++) {
         const wrap = document.createElement("div")
         wrap.style.cssText = `position:absolute;top:${TOP}px;left:0;will-change:transform;cursor:pointer;`
 
         const img = document.createElement("img")
-        const imgIdx = col % images.length
+        const imgIdx = imgCounter % images.length
+        imgCounter++
         img.src = `/gallery/${images[imgIdx]}`
         img.style.cssText = `
           display:block;width:${IMG_W}px;height:${IMG_H}px;

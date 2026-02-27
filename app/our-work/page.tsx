@@ -59,6 +59,7 @@ function InfiniteGallery({ images }: { images: string[] }) {
     s.offsetX = (W - TILE_W) / 2
     s.offsetY = (H - TILE_H) / 2
 
+    let imgCounter = 0
     for (let ty = -1; ty <= 2; ty++) {
       for (let tx = -1; tx <= 2; tx++) {
         for (let row = 0; row < ROWS; row++) {
@@ -67,7 +68,8 @@ function InfiniteGallery({ images }: { images: string[] }) {
             wrap.style.cssText = "position:absolute;top:0;left:0;will-change:transform;cursor:pointer;"
 
             const img = document.createElement("img")
-            const imgIdx = (row * COLS + col) % images.length
+            const imgIdx = imgCounter % images.length
+            imgCounter++
             img.src = `/gallery/${images[imgIdx]}`
             img.style.cssText = `
               display:block;width:${IMG_SIZE}px;height:${IMG_SIZE}px;
