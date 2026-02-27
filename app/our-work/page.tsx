@@ -37,11 +37,8 @@ function InfiniteGallery({ images }: { images: string[] }) {
 
   const IMG_SIZE = 190
   const GAP = 10
-  const COLS = 2
   const ROWS = 2
   const CELL = IMG_SIZE + GAP
-  const TILE_W = COLS * CELL
-  const TILE_H = ROWS * CELL
   const AUTO_X = 0.12
   const AUTO_Y = 0
   const FRICTION = 0.92
@@ -54,22 +51,25 @@ function InfiniteGallery({ images }: { images: string[] }) {
     portal.innerHTML = ""
     s.items = []
 
+    // Tile wide enough to hold all images — each tile identical for seamless looping
+    const COLS = Math.ceil(images.length / ROWS)
+    const TILE_W = COLS * CELL
+    const TILE_H = ROWS * CELL
+
     const W = portal.clientWidth || 390
     const H = portal.clientHeight || 480
     s.offsetX = (W - TILE_W) / 2
     s.offsetY = (H - TILE_H) / 2
 
-    let imgCounter = 0
-    for (let ty = -1; ty <= 2; ty++) {
-      for (let tx = -1; tx <= 2; tx++) {
+    for (let ty = -1; ty <= 1; ty++) {
+      for (let tx = -1; tx <= 1; tx++) {
         for (let row = 0; row < ROWS; row++) {
           for (let col = 0; col < COLS; col++) {
             const wrap = document.createElement("div")
             wrap.style.cssText = "position:absolute;top:0;left:0;will-change:transform;cursor:pointer;"
 
             const img = document.createElement("img")
-            const imgIdx = imgCounter % images.length
-            imgCounter++
+            const imgIdx = (row * COLS + col) % images.length
             img.src = `/gallery/${images[imgIdx]}`
             img.style.cssText = `
               display:block;width:${IMG_SIZE}px;height:${IMG_SIZE}px;
