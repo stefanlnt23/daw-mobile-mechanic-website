@@ -286,40 +286,197 @@ function DesktopGallery({ images }: { images: string[] }) {
 }
 
 /* ─────────────────────────────────────────────
-   MOBILE: Auto-scrolling horizontal strip
+   MOBILE: Interactive draggable strip (single row)
 ───────────────────────────────────────────── */
-function MobileTicker({ images }: { images: string[] }) {
-  if (!images.length) return null
-  const strip = [...images, ...images]
+function MobileStrip({ images }: { images: string[] }) {
+  const portalRef = useRef<HTMLDivElement>(null)
+  const [lightboxSrc, setLightboxSrc] = useState<string | null>(null)
+
+  const stateRef = useRef({
+    offsetX: 0,
+    velX: 0,
+    isDragging: false,
+    didDrag: false,
+    lastX: 0,
+    paused: false,
+    pressedSrc: null as string | null,
+    items: [] as Array<{ el: HTMLDivElement; baseX: number }>,
+    rafId: 0,
+  })
+
+  const IMG_W = 155
+  const IMG_H = 155
+  const GAP = 10
+  const COLS = 5                    // photos per tile repeat
+  const CELL = IMG_W + GAP          // 165px
+  const TILE_W = COLS * CELL        // 825px — must be > screen width
+  const AUTO_X = 0.28               // slow drift
+  const FRICTION = 0.91
+
+  useEffect(() => {
+    if (!images.length || !portalRef.current) return
+    const portal = portalRef.current
+    const s = stateRef.current
+
+    portal.innerHTML = ""
+    s.items = []
+    s.offsetX = 0
+
+    const PORTAL_H = portal.clientHeight || IMG_H + 20
+    const TOP = Math.round((PORTAL_H - IMG_H) / 2)
+
+    // tx range: enough tiles so the canvas is never empty while scrolling
+    for (let tx = -2; tx <= 3; tx++) {
+      for (let col = 0; col < COLS; col++) {
+        const wrap = document.createElement("div")
+        wrap.style.cssText = `position:absolute;top:${TOP}px;left:0;will-change:transform;cursor:pointer;`
+
+        const img = document.createElement("img")
+        const imgIdx = col % images.length
+        img.src = `/gallery/${images[imgIdx]}`
+        img.style.cssText = `
+          display:block;width:${IMG_W}px;height:${IMG_H}px;
+          border-radius:14px;object-fit:cover;
+          box-shadow:0 5px 16px rgba(0,0,0,0.35);
+          -webkit-user-drag:none;pointer-events:none;
+        `
+        img.draggable = false
+
+        wrap.addEventListener("pointerdown", () => { s.pressedSrc = img.src })
+
+        wrap.appendChild(img)
+        portal.appendChild(wrap)
+        s.items.push({ el: wrap, baseX: col * CELL + tx * TILE_W })
+      }
+    }
+
+    function snapOffset() {
+      if (s.offsetX > TILE_W / 2) s.offsetX -= TILE_W
+      if (s.offsetX < -TILE_W / 2) s.offsetX += TILE_W
+    }
+
+    function update() {
+      if (!s.paused) {
+        if (!s.isDragging) s.velX *= FRICTION
+        s.offsetX += AUTO_X + s.velX
+        snapOffset()
+        s.items.forEach(item => {
+          item.el.style.transform = `translate3d(${item.baseX + s.offsetX}px,0,0)`
+        })
+      }
+      s.rafId = requestAnimationFrame(update)
+    }
+    s.rafId = requestAnimationFrame(update)
+
+    const onDown = (e: PointerEvent) => {
+      s.isDragging = true
+      s.didDrag = false
+      s.lastX = e.clientX
+      portal.setPointerCapture(e.pointerId)
+    }
+    const onMove = (e: PointerEvent) => {
+      if (!s.isDragging) return
+      const dx = e.clientX - s.lastX
+      if (Math.abs(dx) > 3) s.didDrag = true
+      s.velX = dx
+      s.lastX = e.clientX
+    }
+    const onUp = () => {
+      s.isDragging = false
+      if (!s.didDrag && s.pressedSrc) {
+        s.paused = true
+        s.velX = 0
+        setLightboxSrc(s.pressedSrc)
+      }
+      s.pressedSrc = null
+    }
+
+    portal.addEventListener("pointerdown", onDown)
+    window.addEventListener("pointermove", onMove)
+    portal.addEventListener("pointerup", onUp)
+
+    return () => {
+      cancelAnimationFrame(s.rafId)
+      portal.removeEventListener("pointerdown", onDown)
+      window.removeEventListener("pointermove", onMove)
+      portal.removeEventListener("pointerup", onUp)
+    }
+  }, [images])
+
+  function closeLightbox() {
+    setLightboxSrc(null)
+    stateRef.current.paused = false
+  }
 
   return (
-    <div className="overflow-hidden relative">
-      <div className="gallery-ticker flex gap-3" style={{ width: "max-content" }}>
-        {strip.map((img, i) => (
-          <div
-            key={i}
-            className="flex-shrink-0 rounded-2xl overflow-hidden"
-            style={{ width: 170, height: 170 }}
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={`/gallery/${img}`}
-              alt={`Work photo ${(i % images.length) + 1}`}
-              style={{ width: 170, height: 170, objectFit: "cover", display: "block" }}
-              loading="lazy"
-            />
-          </div>
-        ))}
+    <>
+      <div
+        style={{
+          position: "relative",
+          height: IMG_H + 30,
+          overflow: "hidden",
+          WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%)",
+          maskImage: "linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%)",
+        }}
+      >
+        <div
+          ref={portalRef}
+          style={{
+            width: "100%",
+            height: "100%",
+            position: "relative",
+            touchAction: "pan-y",   // vertical page scroll still works
+            userSelect: "none",
+            cursor: "grab",
+          }}
+        />
       </div>
-      <div
-        className="absolute inset-y-0 left-0 w-16 pointer-events-none"
-        style={{ background: "linear-gradient(to right, var(--background), transparent)" }}
-      />
-      <div
-        className="absolute inset-y-0 right-0 w-16 pointer-events-none"
-        style={{ background: "linear-gradient(to left, var(--background), transparent)" }}
-      />
-    </div>
+
+      <AnimatePresence>
+        {lightboxSrc && (
+          <motion.div
+            key="lb-mobile"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.22 }}
+            onClick={closeLightbox}
+            style={{
+              position: "fixed", inset: 0,
+              background: "rgba(0,0,0,0.93)",
+              display: "flex", justifyContent: "center", alignItems: "center",
+              zIndex: 2000, cursor: "zoom-out",
+            }}
+          >
+            <motion.img
+              key={lightboxSrc}
+              src={lightboxSrc}
+              alt="Work photo enlarged"
+              initial={{ scale: 0.85, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.85, opacity: 0 }}
+              transition={{ duration: 0.28, ease: [0.2, 0.8, 0.2, 1] }}
+              onClick={(e) => e.stopPropagation()}
+              style={{ maxWidth: "90%", maxHeight: "80vh", borderRadius: 18, boxShadow: "0 30px 80px rgba(0,0,0,0.9)", cursor: "default" }}
+            />
+            <button
+              onClick={closeLightbox}
+              style={{
+                position: "fixed", top: 20, right: 20,
+                width: 40, height: 40, borderRadius: "50%",
+                background: "rgba(255,255,255,0.15)",
+                border: "1.5px solid rgba(255,255,255,0.28)",
+                color: "#fff", display: "flex", alignItems: "center",
+                justifyContent: "center", cursor: "pointer",
+                backdropFilter: "blur(8px)", zIndex: 2100,
+              }}
+            >
+              <X size={17} />
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   )
 }
 
@@ -376,9 +533,9 @@ export function GallerySection() {
           </p>
         </div>
 
-        {/* Mobile: ticker + CTA */}
+        {/* Mobile: interactive strip + CTA */}
         <div className="md:hidden space-y-6">
-          <MobileTicker images={images} />
+          <MobileStrip images={images} />
           <div className="text-center">
             <Link
               href="/our-work"
@@ -394,15 +551,6 @@ export function GallerySection() {
         </div>
       </div>
 
-      <style>{`
-        .gallery-ticker {
-          animation: gallery-scroll 32s linear infinite;
-        }
-        @keyframes gallery-scroll {
-          0%   { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-      `}</style>
     </section>
   )
 }

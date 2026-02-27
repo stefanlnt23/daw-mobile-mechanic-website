@@ -49,14 +49,20 @@ function InfiniteGallery({ images }: { images: string[] }) {
 
   useEffect(() => {
     if (!images.length || !portalRef.current) return
+
+    // Defer one frame — ensures flex layout has resolved clientWidth/clientHeight
+    const frameId = requestAnimationFrame(() => {
+    if (!portalRef.current) return
     const portal = portalRef.current
     const s = stateRef.current
 
     portal.innerHTML = ""
     s.items = []
 
-    s.offsetX = (portal.clientWidth - TILE_W) / 2
-    s.offsetY = (portal.clientHeight - TILE_H) / 2
+    const W = portal.clientWidth  || 390
+    const H = portal.clientHeight || 480
+    s.offsetX = (W - TILE_W) / 2
+    s.offsetY = (H - TILE_H) / 2
 
     for (let ty = -1; ty <= 2; ty++) {
       for (let tx = -1; tx <= 2; tx++) {
@@ -149,11 +155,16 @@ function InfiniteGallery({ images }: { images: string[] }) {
     window.addEventListener("pointermove", onMove)
     portal.addEventListener("pointerup", onUp)
 
+    }) // end requestAnimationFrame
+
     return () => {
-      cancelAnimationFrame(s.rafId)
-      portal.removeEventListener("pointerdown", onDown)
-      window.removeEventListener("pointermove", onMove)
-      portal.removeEventListener("pointerup", onUp)
+      cancelAnimationFrame(frameId)
+      cancelAnimationFrame(stateRef.current.rafId)
+      if (portalRef.current) {
+        portalRef.current.removeEventListener("pointerdown", () => {})
+        portalRef.current.removeEventListener("pointerup", () => {})
+      }
+      window.removeEventListener("pointermove", () => {})
     }
   }, [images])
 
