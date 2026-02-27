@@ -31,9 +31,7 @@ function ServiceCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      className={`group relative overflow-hidden rounded-xl border border-border bg-card transition-all hover:border-primary/40 ${
-        priority ? "md:col-span-2 md:row-span-2" : ""
-      }`}
+      className="group relative overflow-hidden rounded-xl border border-border bg-card transition-all hover:border-primary/40 h-full"
     >
       <div className="absolute inset-0">
         <Image
@@ -45,7 +43,7 @@ function ServiceCard({
         <div className="absolute inset-0 bg-gradient-to-t from-card via-card/90 to-card/50" />
       </div>
 
-      <div className={`relative z-10 p-6 flex flex-col h-full ${priority ? "md:p-10" : ""}`}>
+      <div className={`relative z-10 p-6 flex flex-col h-full ${priority ? "md:p-8" : ""}`}>
         <div className="flex items-center gap-3 mb-4">
           <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-primary/10 border border-primary/20">
             <Icon className="w-5 h-5 text-primary" />
@@ -59,18 +57,18 @@ function ServiceCard({
 
         <h3
           className={`font-black uppercase tracking-wider text-foreground mb-3 ${
-            priority ? "text-2xl md:text-3xl" : "text-lg"
+            priority ? "text-xl md:text-2xl" : "text-lg"
           }`}
         >
           {title}
         </h3>
 
-        <p className="text-muted-foreground leading-relaxed flex-1 text-sm">
+        <p className="text-muted-foreground leading-relaxed text-sm">
           {description}
         </p>
 
         {highlight && (
-          <div className="mt-4 inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-lg px-3 py-2">
+          <div className="mt-4 inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-lg px-3 py-2 self-start">
             <span className="w-1.5 h-1.5 rounded-full bg-primary" />
             <span className="text-xs font-bold uppercase tracking-wider text-primary">
               {highlight}
@@ -78,12 +76,14 @@ function ServiceCard({
           </div>
         )}
 
-        <button
-          onClick={onBookNow}
-          className="mt-6 self-start bg-secondary text-foreground border border-border px-5 py-2.5 rounded-lg text-xs font-bold uppercase tracking-widest hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all"
-        >
-          Book Now
-        </button>
+        <div className="mt-auto pt-5">
+          <button
+            onClick={onBookNow}
+            className="self-start bg-secondary text-foreground border border-border px-5 py-2.5 rounded-lg text-xs font-bold uppercase tracking-widest hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all"
+          >
+            Book Now
+          </button>
+        </div>
       </div>
     </motion.div>
   )
@@ -148,15 +148,37 @@ export function Services({ onBookNow }: ServicesProps) {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-fr">
-          {services.map((service, i) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {/* Row 1: Timing Chain (wide) + Diagnostics */}
+          <div className="md:col-span-1">
             <ServiceCard
-              key={service.title}
-              {...service}
-              index={i}
+              {...services[0]}
+              index={0}
               onBookNow={onBookNow}
             />
-          ))}
+          </div>
+          <div className="md:col-span-1">
+            <ServiceCard
+              {...services[1]}
+              index={1}
+              onBookNow={onBookNow}
+            />
+          </div>
+          {/* Row 2: PDI Work + Suspension & Brakes */}
+          <div className="md:col-span-1">
+            <ServiceCard
+              {...services[2]}
+              index={2}
+              onBookNow={onBookNow}
+            />
+          </div>
+          <div className="md:col-span-1">
+            <ServiceCard
+              {...services[3]}
+              index={3}
+              onBookNow={onBookNow}
+            />
+          </div>
         </div>
 
         <motion.div
