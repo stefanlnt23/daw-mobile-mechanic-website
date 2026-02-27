@@ -11,7 +11,7 @@ export function WhatsAppFloat() {
       initial={{ scale: 0, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       transition={{ delay: 1, type: "spring", stiffness: 200 }}
-      className="fixed bottom-20 md:bottom-6 right-4 z-50 flex items-center gap-2 bg-[#25D366] text-white pl-4 pr-5 py-3 rounded-full shadow-lg shadow-black/30 hover:brightness-110 transition-all group"
+      className="hidden md:flex fixed bottom-6 right-4 z-50 items-center gap-2 bg-[#25D366] text-white pl-4 pr-5 py-3 rounded-full shadow-lg shadow-black/30 hover:brightness-110 transition-all group"
       aria-label="Message us on WhatsApp"
     >
       <svg className="w-6 h-6 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">

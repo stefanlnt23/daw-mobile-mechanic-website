@@ -4,6 +4,7 @@ import { Header } from "@/components/header"
 import { Hero } from "@/components/hero"
 import { TrustBar } from "@/components/trust-bar"
 import { Services } from "@/components/services"
+import { BreakdownCta } from "@/components/breakdown-cta"
 import { WarningLights } from "@/components/warning-lights"
 import { Process } from "@/components/process"
 import { ContactCta } from "@/components/contact-cta"
@@ -19,6 +20,7 @@ export default function Home() {
       <main className="pb-16 md:pb-0">
         <Hero />
         <TrustBar />
+        <BreakdownCta className="md:hidden" />
         <Services />
         <WarningLights />
         <Process />

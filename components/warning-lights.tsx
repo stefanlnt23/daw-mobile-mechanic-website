@@ -160,12 +160,12 @@ export function WarningLights() {
           })}
         </div>
 
-        {/* CTA */}
+        {/* CTA - hidden on mobile, shown via BreakdownCta before Services on mobile */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center bg-card border border-border rounded-2xl p-8 md:p-12"
+          className="hidden md:block text-center bg-card border border-border rounded-2xl p-8 md:p-12"
         >
           <div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-primary rounded-tl-2xl" />
           <AlertTriangle className="w-10 h-10 text-red-500 mx-auto mb-4" />
