@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Link2, Gauge, Shield, Disc3 } from "lucide-react"
+import { Link2, Gauge, Shield, Disc3, Wrench, CarFront } from "lucide-react"
 import Image from "next/image"
 
 interface ServiceCardProps {
@@ -97,10 +97,9 @@ export function Services({ onBookNow }: ServicesProps) {
   const services = [
     {
       icon: Link2,
-      title: "Trafic & Vivaro Timing Chain Packages",
+      title: "Timing Chain Replacement",
       description:
-        "Specialist timing chain replacement for Renault Trafic, Vauxhall Vivaro, and similar. Factory-grade parts and precision installation for the notoriously tricky 1.6 engine.",
-      highlight: "1.6 Engine Expertise",
+        "Specialist timing chain replacement for Renault Trafic, Vauxhall Vivaro, and similar. Factory-grade parts and precision installation at your home or workplace.",
       image: "/images/timing-chain.jpg",
       priority: true,
     },
@@ -112,18 +111,32 @@ export function Services({ onBookNow }: ServicesProps) {
       image: "/images/diagnostics.jpg",
     },
     {
-      icon: Shield,
-      title: "Dealer PDI Work",
+      icon: Wrench,
+      title: "Full Servicing & MOT Prep",
       description:
-        "Pre-delivery inspection services for motor traders. On-site inspections to your location so your stock is road-ready before the customer arrives.",
-      image: "/images/hero-van.jpg",
+        "Interim, full, and major services carried out on your driveway. Oil & filter changes, fluid top-ups, belt checks, and full MOT preparation so you pass first time.",
+      image: "/images/servicing.jpg",
     },
     {
       icon: Disc3,
       title: "Suspension & Brakes",
       description:
-        "Expert brake and suspension repairs for a smoother, safer ride. Discs, pads, springs, shocks and full geometry checks.",
+        "Expert brake and suspension repairs for a smoother, safer ride. Discs, pads, springs, shocks, and full geometry checks.",
       image: "/images/suspension.jpg",
+    },
+    {
+      icon: CarFront,
+      title: "Clutch & Flywheel",
+      description:
+        "Complete clutch kit and dual-mass flywheel replacements. We handle the heavy lifting on-site so you avoid expensive garage recovery fees.",
+      image: "/images/clutch.jpg",
+    },
+    {
+      icon: Shield,
+      title: "Dealer PDI Work",
+      description:
+        "Pre-delivery inspection services for motor traders. On-site inspections to your location so your stock is road-ready before the customer arrives.",
+      image: "/images/hero-van.jpg",
     },
   ]
 
@@ -148,37 +161,15 @@ export function Services({ onBookNow }: ServicesProps) {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {/* Row 1: Timing Chain (wide) + Diagnostics */}
-          <div className="md:col-span-1">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {services.map((service, i) => (
             <ServiceCard
-              {...services[0]}
-              index={0}
+              key={service.title}
+              {...service}
+              index={i}
               onBookNow={onBookNow}
             />
-          </div>
-          <div className="md:col-span-1">
-            <ServiceCard
-              {...services[1]}
-              index={1}
-              onBookNow={onBookNow}
-            />
-          </div>
-          {/* Row 2: PDI Work + Suspension & Brakes */}
-          <div className="md:col-span-1">
-            <ServiceCard
-              {...services[2]}
-              index={2}
-              onBookNow={onBookNow}
-            />
-          </div>
-          <div className="md:col-span-1">
-            <ServiceCard
-              {...services[3]}
-              index={3}
-              onBookNow={onBookNow}
-            />
-          </div>
+          ))}
         </div>
 
         <motion.div
