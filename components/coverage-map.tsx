@@ -3,12 +3,6 @@
 import { motion } from "framer-motion"
 import { Phone } from "lucide-react"
 
-/*
-  Simplified SVG map of Shropshire area with Wem at center
-  and a 30-mile radius circle. Towns placed at approximate
-  relative positions.
-*/
-
 const towns = [
   { name: "Wem", x: 50, y: 45, center: true },
   { name: "Shrewsbury", x: 38, y: 60 },
@@ -20,6 +14,17 @@ const towns = [
   { name: "Nantwich", x: 75, y: 22 },
   { name: "Crewe", x: 80, y: 15 },
 ]
+
+// Use hardcoded colors that match the theme since SVG attributes
+// don't resolve CSS custom properties like hsl(var(--primary))
+const PRIMARY = "#FFB800"
+const PRIMARY_DIM = "rgba(255,184,0,0.3)"
+const PRIMARY_FAINT = "rgba(255,184,0,0.08)"
+const PRIMARY_SUBTLE = "rgba(255,184,0,0.15)"
+const PRIMARY_HALF = "rgba(255,184,0,0.6)"
+const MUTED = "rgba(160,160,160,0.8)"
+const MUTED_DIM = "rgba(160,160,160,0.6)"
+const BORDER = "rgba(255,255,255,0.12)"
 
 export function CoverageMap() {
   return (
@@ -60,10 +65,9 @@ export function CoverageMap() {
               <path
                 d="M15,10 L60,5 L85,12 L90,35 L82,60 L75,80 L55,88 L30,85 L12,70 L8,45 L10,25 Z"
                 fill="none"
-                stroke="hsl(var(--border))"
+                stroke={BORDER}
                 strokeWidth="0.5"
                 strokeDasharray="2,2"
-                opacity="0.5"
               />
 
               {/* 30-mile radius circle */}
@@ -71,8 +75,8 @@ export function CoverageMap() {
                 cx="50"
                 cy="45"
                 r="35"
-                fill="hsl(var(--primary) / 0.08)"
-                stroke="hsl(var(--primary) / 0.3)"
+                fill={PRIMARY_FAINT}
+                stroke={PRIMARY_DIM}
                 strokeWidth="0.5"
                 strokeDasharray="3,2"
               />
@@ -82,8 +86,8 @@ export function CoverageMap() {
                 cx="50"
                 cy="45"
                 r="18"
-                fill="hsl(var(--primary) / 0.05)"
-                stroke="hsl(var(--primary) / 0.15)"
+                fill="rgba(255,184,0,0.05)"
+                stroke={PRIMARY_SUBTLE}
                 strokeWidth="0.3"
               />
 
@@ -92,18 +96,13 @@ export function CoverageMap() {
                 <g key={town.name}>
                   {town.center ? (
                     <>
-                      <circle
-                        cx={town.x}
-                        cy={town.y}
-                        r="2.5"
-                        fill="hsl(var(--primary))"
-                      />
+                      <circle cx={town.x} cy={town.y} r="2.5" fill={PRIMARY} />
                       <circle
                         cx={town.x}
                         cy={town.y}
                         r="4.5"
                         fill="none"
-                        stroke="hsl(var(--primary))"
+                        stroke={PRIMARY}
                         strokeWidth="0.5"
                         opacity="0.5"
                       />
@@ -111,7 +110,7 @@ export function CoverageMap() {
                         x={town.x}
                         y={town.y - 6}
                         textAnchor="middle"
-                        fill="hsl(var(--primary))"
+                        fill={PRIMARY}
                         fontSize="3.5"
                         fontWeight="bold"
                         fontFamily="system-ui"
@@ -122,7 +121,7 @@ export function CoverageMap() {
                         x={town.x}
                         y={town.y + 8}
                         textAnchor="middle"
-                        fill="hsl(var(--primary) / 0.6)"
+                        fill={PRIMARY_HALF}
                         fontSize="2"
                         fontFamily="system-ui"
                       >
@@ -135,17 +134,15 @@ export function CoverageMap() {
                         cx={town.x}
                         cy={town.y}
                         r="1.2"
-                        fill="hsl(var(--muted-foreground))"
-                        opacity="0.6"
+                        fill={MUTED_DIM}
                       />
                       <text
                         x={town.x}
                         y={town.y - 3}
                         textAnchor="middle"
-                        fill="hsl(var(--muted-foreground))"
+                        fill={MUTED}
                         fontSize="2.5"
                         fontFamily="system-ui"
-                        opacity="0.8"
                       >
                         {town.name}
                       </text>
