@@ -13,6 +13,9 @@ import { MobileBar } from "@/components/mobile-bar"
 import { WhatsAppFloat } from "@/components/whatsapp-float"
 import { PrivacyBanner } from "@/components/privacy-banner"
 import { GallerySection } from "@/components/gallery-section"
+import { Reviews } from "@/components/reviews"
+import { CoverageMap } from "@/components/coverage-map"
+import { FaqSection } from "@/components/faq-section"
 
 export default function Home() {
   return (
@@ -24,8 +27,11 @@ export default function Home() {
         <BreakdownCta className="md:hidden" />
         <Services />
         <GallerySection />
+        <Reviews />
+        <CoverageMap />
         <WarningLights />
         <Process />
+        <FaqSection />
         <ContactCta />
       </main>
       <Footer />

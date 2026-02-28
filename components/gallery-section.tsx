@@ -408,6 +408,30 @@ export function GallerySection() {
           </p>
         </motion.div>
 
+        {/* SEO fallback for crawlers that don't execute JS */}
+        <noscript>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+            {[
+              { src: "/gallery/timing-chain-job.jpg", alt: "Timing chain replacement on Renault Trafic at customer's driveway" },
+              { src: "/gallery/diagnostics-scan.jpg", alt: "Dealer-level diagnostic scan on engine management system" },
+              { src: "/gallery/brake-disc-replacement.jpg", alt: "New brake discs and pads fitted on-site in Shropshire" },
+              { src: "/gallery/clutch-replacement.jpg", alt: "Complete clutch and flywheel replacement at customer's home" },
+              { src: "/gallery/full-service.jpg", alt: "Full vehicle service completed on driveway in Wem" },
+              { src: "/gallery/suspension-repair.jpg", alt: "Suspension spring and shock absorber replacement" },
+            ].map((img) => (
+              <img
+                key={img.src}
+                src={img.src}
+                alt={img.alt}
+                width={280}
+                height={280}
+                style={{ borderRadius: 18, objectFit: "cover", width: "100%", height: "auto" }}
+                loading="lazy"
+              />
+            ))}
+          </div>
+        </noscript>
+
         {/* Desktop */}
         <div className="hidden md:block">
           {images.length > 0 ? (

@@ -12,6 +12,7 @@ interface ServiceCardProps {
   priority?: boolean
   index: number
   iconScale?: number
+  price?: string
 }
 
 function ServiceCard({
@@ -23,6 +24,7 @@ function ServiceCard({
   priority,
   index,
   iconScale = 1,
+  price,
 }: ServiceCardProps) {
   const whatsappMessage = encodeURIComponent(`Hi Aaron, I'm interested in your ${title} service. Could you provide more details?`)
   const whatsappUrl = `https://wa.me/447426443009?text=${whatsappMessage}`
@@ -113,6 +115,14 @@ function ServiceCard({
               {description}
             </p>
 
+            {price && (
+              <div className="mt-4 inline-flex items-center gap-2 self-start">
+                <span className="text-sm font-bold text-primary">
+                  from {price}
+                </span>
+              </div>
+            )}
+
             {highlight && (
               <div className="mt-4 inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-lg px-3 py-2 self-start">
                 <span className="w-1.5 h-1.5 rounded-full bg-primary" />
@@ -158,6 +168,7 @@ export function Services() {
       description:
         "Dealer-level diagnostic equipment to trace stubborn faults. From failed starter motors to intermittent electrical gremlins, we find the root cause first.",
       image: "/images/diagnostics.jpg",
+      price: "£40",
     },
     {
       iconImage: "/images/service-mot.png",

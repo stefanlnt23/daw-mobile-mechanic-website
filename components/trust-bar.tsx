@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { MapPin, Shield, Wrench } from "lucide-react"
+import { MapPin, Shield, Wrench, Award } from "lucide-react"
 
 const trustItems = [
   {
@@ -16,13 +16,17 @@ const trustItems = [
     icon: Wrench,
     text: "Mobile & Workshop Services",
   },
+  {
+    icon: Award,
+    text: "15+ Years Experience",
+  },
 ]
 
 export function TrustBar() {
   return (
     <section className="relative bg-secondary brushed-metal border-y border-border">
       <div className="mx-auto max-w-7xl px-4 py-6 lg:px-8">
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {trustItems.map((item, i) => (
             <motion.div
               key={item.text}

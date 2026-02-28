@@ -152,42 +152,66 @@ export function StructuredData() {
     mainEntity: [
       {
         "@type": "Question",
-        name: "What areas does ADL Mobile Mechanic cover?",
+        name: "What areas do you cover?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "We serve Wem, Market Drayton, Shrewsbury, Whitchurch, Oswestry, Newport, Telford, and all surrounding areas within a 30-mile radius across Shropshire and into Cheshire.",
+          text: "We're based in Wem and cover a 30-mile radius across Shropshire and into Cheshire. That includes Shrewsbury, Market Drayton, Whitchurch, Oswestry, Telford, Newport, Nantwich, and Crewe. If you're unsure, just give Aaron a call.",
         },
       },
       {
         "@type": "Question",
-        name: "Do you come to my home or workplace?",
+        name: "Do you need space on my driveway?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Yes! ADL Mobile Mechanic comes to you — whether that's your home, workplace, or roadside. No need to visit a garage.",
+          text: "A standard parking space is usually enough. We bring everything we need in the van. If access is tight, we can discuss options when you book — we're flexible.",
         },
       },
       {
         "@type": "Question",
-        name: "What services do you offer?",
+        name: "How do I book?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "We offer timing chain replacement (Renault Trafic & Vauxhall Vivaro specialist), advanced diagnostics, full servicing & MOT preparation, suspension & brake repairs, clutch & flywheel replacement, and dealer pre-delivery inspection (PDI) work.",
+          text: "Just call or WhatsApp Aaron on 07426 443009. We'll have a quick chat about the issue, arrange a time that suits you, and come to your location.",
         },
       },
       {
         "@type": "Question",
-        name: "How do I book a mobile mechanic?",
+        name: "What are your prices?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Simply call Aaron on 07426 443009 or message via WhatsApp. We'll arrange a time that suits you and come to your location.",
+          text: "Prices depend on the job — diagnostics start from £40, servicing and repairs are quoted individually. You'll always get a clear, upfront quote before any work begins. No hidden extras.",
         },
       },
       {
         "@type": "Question",
-        name: "What should I do if my check engine light is on?",
+        name: "Do you supply the parts?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Do not keep driving. A check engine light could indicate serious engine issues. Pull over safely and call ADL Mobile Mechanic on 07426 443009 for a mobile diagnostic — Aaron comes to you wherever you are.",
+          text: "Yes, we source quality parts from trusted suppliers at trade prices, so you don't need to worry about finding them yourself. We always use OE-equivalent or genuine parts.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "How long do repairs usually take?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Most diagnostics and minor repairs are done within an hour or two. Bigger jobs like timing chains or clutch replacements are typically a full day. We'll give you a time estimate when we quote.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What if it rains?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "We work in all weather — the van carries gazebos and covers for wet conditions. Unless it's genuinely unsafe, rain won't delay your repair.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Can you work on any vehicle?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "We work on most makes and models — cars, vans, and light commercial vehicles. We're specialists in Renault Trafic and Vauxhall Vivaro timing chains, but handle everything from Fords to BMWs.",
         },
       },
     ],
