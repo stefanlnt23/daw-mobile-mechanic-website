@@ -242,8 +242,8 @@ function MobileStrip({ images }: { images: string[] }) {
     rafId: 0,
   })
 
-  const IMG_W = 155
-  const IMG_H = 155
+  const IMG_W = 220
+  const IMG_H = 220
   const GAP = 10
   const CELL = IMG_W + GAP
   const AUTO_X = 0.15
