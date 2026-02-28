@@ -2,8 +2,9 @@
 
 import { useEffect, useRef, useState } from "react"
 import Link from "next/link"
-import { ArrowLeft, Phone, Star } from "lucide-react"
+import { ArrowLeft, MapPin, MessageCircle, Phone, ShieldCheck, Star, Wrench } from "lucide-react"
 import { Lightbox } from "@/components/lightbox"
+import { Reviews } from "@/components/reviews"
 
 function useGalleryImages() {
   const [images, setImages] = useState<string[]>([])
@@ -210,7 +211,7 @@ export default function OurWorkPage() {
   const images = useGalleryImages()
 
   return (
-    <div className="bg-background flex flex-col" style={{ height: "100dvh" }}>
+    <div className="bg-background flex flex-col min-h-dvh">
       {/* Top bar */}
       <div className="flex items-center justify-between px-4 py-3 border-b border-border bg-background/95 backdrop-blur-md sticky top-0 z-50">
         <Link
@@ -246,25 +247,25 @@ export default function OurWorkPage() {
       </div>
 
       {/* Trust pills */}
-      <div className="flex gap-2.5 px-6 pb-4 justify-center flex-wrap">
+      <div className="flex gap-2 px-6 pb-4 justify-center flex-wrap">
         {[
-          { icon: "🔧", text: "10+ yrs experience" },
-          { icon: "📍", text: "Comes to you" },
-          { icon: "✅", text: "Fully insured" },
-          { icon: "💬", text: "WhatsApp updates" },
-        ].map((pill) => (
+          { Icon: Wrench,         text: "15+ yrs experience", iconCls: "text-primary" },
+          { Icon: MapPin,         text: "Comes to you",        iconCls: "text-blue-500" },
+          { Icon: ShieldCheck,    text: "Fully insured",       iconCls: "text-green-500" },
+          { Icon: MessageCircle,  text: "WhatsApp updates",    iconCls: "text-emerald-500" },
+        ].map(({ Icon, text, iconCls }) => (
           <div
-            key={pill.text}
-            className="flex items-center gap-1.5 bg-muted border border-border rounded-full px-3 py-1.5 text-xs font-semibold text-foreground"
+            key={text}
+            className="flex items-center gap-2 bg-card border border-border shadow-sm rounded-xl px-3.5 py-2 text-xs font-semibold text-foreground"
           >
-            <span>{pill.icon}</span>
-            {pill.text}
+            <Icon className={`w-3.5 h-3.5 shrink-0 ${iconCls}`} />
+            {text}
           </div>
         ))}
       </div>
 
-      {/* Infinite gallery — fills remaining screen height */}
-      <div className="flex-1 overflow-hidden relative" style={{ minHeight: 280 }}>
+      {/* Infinite gallery */}
+      <div className="overflow-hidden relative" style={{ height: "55vh", minHeight: 280 }}>
         {images.length > 0 ? (
           <InfiniteGallery images={images} />
         ) : (
@@ -290,8 +291,11 @@ export default function OurWorkPage() {
         </p>
       </div>
 
-      {/* Sticky bottom CTA */}
-      <div className="sticky bottom-0 bg-background/95 backdrop-blur-md border-t border-border p-4 grid grid-cols-2 gap-3">
+      {/* Reviews */}
+      <Reviews />
+
+      {/* Bottom CTA */}
+      <div className="bg-background border-t border-border p-4 grid grid-cols-2 gap-3">
         <a
           href="tel:07426443009"
           className="flex items-center justify-center gap-2 bg-primary text-primary-foreground py-3 rounded-xl font-bold text-sm uppercase tracking-wider"
