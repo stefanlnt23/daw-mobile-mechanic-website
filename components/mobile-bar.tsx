@@ -4,7 +4,7 @@ import { Phone } from "lucide-react"
 
 export function MobileBar() {
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-background/95 backdrop-blur-md border-t border-border">
+    <div className="fixed bottom-0 left-0 right-0 z-50 border-t border-border bg-background/95 md:hidden">
       <div className="grid grid-cols-2 gap-2 p-3">
         <a
           href="tel:07426443009"

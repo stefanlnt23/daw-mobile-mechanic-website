@@ -128,6 +128,14 @@
   animation-play-state: paused;
 }
 
+@media (max-width: 767px) {
+  .car-logo-track,
+  .work-carousel-track {
+    animation: none;
+    transform: none;
+  }
+}
+
 @keyframes car-logo-scroll {
   from {
     transform: translateX(0);

@@ -263,10 +263,10 @@ export default function Home() {
             <div className="relative z-10">
               <div className="grid gap-5 lg:pl-6">
                 <div className="relative flex min-h-[24rem] items-end justify-center overflow-visible sm:min-h-[31rem] lg:min-h-[40rem]">
-                  <div className="absolute left-1/2 top-[10%] h-52 w-52 -translate-x-1/2 rounded-full bg-primary/12 blur-3xl sm:h-64 sm:w-64 lg:h-72 lg:w-72" />
-                  <div className="absolute right-[8%] top-[22%] h-40 w-40 rounded-full bg-white/8 blur-3xl sm:h-52 sm:w-52 lg:h-60 lg:w-60" />
-                  <div className="absolute bottom-[10%] left-[10%] h-32 w-32 rounded-full bg-primary/10 blur-3xl sm:h-40 sm:w-40 lg:h-48 lg:w-48" />
-                  <div className="absolute bottom-[2%] left-[14%] right-[10%] h-14 rounded-full bg-white/10 blur-2xl" />
+                  <div className="absolute left-1/2 top-[10%] hidden h-52 w-52 -translate-x-1/2 rounded-full bg-primary/12 blur-3xl sm:block sm:h-64 sm:w-64 lg:h-72 lg:w-72" />
+                  <div className="absolute right-[8%] top-[22%] hidden h-40 w-40 rounded-full bg-white/8 blur-3xl sm:block sm:h-52 sm:w-52 lg:h-60 lg:w-60" />
+                  <div className="absolute bottom-[10%] left-[10%] hidden h-32 w-32 rounded-full bg-primary/10 blur-3xl sm:block sm:h-40 sm:w-40 lg:h-48 lg:w-48" />
+                  <div className="absolute bottom-[2%] left-[14%] right-[10%] hidden h-14 rounded-full bg-white/10 blur-2xl sm:block" />
 
                   <div className="relative z-10 w-[132%] max-w-[52rem] sm:w-[124%] lg:w-[148%] lg:-translate-x-4">
                     <Image
@@ -274,9 +274,9 @@ export default function Home() {
                       alt="DAW Mobile Mechanic team standing in front of a van"
                       width={1200}
                       height={1250}
-                      priority
-                      className="h-auto w-full object-contain object-bottom drop-shadow-[0_32px_70px_rgba(0,0,0,0.32)]"
-                    />
+                    sizes="(max-width: 1024px) 100vw, 52rem"
+                    className="h-auto w-full object-contain object-bottom drop-shadow-[0_32px_70px_rgba(0,0,0,0.32)]"
+                  />
                   </div>
                 </div>
               </div>
@@ -293,7 +293,6 @@ export default function Home() {
                     aria-hidden="true"
                     className="object-cover object-center"
                     sizes="(min-width: 640px) 33vw, 100vw"
-                    priority
                   />
                 </div>
                 <div className="flex min-h-[132px] flex-col items-center justify-center px-4 py-2.5 text-center">
@@ -312,7 +311,6 @@ export default function Home() {
                     aria-hidden="true"
                     className="object-cover object-center"
                     sizes="(min-width: 640px) 33vw, 100vw"
-                    priority
                   />
                 </div>
                 <div className="flex min-h-[132px] flex-col items-center justify-center px-4 py-2.5 text-center">
@@ -331,13 +329,12 @@ export default function Home() {
                     aria-hidden="true"
                     className="object-cover object-center"
                     sizes="(min-width: 640px) 33vw, 100vw"
-                    priority
                   />
                   <a
                     href={googleMapsHref}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="absolute right-3 top-3 inline-flex items-center gap-2 rounded-full border border-white/75 bg-background/88 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.12em] text-foreground shadow-sm backdrop-blur-sm transition hover:border-primary/50 hover:text-primary"
+                    className="absolute right-3 top-3 inline-flex items-center gap-2 rounded-full border border-white/75 bg-background/92 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.12em] text-foreground shadow-sm transition hover:border-primary/50 hover:text-primary sm:backdrop-blur-sm"
                   >
                     View On Google
                   </a>
@@ -702,7 +699,7 @@ export default function Home() {
         </a>
       </div>
 
-      <div className="fixed inset-x-0 bottom-0 z-50 border-t border-border/70 bg-background/96 p-3 backdrop-blur-xl md:hidden">
+      <div className="fixed inset-x-0 bottom-0 z-50 border-t border-border/70 bg-background/96 p-3 md:hidden">
         <div className="mx-auto grid max-w-xl grid-cols-2 gap-3">
           <a
             href={phoneHref}

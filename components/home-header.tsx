@@ -28,7 +28,7 @@ const navItems = [
 
 export function HomeHeader({ phoneDisplay, phoneHref }: HomeHeaderProps) {
   return (
-    <header className="sticky top-0 z-50 border-b border-border/70 bg-background/88 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 border-b border-border/70 bg-background/94 md:bg-background/88 md:backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 lg:px-8">
         <a href="#" className="flex items-center">
           <div className="relative h-16 w-[15rem] flex-shrink-0 sm:w-[18rem] md:w-[20rem]">
@@ -83,7 +83,7 @@ export function HomeHeader({ phoneDisplay, phoneHref }: HomeHeaderProps) {
               </button>
             </SheetTrigger>
 
-            <SheetContent side="right" className="w-[85vw] border-l border-border/80 bg-background/96 px-0 sm:max-w-sm">
+            <SheetContent side="right" className="w-[85vw] border-l border-border/80 bg-background px-0 sm:max-w-sm">
               <SheetHeader className="border-b border-border/70 px-6 py-5 text-left">
                 <SheetTitle className="font-display text-3xl uppercase tracking-[0.08em] text-foreground">
                   Menu
