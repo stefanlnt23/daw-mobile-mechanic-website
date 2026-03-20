@@ -1,0 +1,4 @@
+User-Agent: *
+Allow: /
+
+Sitemap: https://dawmobilemechanic.co.uk/sitemap.xml
