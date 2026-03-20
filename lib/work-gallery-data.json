@@ -1,6 +1,6 @@
 [
   {
-    "src": "/work-gallery/01.jpg",
+    "src": "/work-gallery/01.webp",
     "file": "01.jpg",
     "title": "Audi A4 Clutch Pedal Leak Repair",
     "raw": "Audi A4 due to leak causing clutch pedal to sink to the floor We have quickly replaced it for a new one,",
@@ -8,7 +8,7 @@
     "featured": true
   },
   {
-    "src": "/work-gallery/02.jpg",
+    "src": "/work-gallery/02.webp",
     "file": "02.jpg",
     "title": "aulty ABS Sensor as the old sensor wasn't registerering any speed of the wheel.",
     "raw": "aulty ABS Sensor as the old sensor wasn't registerering any speed of the wheel.",
@@ -16,7 +16,7 @@
     "featured": true
   },
   {
-    "src": "/work-gallery/03.jpg",
+    "src": "/work-gallery/03.webp",
     "file": "03.jpg",
     "title": "ABS Fault Repair",
     "raw": "auxhall Astra due to encoder ring snapped which was throwing ABS light on the dash",
@@ -24,7 +24,7 @@
     "featured": true
   },
   {
-    "src": "/work-gallery/04.jpg",
+    "src": "/work-gallery/04.webp",
     "file": "04.jpg",
     "title": "BMW M4 Air Induction Kit",
     "raw": "Brand new air induction kit fitted on customers stunning BMW M4",
@@ -32,7 +32,7 @@
     "featured": true
   },
   {
-    "src": "/work-gallery/05.jpg",
+    "src": "/work-gallery/05.webp",
     "file": "05.jpg",
     "title": "Vauxhall Corsa Rocker Cover Gasket",
     "raw": "change a rocker cover gasket on a customers Vauxhall Corsa",
@@ -40,7 +40,7 @@
     "featured": true
   },
   {
-    "src": "/work-gallery/06.jpg",
+    "src": "/work-gallery/06.webp",
     "file": "06.jpg",
     "title": "Land Rover Discovery Starter Motor Replacement",
     "raw": "change a starter motor on his Land Rover Discovery due to long cranking time when starting the car",
@@ -48,7 +48,7 @@
     "featured": true
   },
   {
-    "src": "/work-gallery/07.jpg",
+    "src": "/work-gallery/07.webp",
     "file": "07.jpg",
     "title": "Audi A5 Oil & Filter Change",
     "raw": "Couple of our recent jobs VW Passat for oil and filter Audi A5 for MOT fail on split CV boot. New CV Boot and back for a retest",
@@ -56,7 +56,7 @@
     "featured": true
   },
   {
-    "src": "/work-gallery/08.jpg",
+    "src": "/work-gallery/08.webp",
     "file": "08.jpg",
     "title": "Battery Replacement",
     "raw": "eplace a battery and carry out inspection as the car was sitting for a quiet long time",
@@ -64,7 +64,7 @@
     "featured": true
   },
   {
-    "src": "/work-gallery/09.jpg",
+    "src": "/work-gallery/09.webp",
     "file": "09.jpg",
     "title": "Ford Transit Interim Service",
     "raw": "Ford Transit in for a interim service and new fuel filter",
@@ -72,7 +72,7 @@
     "featured": true
   },
   {
-    "src": "/work-gallery/10.jpg",
+    "src": "/work-gallery/10.webp",
     "file": "10.jpg",
     "title": "Renault Kangoo Full Service & Exhaust Box",
     "raw": "Full service and new exhaust back box on Renault Kangoo",
@@ -80,7 +80,7 @@
     "featured": true
   },
   {
-    "src": "/work-gallery/11.jpg",
+    "src": "/work-gallery/11.webp",
     "file": "11.jpg",
     "title": "Interim Service & Front Pads",
     "raw": "Interim service and front brake pads",
@@ -88,7 +88,7 @@
     "featured": false
   },
   {
-    "src": "/work-gallery/12.jpg",
+    "src": "/work-gallery/12.webp",
     "file": "12.jpg",
     "title": "Fiat Tipo Interim Service",
     "raw": "Interim service carried out on customers Fiat Tipo",
@@ -96,7 +96,7 @@
     "featured": false
   },
   {
-    "src": "/work-gallery/13.jpg",
+    "src": "/work-gallery/13.webp",
     "file": "13.jpg",
     "title": "Volvo V40 ABS Sensor Replacement",
     "raw": "New ABS sensor fitted on customers Volvo V40 due to ABS light on the das",
@@ -104,7 +104,7 @@
     "featured": false
   },
   {
-    "src": "/work-gallery/14.jpg",
+    "src": "/work-gallery/14.webp",
     "file": "14.jpg",
     "title": "VW Golf Cambelt Kit & Water Pump",
     "raw": "New Cambelt Kit + Waterpump along with fresh coolant fitted on customers VW Golf",
@@ -112,7 +112,7 @@
     "featured": false
   },
   {
-    "src": "/work-gallery/15.jpg",
+    "src": "/work-gallery/15.webp",
     "file": "15.jpg",
     "title": "Vauxhall Astra Clutch & Dual Mass Flywheel",
     "raw": "New clutch and dual mass flywheel on customer Vauxhall Astra due to slipping clutch",
@@ -120,7 +120,7 @@
     "featured": false
   },
   {
-    "src": "/work-gallery/16.jpg",
+    "src": "/work-gallery/16.webp",
     "file": "16.jpg",
     "title": "Ford Transit CV Joint & CV Boot",
     "raw": "New CV Joint and CV Boot on customers Ford Transit due to split in the rubber boot and damaged CV Joint.",
@@ -128,7 +128,7 @@
     "featured": false
   },
   {
-    "src": "/work-gallery/17.jpg",
+    "src": "/work-gallery/17.webp",
     "file": "17.jpg",
     "title": "Audi A4 DPF & Injector Repair",
     "raw": "New DPF, Fuel injector and Injector seals on Audi A4",
@@ -136,7 +136,7 @@
     "featured": false
   },
   {
-    "src": "/work-gallery/18.jpg",
+    "src": "/work-gallery/18.webp",
     "file": "18.jpg",
     "title": "BMW 1 Series Front Spring & Suspension Arm",
     "raw": "new front spring and suspension arm on BMW 1 Series",
@@ -144,7 +144,7 @@
     "featured": false
   },
   {
-    "src": "/work-gallery/19.jpg",
+    "src": "/work-gallery/19.webp",
     "file": "19.jpg",
     "title": "Ford KA Gear Linkage Replacement",
     "raw": "New gear linkages on Ford KA due to old one broke off from the gear selector leaving customer with no gears",
@@ -152,7 +152,7 @@
     "featured": false
   },
   {
-    "src": "/work-gallery/20.jpg",
+    "src": "/work-gallery/20.webp",
     "file": "20.jpg",
     "title": "BMW 1 Rocker Cover & Breather Pipe",
     "raw": "new rocker cover and crankcase breather pipe on BMW 1",
@@ -160,7 +160,7 @@
     "featured": false
   },
   {
-    "src": "/work-gallery/21.jpg",
+    "src": "/work-gallery/21.webp",
     "file": "21.jpg",
     "title": "Abarth 500 Spark Plugs & Ignition Coils",
     "raw": "New spark plugs and ignition coils fitted on Abarth 500",
@@ -168,7 +168,7 @@
     "featured": false
   },
   {
-    "src": "/work-gallery/22.jpg",
+    "src": "/work-gallery/22.webp",
     "file": "22.jpg",
     "title": "VW UP Oil Service & Drum Brakes",
     "raw": "Oil & Filter change + Drum brake service on customers VW UP",
@@ -176,7 +176,7 @@
     "featured": false
   },
   {
-    "src": "/work-gallery/23.jpg",
+    "src": "/work-gallery/23.webp",
     "file": "23.jpg",
     "title": "VW Golf GTD Oil & Filter Change",
     "raw": "Oil and oil filter change on a customers VW Golf GTD",
@@ -184,7 +184,7 @@
     "featured": false
   },
   {
-    "src": "/work-gallery/24.jpg",
+    "src": "/work-gallery/24.webp",
     "file": "24.jpg",
     "title": "Vauxhall Insignia Rear Discs & Pads",
     "raw": "Rear discs and pads changed on Vauxhall Insignia due to uneven wear on one side and grinding noise",
@@ -192,7 +192,7 @@
     "featured": false
   },
   {
-    "src": "/work-gallery/25.jpg",
+    "src": "/work-gallery/25.webp",
     "file": "25.jpg",
     "title": "Clutch Master Cylinder",
     "raw": "replace clutch master cylinder due to the old one started to leak and customer had to be recovered back home.",
@@ -200,7 +200,7 @@
     "featured": false
   },
   {
-    "src": "/work-gallery/26.jpg",
+    "src": "/work-gallery/26.webp",
     "file": "26.jpg",
     "title": "Skoda Citigo Interim Service",
     "raw": "We carried out Interim service on the customers Skoda Citigo",
@@ -208,7 +208,7 @@
     "featured": false
   },
   {
-    "src": "/work-gallery/27.jpg",
+    "src": "/work-gallery/27.webp",
     "file": "27.jpg",
     "title": "Audi A5 Engine Mount Replacement",
     "raw": "We fitted new engine mounts on customers Audi A5 New mounts = Less vibrations felt inside the car",
@@ -216,7 +216,7 @@
     "featured": false
   },
   {
-    "src": "/work-gallery/28.jpg",
+    "src": "/work-gallery/28.webp",
     "file": "28.jpg",
     "title": "Renault Clio Non-Start Diagnosis",
     "raw": "We got called out to diagnose a non starting Renault Clio after it's been recovered when it cut out on customer. After checking it we discovered that it has been way overfilled with oil when the low oil message came up on th",
@@ -224,7 +224,7 @@
     "featured": false
   },
   {
-    "src": "/work-gallery/29.jpg",
+    "src": "/work-gallery/29.webp",
     "file": "29.jpg",
     "title": "Suzuki Vitara Throttle Body Replacement",
     "raw": "We have diagnosed and fitted new throttle body to customers Suzuki Vitara after the ESP light came on the dash",
@@ -232,7 +232,7 @@
     "featured": false
   },
   {
-    "src": "/work-gallery/30.jpg",
+    "src": "/work-gallery/30.webp",
     "file": "30.jpg",
     "title": "Mini Cooper Purge Valve Replacement",
     "raw": "We have diagnosed and replaced faulty purge valve on customers Mini Cooper The car was having couple of symptoms which were rough idle and jumping rpms along side with EML light. We have quickly diagnosed the valve was stuck open.",
@@ -240,7 +240,7 @@
     "featured": false
   },
   {
-    "src": "/work-gallery/31.jpg",
+    "src": "/work-gallery/31.webp",
     "file": "31.jpg",
     "title": "Renault Clio Cambelt, Water Pump & Brakes",
     "raw": "We have fitted new cambelt kit + waterpump & front discs and pads on customers Renault Clio",
@@ -248,7 +248,7 @@
     "featured": false
   },
   {
-    "src": "/work-gallery/32.jpg",
+    "src": "/work-gallery/32.webp",
     "file": "32.jpg",
     "title": "Jeep Wrangler Cambelt Kit & Fuel Pump",
     "raw": "We have fitted new cambelt kit and high pressure fuel pump on customers Jeep Wrangler",
@@ -256,7 +256,7 @@
     "featured": false
   },
   {
-    "src": "/work-gallery/33.jpg",
+    "src": "/work-gallery/33.webp",
     "file": "33.jpg",
     "title": "Nissan Qashqai Clutch Kit & Flywheel",
     "raw": "We have fitted new clutch kit & flywheel on customers Nissan Qashqai due to the old clutch decided that it's had enough",
@@ -264,7 +264,7 @@
     "featured": false
   },
   {
-    "src": "/work-gallery/34.jpg",
+    "src": "/work-gallery/34.webp",
     "file": "34.jpg",
     "title": "Volvo V40 Oil Sump Replacement",
     "raw": "We have fitted new genuine oil sump on customers Volvo V40 due to crack in the sump",
@@ -272,7 +272,7 @@
     "featured": false
   },
   {
-    "src": "/work-gallery/35.jpg",
+    "src": "/work-gallery/35.webp",
     "file": "35.jpg",
     "title": "Ford Fiesta CarPlay Unit Installation",
     "raw": "We have installed a car play unit on customers Ford Fiesta",
@@ -280,7 +280,7 @@
     "featured": false
   },
   {
-    "src": "/work-gallery/36.jpg",
+    "src": "/work-gallery/36.webp",
     "file": "36.jpg",
     "title": "Mercedes B180 Boost Leak Smoke Test",
     "raw": "We have smoke tested a customers Mercedes B180 when chasing turbo fault codes to discover one boost pipe was leaking where it connects to turbo",
@@ -288,7 +288,7 @@
     "featured": false
   },
   {
-    "src": "/work-gallery/37.jpg",
+    "src": "/work-gallery/37.webp",
     "file": "37.jpg",
     "title": "Suzuki Vitara Discs & Pads",
     "raw": "We have supplied and fitted new discs and pads on Suzuki Vitara",
@@ -296,7 +296,7 @@
     "featured": false
   },
   {
-    "src": "/work-gallery/38.jpg",
+    "src": "/work-gallery/38.webp",
     "file": "38.jpg",
     "title": "ABS Sensor Diagnosis",
     "raw": "We quickly diagnosed an ABS light on customer car and fixed it by changing faulty ABS sensor New sensor in and no more codes present",
@@ -304,7 +304,7 @@
     "featured": false
   },
   {
-    "src": "/work-gallery/39.jpg",
+    "src": "/work-gallery/39.webp",
     "file": "39.jpg",
     "title": "Skoda Octavia Cambelt Kit & Water Pump",
     "raw": "We recently fitted a new cambelt kit and water pump on a customer's Skoda Octavia",

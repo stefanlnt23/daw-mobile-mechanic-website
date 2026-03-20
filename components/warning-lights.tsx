@@ -6,37 +6,37 @@ import Image from "next/image"
 
 const warningLights = [
   {
-    image: "/images/check-engine.png",
+    image: "/images/check-engine.webp",
     name: "Check Engine",
     severity: "high",
     advice: "Do NOT keep driving. Could indicate serious engine issues. Pull over safely and call for a diagnostic.",
   },
   {
-    image: "/images/engine-temperature.png",
+    image: "/images/engine-temperature.webp",
     name: "Engine Temperature",
     severity: "high",
     advice: "Your engine is overheating. Stop immediately, let it cool down, and call a mechanic before driving further.",
   },
   {
-    image: "/images/oil-pressure-warning.png",
+    image: "/images/oil-pressure-warning.webp",
     name: "Oil Pressure",
     severity: "high",
     advice: "Low oil pressure can destroy your engine in minutes. Stop driving immediately and get it checked.",
   },
   {
-    image: "/images/battery-warning.png",
+    image: "/images/battery-warning.webp",
     name: "Battery / Charging",
     severity: "medium",
     advice: "Your alternator or battery may be failing. Drive straight home or to a safe location and call for help.",
   },
   {
-    image: "/images/abs-warning.png",
+    image: "/images/abs-warning.webp",
     name: "ABS Warning",
     severity: "medium",
     advice: "Your anti-lock brakes may not work properly. Drive carefully and get a brake diagnostic as soon as possible.",
   },
   {
-    image: "/images/epc-warning.png",
+    image: "/images/epc-warning.webp",
     name: "EPC / Power Loss",
     severity: "medium",
     advice: "Reduced engine power. Avoid motorways, drive gently and get a diagnostic scan to find the fault.",

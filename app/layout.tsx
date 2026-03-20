@@ -58,7 +58,7 @@ export const metadata: Metadata = {
       "Mobile mechanic covering Telford and surrounding areas. Servicing, MOT repairs, diagnostics, brakes, suspension, steering, exhausts, timing belts, and more.",
     images: [
       {
-        url: "/socials.png",
+        url: "/socials.webp",
         width: 1536,
         height: 1024,
         alt: "DAW Mobile Mechanic mobile mechanic social preview",
@@ -70,7 +70,7 @@ export const metadata: Metadata = {
     title: "DAW Mobile Mechanic | Broken Down? Call DAW.",
     description:
       "Mobile mechanic covering Telford and surrounding areas with fast mobile-friendly contact options.",
-    images: ["/socials.png"],
+    images: ["/socials.webp"],
   },
   robots: {
     index: true,

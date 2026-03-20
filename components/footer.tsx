@@ -10,7 +10,7 @@ export function Footer() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="flex items-center gap-2">
               <div className="relative w-36 h-36 -my-10">
-                <Image src="/images/adl-logo.png" alt="ADL Mobile Mechanic" fill className="object-contain" />
+                <Image src="/images/adl-logo.webp" alt="ADL Mobile Mechanic" fill className="object-contain" />
               </div>
               <span className="text-sm font-bold text-foreground">
                 ADL Mobile Mechanic

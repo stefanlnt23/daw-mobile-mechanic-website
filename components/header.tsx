@@ -14,7 +14,7 @@ export function Header() {
       <div className="mx-auto max-w-7xl flex items-center justify-between px-4 py-2 lg:px-8">
         <a href="#" className="relative flex items-center gap-3">
           <div className="absolute left-0 top-1/2 -translate-y-1/2 w-44 h-44 pointer-events-none">
-            <Image src="/images/adl-logo.png" alt="ADL Mobile Mechanic" fill className="object-contain" />
+            <Image src="/images/adl-logo.webp" alt="ADL Mobile Mechanic" fill className="object-contain" />
           </div>
           <div className="w-12 flex-shrink-0" />
         </a>

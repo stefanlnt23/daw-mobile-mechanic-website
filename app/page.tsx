@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     url: "/",
     images: [
       {
-        url: "/socials.png",
+        url: "/socials.webp",
         width: 1536,
         height: 1024,
         alt: "DAW Mobile Mechanic mobile mechanic social preview",
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     title: "DAW Mobile Mechanic | Broken Down? Call DAW.",
     description:
       "Mobile mechanic covering Telford and surrounding areas with fast mobile-friendly contact options.",
-    images: ["/socials.png"],
+    images: ["/socials.webp"],
   },
 }
 
@@ -76,32 +76,32 @@ const compactOpeningHours = [
 ]
 
 const makes = [
-  { name: "Alfa Romeo", src: "/car-logos/alfa-romeo.png" },
-  { name: "AMG", src: "/car-logos/amg.png" },
-  { name: "Audi", src: "/car-logos/audi.png" },
-  { name: "BMW", src: "/car-logos/bmw.png" },
-  { name: "Fiat", src: "/car-logos/fiat.png" },
-  { name: "Ford", src: "/car-logos/ford.png" },
-  { name: "Honda", src: "/car-logos/honda.png" },
-  { name: "Hyundai", src: "/car-logos/hyundai.png" },
-  { name: "Infiniti", src: "/car-logos/infiniti.png" },
-  { name: "Jaguar", src: "/car-logos/jaguar.png" },
-  { name: "Jeep", src: "/car-logos/jeep.png" },
-  { name: "Kia", src: "/car-logos/kia.png" },
-  { name: "Land Rover", src: "/car-logos/land-rover.png" },
-  { name: "Lexus", src: "/car-logos/lexus.png" },
-  { name: "Mazda", src: "/car-logos/mazda.png" },
-  { name: "Mercedes", src: "/car-logos/mercedes.png" },
-  { name: "MG", src: "/car-logos/mg.png" },
-  { name: "Mini", src: "/car-logos/mini.png" },
-  { name: "Mitsubishi", src: "/car-logos/mitsubishi.png" },
-  { name: "Nissan", src: "/car-logos/nissan.png" },
-  { name: "Renault", src: "/car-logos/renault.png" },
-  { name: "Suzuki", src: "/car-logos/suzuki.png" },
-  { name: "Tesla", src: "/car-logos/tesla.png" },
-  { name: "Toyota", src: "/car-logos/toyota.png" },
-  { name: "Vauxhall", src: "/car-logos/vauxhall.png" },
-  { name: "Volkswagen", src: "/car-logos/volkswagen.png" },
+  { name: "Alfa Romeo", src: "/car-logos/alfa-romeo.webp" },
+  { name: "AMG", src: "/car-logos/amg.webp" },
+  { name: "Audi", src: "/car-logos/audi.webp" },
+  { name: "BMW", src: "/car-logos/bmw.webp" },
+  { name: "Fiat", src: "/car-logos/fiat.webp" },
+  { name: "Ford", src: "/car-logos/ford.webp" },
+  { name: "Honda", src: "/car-logos/honda.webp" },
+  { name: "Hyundai", src: "/car-logos/hyundai.webp" },
+  { name: "Infiniti", src: "/car-logos/infiniti.webp" },
+  { name: "Jaguar", src: "/car-logos/jaguar.webp" },
+  { name: "Jeep", src: "/car-logos/jeep.webp" },
+  { name: "Kia", src: "/car-logos/kia.webp" },
+  { name: "Land Rover", src: "/car-logos/land-rover.webp" },
+  { name: "Lexus", src: "/car-logos/lexus.webp" },
+  { name: "Mazda", src: "/car-logos/mazda.webp" },
+  { name: "Mercedes", src: "/car-logos/mercedes.webp" },
+  { name: "MG", src: "/car-logos/mg.webp" },
+  { name: "Mini", src: "/car-logos/mini.webp" },
+  { name: "Mitsubishi", src: "/car-logos/mitsubishi.webp" },
+  { name: "Nissan", src: "/car-logos/nissan.webp" },
+  { name: "Renault", src: "/car-logos/renault.webp" },
+  { name: "Suzuki", src: "/car-logos/suzuki.webp" },
+  { name: "Tesla", src: "/car-logos/tesla.webp" },
+  { name: "Toyota", src: "/car-logos/toyota.webp" },
+  { name: "Vauxhall", src: "/car-logos/vauxhall.webp" },
+  { name: "Volkswagen", src: "/car-logos/volkswagen.webp" },
 ]
 
 const services = [
@@ -109,42 +109,42 @@ const services = [
     title: "Servicing",
     copy: "Routine, interim, full, and major servicing carried out at your home or workplace.",
     includes: ["Oil and filter changes", "Fluid top-ups and checks", "Interim, full, or major service"],
-    image: "/daw-img/servicing.png",
+    image: "/daw-img/servicing.webp",
     alt: "Mobile mechanic performing an oil change",
   },
   {
     title: "MOT Repairs",
     copy: "Fast fixes for common MOT failures so you can get the vehicle retested without the usual hassle.",
     includes: ["Brake and suspension repairs", "Minor mechanical fixes", "Retest prep and advice"],
-    image: "/daw-img/brakes.png",
+    image: "/daw-img/brakes.webp",
     alt: "Mechanic replacing brake components for MOT repair work",
   },
   {
     title: "Brakes & Suspension",
     copy: "Pads, discs, springs, shocks, arms, and the jobs that stop a small issue turning into a bigger one.",
     includes: ["Brake pads and discs", "Springs and shock absorbers", "Arms, links, and worn parts"],
-    image: "/daw-img/suspension.png",
+    image: "/daw-img/suspension.webp",
     alt: "Mechanic working on car suspension components",
   },
   {
     title: "Diagnostics",
     copy: "Fault finding for warning lights, drivability issues, and those problems that need proper investigation.",
     includes: ["Warning light checks", "Fault-code scanning", "Root-cause investigation"],
-    image: "/daw-img/diagnostics.png",
+    image: "/daw-img/diagnostics.webp",
     alt: "Mechanic using a diagnostic scanner on an engine",
   },
   {
     title: "Steering & Exhausts",
     copy: "Mobile repairs for worn components, noisy systems, and issues affecting comfort and safety.",
     includes: ["Steering component repairs", "Exhaust inspections", "Replacement of worn parts"],
-    image: "/daw-img/exhausts.png",
+    image: "/daw-img/exhausts.webp",
     alt: "Mechanic inspecting an exhaust system under a car",
   },
   {
     title: "Timing Belts",
     copy: "Major maintenance handled with care using quality parts and a clear quote before work begins.",
     includes: ["Timing belt replacement", "Quality parts fitted", "Clear quote before work starts"],
-    image: "/daw-img/timing-belts.png",
+    image: "/daw-img/timing-belts.webp",
     alt: "Close-up of a car timing belt in the engine bay",
   },
 ]
@@ -153,19 +153,19 @@ const reasons = [
   {
     title: "Built for convenience",
     copy: "No towing. No waiting room. No losing half a day at a garage. DAW comes to you.",
-    image: "/section-img/built-for-convenience.png",
+    image: "/section-img/built-for-convenience.webp",
     alt: "Mobile mechanic convenience image",
   },
   {
     title: "Clear and honest",
     copy: "Straight answers, practical advice, and updates you can actually understand before any extra work.",
-    image: "/section-img/clear-and-honest.png",
+    image: "/section-img/clear-and-honest.webp",
     alt: "Mechanic discussing straightforward advice",
   },
   {
     title: "Made for busy lives",
     copy: "Ideal for customers at home, at work, or stuck with a car that needs attention where it sits.",
-    image: "/section-img/made-for-busy-lives.png",
+    image: "/section-img/made-for-busy-lives.webp",
     alt: "Mobile mechanic service designed for busy customers",
   },
 ]
@@ -174,17 +174,17 @@ const processSteps = [
   {
     title: "Call or WhatsApp",
     copy: "Send the issue, reg, and location. You get a quick reply and a sensible next step.",
-    image: "/process-bg/phone.png",
+    image: "/process-bg/phone.webp",
   },
   {
     title: "Book the visit",
     copy: "Choose a time that works for you in Telford or within roughly 20 miles.",
-    image: "/process-bg/scheduling.png",
+    image: "/process-bg/scheduling.webp",
   },
   {
     title: "Get it sorted",
     copy: "DAW arrives, diagnoses or repairs the problem, and keeps you updated throughout.",
-    image: "/process-bg/sorted.png",
+    image: "/process-bg/sorted.webp",
   },
 ]
 
@@ -270,7 +270,7 @@ export default function Home() {
 
                   <div className="relative z-10 w-[132%] max-w-[52rem] sm:w-[124%] lg:w-[148%] lg:-translate-x-4">
                     <Image
-                      src="/header-img/hero-team.png"
+                      src="/header-img/hero-team.webp"
                       alt="DAW Mobile Mechanic team standing in front of a van"
                       width={1200}
                       height={1250}
@@ -287,7 +287,7 @@ export default function Home() {
               <div className="overflow-hidden rounded-3xl border border-border/80 bg-card/80 shadow-sm">
                 <div className="relative aspect-[16/5.2] border-b border-border/70 bg-card/60">
                   <Image
-                    src="/card-bg/hundredsdone.png"
+                    src="/card-bg/hundredsdone.webp"
                     alt=""
                     fill
                     aria-hidden="true"
@@ -305,7 +305,7 @@ export default function Home() {
               <div className="overflow-hidden rounded-3xl border border-border/80 bg-card/80 shadow-sm">
                 <div className="relative aspect-[16/5.2] border-b border-border/70 bg-card/60">
                   <Image
-                    src="/card-bg/quote.png"
+                    src="/card-bg/quote.webp"
                     alt=""
                     fill
                     aria-hidden="true"
@@ -323,7 +323,7 @@ export default function Home() {
               <div className="overflow-hidden rounded-3xl border border-border/80 bg-card/80 shadow-sm">
                 <div className="relative aspect-[16/5.2] border-b border-border/70 bg-card/60">
                   <Image
-                    src="/card-bg/5stars.png"
+                    src="/card-bg/5stars.webp"
                     alt=""
                     fill
                     aria-hidden="true"

@@ -155,48 +155,48 @@ function ServiceCard({
 export function Services() {
   const services = [
     {
-      iconImage: "/images/service-timingchain.png",
+      iconImage: "/images/service-timingchain.webp",
       title: "Timing Chain Replacement",
       description:
         "Specialist timing chain replacement for Renault Trafic, Vauxhall Vivaro, and similar. Factory-grade parts and precision installation at your home or workplace.",
-      image: "/images/timing-chain.jpg",
+      image: "/images/timing-chain.webp",
       priority: true,
     },
     {
-      iconImage: "/images/service-diagnostics.png",
+      iconImage: "/images/service-diagnostics.webp",
       title: "Advanced Diagnostics",
       description:
         "Dealer-level diagnostic equipment to trace stubborn faults. From failed starter motors to intermittent electrical gremlins, we find the root cause first.",
-      image: "/images/diagnostics.jpg",
+      image: "/images/diagnostics.webp",
       price: "£40",
     },
     {
-      iconImage: "/images/service-mot.png",
+      iconImage: "/images/service-mot.webp",
       title: "Full Servicing & MOT Prep",
       description:
         "Interim, full, and major services carried out on your driveway. Oil & filter changes, fluid top-ups, belt checks, and full MOT preparation so you pass first time.",
-      image: "/images/servicing.jpg",
+      image: "/images/servicing.webp",
     },
     {
-      iconImage: "/images/service-suspension.png",
+      iconImage: "/images/service-suspension.webp",
       title: "Suspension & Brakes",
       description:
         "Expert brake and suspension repairs for a smoother, safer ride. Discs, pads, springs, shocks, and full geometry checks.",
-      image: "/images/suspension.jpg",
+      image: "/images/suspension.webp",
     },
     {
-      iconImage: "/images/service-clutch.png",
+      iconImage: "/images/service-clutch.webp",
       title: "Clutch & Flywheel",
       description:
         "Complete clutch kit and dual-mass flywheel replacements. We handle the heavy lifting on-site so you avoid expensive garage recovery fees.",
-      image: "/images/clutch.jpg",
+      image: "/images/clutch.webp",
     },
     {
-      iconImage: "/images/service-pdi.png",
+      iconImage: "/images/service-pdi.webp",
       title: "Dealer PDI Work",
       description:
         "Pre-delivery inspection services for motor traders. On-site inspections to your location so your stock is road-ready before the customer arrives.",
-      image: "/images/hero-van.jpg",
+      image: "/images/hero-van.webp",
       iconScale: 1.35,
     },
   ]

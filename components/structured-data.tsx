@@ -33,7 +33,7 @@ export function StructuredData() {
     url: siteUrl,
     telephone: "+447360078879",
     email: "dawmobilemechanic@outlook.com",
-    image: `${siteUrl}/placeholder-user.jpg`,
+    image: `${siteUrl}/placeholder-user.webp`,
     priceRange: "££",
     currenciesAccepted: "GBP",
     paymentAccepted: "Cash, Bank Transfer",
@@ -183,7 +183,7 @@ export function StructuredData() {
     },
     primaryImageOfPage: {
       "@type": "ImageObject",
-      url: `${siteUrl}/header-img/hero-team.png`,
+      url: `${siteUrl}/header-img/hero-team.webp`,
     },
   }
 

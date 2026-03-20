@@ -10,7 +10,7 @@ export function Hero() {
       {/* Background image */}
       <div className="absolute inset-0">
         <Image
-          src="/images/hero-van.jpg"
+          src="/images/hero-van.webp"
           alt="ADL Mobile Mechanic van equipped with professional tools"
           fill
           className="object-cover opacity-30"
@@ -127,7 +127,7 @@ export function Hero() {
             <div className="relative w-72 h-[22rem] sm:w-80 sm:h-[26rem] lg:w-[22rem] lg:h-[30rem]">
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-primary/20 to-primary/5 border-2 border-primary/30" />
               <Image
-                src="/images/aaron-fixv2.png"
+                src="/images/aaron-fixv2.webp"
                 alt="Aaron - ADL Mobile Mechanic"
                 fill
                 className="object-cover object-top rounded-2xl"
