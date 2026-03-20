@@ -1,50 +1,47 @@
-@import 'tailwindcss';
-@import 'tw-animate-css';
+@import "tailwindcss";
+@import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: #1A1A1B;
-  --foreground: #F1F5F9;
-  --card: #222223;
-  --card-foreground: #F1F5F9;
-  --popover: #1A1A1B;
-  --popover-foreground: #F1F5F9;
-  --primary: #FFB800;
-  --primary-foreground: #1A1A1B;
-  --secondary: #2A2A2C;
-  --secondary-foreground: #F1F5F9;
-  --muted: #2A2A2C;
-  --muted-foreground: #94A3B8;
-  --accent: #FFB800;
-  --accent-foreground: #1A1A1B;
-  --destructive: #EF4444;
-  --destructive-foreground: #F1F5F9;
-  --border: #333335;
-  --input: #333335;
-  --ring: #FFB800;
-  --chart-1: #FFB800;
-  --chart-2: #F1F5F9;
-  --chart-3: #94A3B8;
-  --chart-4: #333335;
-  --chart-5: #FFB800;
-  --radius: 0.5rem;
-  --sidebar: #222223;
-  --sidebar-foreground: #F1F5F9;
-  --sidebar-primary: #FFB800;
-  --sidebar-primary-foreground: #1A1A1B;
-  --sidebar-accent: #2A2A2C;
-  --sidebar-accent-foreground: #F1F5F9;
-  --sidebar-border: #333335;
-  --sidebar-ring: #FFB800;
+  --background: #f5efe5;
+  --foreground: #102432;
+  --card: #fffaf4;
+  --card-foreground: #102432;
+  --popover: #fffaf4;
+  --popover-foreground: #102432;
+  --primary: #cf6a2d;
+  --primary-foreground: #fffaf4;
+  --secondary: #d9e4e8;
+  --secondary-foreground: #102432;
+  --muted: #ece4d7;
+  --muted-foreground: #5e6d78;
+  --accent: #0a2a3d;
+  --accent-foreground: #fffaf4;
+  --destructive: #c5352d;
+  --destructive-foreground: #fffaf4;
+  --border: #d8cfc1;
+  --input: #d8cfc1;
+  --ring: #cf6a2d;
+  --chart-1: #cf6a2d;
+  --chart-2: #0a2a3d;
+  --chart-3: #7e8f98;
+  --chart-4: #d9e4e8;
+  --chart-5: #f0b189;
+  --radius: 1rem;
+  --sidebar: #fffaf4;
+  --sidebar-foreground: #102432;
+  --sidebar-primary: #cf6a2d;
+  --sidebar-primary-foreground: #fffaf4;
+  --sidebar-accent: #0a2a3d;
+  --sidebar-accent-foreground: #fffaf4;
+  --sidebar-border: #d8cfc1;
+  --sidebar-ring: #cf6a2d;
 }
 
 @theme inline {
-  --font-sans: 'Roboto Condensed', 'Geist', 'Geist Fallback';
-  --font-mono: 'Geist Mono', 'Geist Mono Fallback';
-  --color-workshop-yellow: #FFB800;
-  --color-charcoal: #1A1A1B;
-  --color-steel-white: #F1F5F9;
+  --font-sans: var(--font-space-grotesk);
+  --font-mono: "Geist Mono", "Geist Mono Fallback";
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -72,7 +69,7 @@
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  --radius-xl: calc(var(--radius) + 6px);
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -87,37 +84,65 @@
   * {
     @apply border-border outline-ring/50;
   }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-background text-foreground;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.35)),
+      radial-gradient(circle at top left, rgba(207, 106, 45, 0.06), transparent 28%),
+      linear-gradient(rgba(16, 36, 50, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(16, 36, 50, 0.04) 1px, transparent 1px);
+    background-size: auto, auto, 28px 28px, 28px 28px;
+    background-position: 0 0, 0 0, 0 0, 0 0;
+  }
+
+  ::selection {
+    background: rgba(207, 106, 45, 0.18);
   }
 }
 
-.carbon-fiber {
-  background-image:
-    radial-gradient(circle at 1px 1px, rgba(255,255,255,0.03) 1px, transparent 0);
-  background-size: 4px 4px;
+.font-display {
+  font-family: var(--font-barlow-condensed), sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.01em;
 }
 
-.brushed-metal {
-  background-image:
-    repeating-linear-gradient(
-      90deg,
-      transparent,
-      transparent 1px,
-      rgba(255,255,255,0.02) 1px,
-      rgba(255,255,255,0.02) 2px
-    );
+.car-logo-track {
+  animation: car-logo-scroll 34s linear infinite;
 }
 
-@keyframes pulse-glow {
-  0%, 100% {
-    box-shadow: 0 0 8px rgba(255, 184, 0, 0.4), 0 0 20px rgba(255, 184, 0, 0.2);
+.car-logo-track:hover {
+  animation-play-state: paused;
+}
+
+.work-carousel-track {
+  animation: work-scroll 36s linear infinite;
+}
+
+.work-carousel-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes car-logo-scroll {
+  from {
+    transform: translateX(0);
   }
-  50% {
-    box-shadow: 0 0 16px rgba(255, 184, 0, 0.6), 0 0 40px rgba(255, 184, 0, 0.3);
+
+  to {
+    transform: translateX(calc(-50% - 0.5rem));
   }
 }
 
-.pulse-cta {
-  animation: pulse-glow 2s ease-in-out infinite;
+@keyframes work-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(-50% - 0.625rem));
+  }
 }

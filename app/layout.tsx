@@ -1,83 +1,76 @@
-import type { Metadata, Viewport } from 'next'
-import { Roboto_Condensed, Geist_Mono } from 'next/font/google'
-import { Analytics } from '@vercel/analytics/next'
-import { StructuredData } from '@/components/structured-data'
-import './globals.css'
+import type { Metadata, Viewport } from "next"
+import { Analytics } from "@vercel/analytics/next"
+import { Barlow_Condensed, Space_Grotesk } from "next/font/google"
+import { StructuredData } from "@/components/structured-data"
+import "./globals.css"
 
-const SITE_URL = 'https://adlmechanic.uk'
+const SITE_URL = "https://dawmobilemechanic.co.uk"
 
-const _robotoCondensed = Roboto_Condensed({
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  weight: ["400", "700", "900"],
-  variable: "--font-roboto-condensed",
+  variable: "--font-space-grotesk",
 })
-const _geistMono = Geist_Mono({ subsets: ["latin"] });
+
+const barlowCondensed = Barlow_Condensed({
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  variable: "--font-barlow-condensed",
+})
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'ADL Mobile Mechanic | Mobile Mechanic Wem, Market Drayton & Shropshire',
-    template: '%s | ADL Mobile Mechanic',
+    default: "DAW Mobile Mechanic | Mobile Mechanic Telford",
+    template: "%s | DAW Mobile Mechanic",
   },
-  description: 'Expert mobile mechanic serving Wem, Market Drayton, Shrewsbury, Whitchurch, Oswestry & a 30-mile radius across Shropshire. Timing chain specialist, advanced diagnostics, full servicing, MOT prep, clutch & flywheel, suspension & brakes, and dealer PDI work. We come to your home or workplace — no garage needed. Call Aaron on 07426 443009.',
+  description:
+    "DAW Mobile Mechanic covers Telford and up to 20 miles around it. Mobile servicing, MOT repairs, brakes, suspension, diagnostics, steering, exhausts, timing belts, and more at your home or workplace.",
   keywords: [
-    'mobile mechanic',
-    'mobile mechanic Wem',
-    'mobile mechanic Market Drayton',
-    'mobile mechanic Shropshire',
-    'mobile mechanic Shrewsbury',
-    'mobile mechanic Whitchurch',
-    'mobile mechanic Oswestry',
-    'mobile mechanic near me',
-    'car mechanic Wem',
-    'car mechanic Market Drayton',
-    'timing chain replacement',
-    'timing chain Renault Trafic',
-    'timing chain Vauxhall Vivaro',
-    'vehicle diagnostics Shropshire',
-    'MOT preparation Shropshire',
-    'clutch replacement mobile',
-    'brake repair mobile mechanic',
-    'suspension repair Shropshire',
-    'dealer PDI work',
-    'pre delivery inspection',
-    'mobile car servicing',
-    'oil change mobile',
-    'car service at home',
-    'mechanic that comes to you',
-    'ADL Mobile Mechanic',
+    "DAW Mobile Mechanic",
+    "mobile mechanic Telford",
+    "Telford mobile mechanic",
+    "mobile mechanic near Telford",
+    "mobile car servicing Telford",
+    "MOT repairs Telford",
+    "brake repair Telford",
+    "car diagnostics Telford",
+    "timing belt replacement Telford",
+    "suspension repair Telford",
+    "mechanic that comes to you",
   ],
-  authors: [{ name: 'ADL Mobile Mechanic' }],
-  creator: 'Web-force.info',
-  publisher: 'ADL Mobile Mechanic',
+  authors: [{ name: "DAW Mobile Mechanic" }],
+  creator: "Web-force.info",
+  publisher: "DAW Mobile Mechanic",
   formatDetection: {
     telephone: true,
-    email: false,
+    email: true,
   },
   alternates: {
-    canonical: '/',
+    canonical: "/",
   },
   openGraph: {
-    type: 'website',
-    locale: 'en_GB',
+    type: "website",
+    locale: "en_GB",
     url: SITE_URL,
-    siteName: 'ADL Mobile Mechanic',
-    title: 'ADL Mobile Mechanic | The Expert Workshop That Comes To You',
-    description: 'Expert mobile mechanic serving Wem, Market Drayton & a 30-mile radius across Shropshire. Timing chains, diagnostics, servicing, brakes, clutch & more. Call Aaron: 07426 443009.',
+    siteName: "DAW Mobile Mechanic",
+    title: "DAW Mobile Mechanic | Broken Down? Call DAW.",
+    description:
+      "Mobile mechanic covering Telford and surrounding areas. Servicing, MOT repairs, diagnostics, brakes, suspension, steering, exhausts, timing belts, and more.",
     images: [
       {
-        url: '/images/aaron-fixv2.png',
+        url: "/placeholder-user.jpg",
         width: 1200,
         height: 630,
-        alt: 'ADL Mobile Mechanic — Expert mobile mechanic serving Shropshire',
+        alt: "DAW Mobile Mechanic placeholder owner portrait",
       },
     ],
   },
   twitter: {
-    card: 'summary_large_image',
-    title: 'ADL Mobile Mechanic | The Expert Workshop That Comes To You',
-    description: 'Expert mobile mechanic serving Wem, Market Drayton & Shropshire. Call Aaron: 07426 443009.',
-    images: ['/images/aaron-fixv2.png'],
+    card: "summary_large_image",
+    title: "DAW Mobile Mechanic | Broken Down? Call DAW.",
+    description:
+      "Mobile mechanic covering Telford and surrounding areas with fast mobile-friendly contact options.",
+    images: ["/placeholder-user.jpg"],
   },
   robots: {
     index: true,
@@ -85,28 +78,20 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
   icons: {
-    icon: '/favicon.png',
-    apple: '/favicon.png',
+    icon: "/favicon.png",
+    apple: "/favicon.png",
   },
-  category: 'automotive',
-  other: {
-    'geo.region': 'GB-SHR',
-    'geo.placename': 'Wem, Shropshire',
-    'geo.position': '52.8567;-2.7164',
-    'ICBM': '52.8567, -2.7164',
-    'revisit-after': '7 days',
-    'rating': 'general',
-  },
+  category: "automotive",
 }
 
 export const viewport: Viewport = {
-  themeColor: '#1A1A1B',
+  themeColor: "#f5efe5",
   userScalable: true,
 }
 
@@ -120,7 +105,7 @@ export default function RootLayout({
       <head>
         <StructuredData />
       </head>
-      <body className="font-sans antialiased">
+      <body className={`${spaceGrotesk.variable} ${barlowCondensed.variable} font-sans antialiased`}>
         {children}
         <Analytics />
       </body>

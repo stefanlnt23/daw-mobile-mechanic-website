@@ -1,0 +1,20 @@
+Create a realistic, premium portrait of a British mobile mechanic for a website hero section.
+
+Requirements:
+- Male mechanic, late 20s to late 30s.
+- Friendly, trustworthy, confident expression.
+- Wearing clean dark workwear with subtle DAW branding on chest.
+- Standing beside a tidy mobile mechanic van in the UK.
+- Background should feel like a real residential driveway or light industrial setting in Telford/Shropshire.
+- Lighting should be natural and cinematic, soft overcast daylight.
+- Framing should be three-quarter body portrait, facing slightly toward camera.
+- Keep the mechanic as the clear focal point.
+- Photorealistic, sharp details, no cartoon styling, no exaggerated muscles, no greasy stereotype look.
+- Colour palette should complement a website using warm cream, deep navy, and burnt orange accents.
+- Leave enough negative space around the subject so the image can crop well for desktop and mobile hero layouts.
+- No extra people, no text, no watermark.
+
+Style:
+- Premium local trades business
+- Honest, approachable, modern
+- Suitable for a high-converting service website that needs to build trust quickly

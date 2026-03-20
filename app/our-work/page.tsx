@@ -1,320 +1,67 @@
-"use client"
-
-import { useEffect, useRef, useState } from "react"
+import type { Metadata } from "next"
 import Link from "next/link"
-import { ArrowLeft, MapPin, MessageCircle, Phone, ShieldCheck, Star, Wrench } from "lucide-react"
-import { Lightbox } from "@/components/lightbox"
-import { Reviews } from "@/components/reviews"
+import { ArrowLeft, MessageCircle, Phone } from "lucide-react"
+import { WorkGalleryGrid } from "@/components/work-gallery-grid"
+import { DawReviews } from "@/components/daw-reviews"
+import { workGallery } from "@/lib/work-gallery"
 
-function useGalleryImages() {
-  const [images, setImages] = useState<string[]>([])
-  useEffect(() => {
-    fetch("/api/gallery")
-      .then((r) => r.json())
-      .then((d) => setImages(d.images ?? []))
-      .catch(() => {})
-  }, [])
-  return images
-}
+const phoneDisplay = "07360 078879"
+const phoneHref = "tel:07360078879"
+const whatsappHref =
+  "https://wa.me/447360078879?text=Hi%20DAW%20Mobile%20Mechanic%2C%20I%27m%20looking%20for%20help%20with%20my%20vehicle."
 
-function InfiniteGallery({ images }: { images: string[] }) {
-  const portalRef = useRef<HTMLDivElement>(null)
-  const [lightboxIdx, setLightboxIdx] = useState<number | null>(null)
-
-  const stateRef = useRef({
-    offsetX: 0,
-    offsetY: 0,
-    velX: 0,
-    velY: 0,
-    isDragging: false,
-    didDrag: false,
-    lastX: 0,
-    lastY: 0,
-    paused: false,
-    pressedIdx: -1,
-    items: [] as Array<{ el: HTMLDivElement; baseX: number; baseY: number }>,
-    rafId: 0,
-  })
-
-  const IMG_SIZE = 190
-  const GAP = 10
-  const ROWS = 2
-  const CELL = IMG_SIZE + GAP
-  const AUTO_X = 0.12
-  const AUTO_Y = 0
-  const FRICTION = 0.92
-
-  useEffect(() => {
-    if (!images.length || !portalRef.current) return
-    const portal = portalRef.current
-    const s = stateRef.current
-
-    portal.innerHTML = ""
-    s.items = []
-
-    // Tile wide enough to hold all images — each tile identical for seamless looping
-    const COLS = Math.ceil(images.length / ROWS)
-    const TILE_W = COLS * CELL
-    const TILE_H = ROWS * CELL
-
-    const W = portal.clientWidth || 390
-    const H = portal.clientHeight || 480
-    s.offsetX = (W - TILE_W) / 2
-    s.offsetY = (H - TILE_H) / 2
-
-    for (let ty = -1; ty <= 1; ty++) {
-      for (let tx = -1; tx <= 1; tx++) {
-        for (let row = 0; row < ROWS; row++) {
-          for (let col = 0; col < COLS; col++) {
-            const wrap = document.createElement("div")
-            wrap.style.cssText = "position:absolute;top:0;left:0;will-change:transform;cursor:pointer;"
-
-            const img = document.createElement("img")
-            const imgIdx = (row * COLS + col) % images.length
-            img.src = `/gallery/${images[imgIdx]}`
-            img.style.cssText = `
-              display:block;width:${IMG_SIZE}px;height:${IMG_SIZE}px;
-              border-radius:14px;object-fit:cover;
-              box-shadow:0 6px 20px rgba(0,0,0,0.5);
-              -webkit-user-drag:none;pointer-events:none;
-            `
-            img.draggable = false
-
-            wrap.addEventListener("pointerdown", () => { s.pressedIdx = imgIdx })
-
-            wrap.appendChild(img)
-            portal.appendChild(wrap)
-            s.items.push({
-              el: wrap,
-              baseX: col * CELL + tx * TILE_W,
-              baseY: row * CELL + ty * TILE_H,
-            })
-          }
-        }
-      }
-    }
-
-    function snapOffset() {
-      if (s.offsetX > TILE_W / 2) s.offsetX -= TILE_W
-      if (s.offsetX < -TILE_W / 2) s.offsetX += TILE_W
-      if (s.offsetY > TILE_H / 2) s.offsetY -= TILE_H
-      if (s.offsetY < -TILE_H / 2) s.offsetY += TILE_H
-    }
-
-    function update() {
-      if (!s.paused) {
-        if (!s.isDragging) {
-          s.velX *= FRICTION
-          s.velY *= FRICTION
-        }
-        s.offsetX += AUTO_X + s.velX
-        s.offsetY += AUTO_Y + s.velY
-        snapOffset()
-        s.items.forEach((item) => {
-          item.el.style.transform = `translate3d(${item.baseX + s.offsetX}px,${item.baseY + s.offsetY}px,0)`
-        })
-      }
-      s.rafId = requestAnimationFrame(update)
-    }
-    s.rafId = requestAnimationFrame(update)
-
-    const onDown = (e: PointerEvent) => {
-      s.isDragging = true
-      s.didDrag = false
-      s.lastX = e.clientX
-      s.lastY = e.clientY
-      portal.setPointerCapture(e.pointerId)
-    }
-    const onMove = (e: PointerEvent) => {
-      if (!s.isDragging) return
-      const dx = e.clientX - s.lastX
-      const dy = e.clientY - s.lastY
-      if (Math.abs(dx) > 3 || Math.abs(dy) > 3) s.didDrag = true
-      s.velX = dx
-      s.velY = dy
-      s.lastX = e.clientX
-      s.lastY = e.clientY
-    }
-    const onUp = () => {
-      s.isDragging = false
-      if (!s.didDrag && s.pressedIdx >= 0) {
-        s.paused = true
-        s.velX = 0
-        s.velY = 0
-        setLightboxIdx(s.pressedIdx)
-      }
-      s.pressedIdx = -1
-    }
-
-    portal.addEventListener("pointerdown", onDown)
-    portal.addEventListener("pointermove", onMove)
-    portal.addEventListener("pointerup", onUp)
-
-    return () => {
-      cancelAnimationFrame(s.rafId)
-      portal.removeEventListener("pointerdown", onDown)
-      portal.removeEventListener("pointermove", onMove)
-      portal.removeEventListener("pointerup", onUp)
-    }
-  }, [images])
-
-  function closeLightbox() {
-    setLightboxIdx(null)
-    stateRef.current.paused = false
-  }
-
-  return (
-    <>
-      <div
-        style={{
-          position: "relative",
-          width: "100%",
-          height: "100%",
-          WebkitMaskImage: [
-            "linear-gradient(to right,  transparent 0%, black 20%, black 80%, transparent 100%)",
-            "linear-gradient(to bottom, transparent 0%, black 16%, black 84%, transparent 100%)",
-          ].join(", "),
-          WebkitMaskComposite: "source-in",
-          maskImage: [
-            "linear-gradient(to right,  transparent 0%, black 20%, black 80%, transparent 100%)",
-            "linear-gradient(to bottom, transparent 0%, black 16%, black 84%, transparent 100%)",
-          ].join(", "),
-          maskComposite: "intersect",
-        }}
-      >
-        <div
-          ref={portalRef}
-          style={{
-            width: "100%",
-            height: "100%",
-            background: "transparent",
-            cursor: "grab",
-            touchAction: "none",
-            userSelect: "none",
-            position: "relative",
-          }}
-        />
-      </div>
-
-      <Lightbox
-        images={images}
-        currentIndex={lightboxIdx}
-        onClose={closeLightbox}
-        onNext={() => setLightboxIdx((i) => (i === null ? null : (i + 1) % images.length))}
-        onPrev={() => setLightboxIdx((i) => (i === null ? null : (i - 1 + images.length) % images.length))}
-      />
-    </>
-  )
+export const metadata: Metadata = {
+  title: "Our Work",
+  description: "Recent jobs completed by DAW Mobile Mechanic across Telford and surrounding areas.",
+  alternates: { canonical: "/our-work" },
 }
 
 export default function OurWorkPage() {
-  const images = useGalleryImages()
-
   return (
-    <div className="bg-background flex flex-col min-h-dvh">
-      {/* Top bar */}
-      <div className="flex items-center justify-between px-4 py-3 border-b border-border bg-background/95 backdrop-blur-md sticky top-0 z-50">
-        <Link
-          href="/"
-          className="flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-muted-foreground hover:text-foreground transition-colors"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          Back
+    <main className="min-h-screen bg-background">
+      <section className="mx-auto max-w-7xl px-4 py-12 lg:px-8 lg:py-16">
+        <Link href="/" className="inline-flex items-center gap-2 text-sm text-muted-foreground transition hover:text-primary">
+          <ArrowLeft className="h-4 w-4" />
+          Back to Home
         </Link>
-        <span className="text-xs font-bold uppercase tracking-widest text-primary">
-          Our Work
-        </span>
-        <a
-          href="tel:07426443009"
-          className="flex items-center gap-1.5 bg-primary text-primary-foreground px-3 py-2 rounded-lg text-xs font-bold uppercase tracking-wider"
-        >
-          <Phone className="w-3.5 h-3.5" />
-          Call
-        </a>
-      </div>
+      </section>
 
-      {/* Hero text */}
-      <div className="px-6 pt-6 pb-4 text-center">
-        <p className="text-xs font-bold uppercase tracking-widest text-primary mb-2">
-          Real jobs · Real results
-        </p>
-        <h1 className="text-3xl font-black uppercase tracking-tight text-foreground leading-tight">
-          Convince Yourself
-        </h1>
-        <p className="mt-2 text-muted-foreground text-sm leading-relaxed max-w-xs mx-auto">
-          Every photo below is a job Aaron completed at a customer&apos;s door — no garage, no middleman.
-        </p>
-      </div>
+      <DawReviews limit={8} />
 
-      {/* Trust pills */}
-      <div className="flex gap-2 px-6 pb-4 justify-center flex-wrap">
-        {[
-          { Icon: Wrench,         text: "15+ yrs experience", iconCls: "text-primary" },
-          { Icon: MapPin,         text: "Comes to you",        iconCls: "text-blue-500" },
-          { Icon: ShieldCheck,    text: "Fully insured",       iconCls: "text-green-500" },
-          { Icon: MessageCircle,  text: "WhatsApp updates",    iconCls: "text-emerald-500" },
-        ].map(({ Icon, text, iconCls }) => (
-          <div
-            key={text}
-            className="flex items-center gap-2 bg-card border border-border shadow-sm rounded-xl px-3.5 py-2 text-xs font-semibold text-foreground"
-          >
-            <Icon className={`w-3.5 h-3.5 shrink-0 ${iconCls}`} />
-            {text}
+      <section className="mx-auto max-w-7xl px-4 pb-14 lg:px-8 lg:pb-20">
+        <div className="mb-10 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+          <div className="max-w-3xl">
+            <p className="text-xs font-bold uppercase tracking-[0.24em] text-primary">Our Work</p>
+            <h1 className="mt-3 font-display text-5xl uppercase leading-[0.9] text-foreground sm:text-6xl">
+              Recent DAW Jobs
+            </h1>
+            <p className="mt-5 max-w-2xl text-base leading-8 text-muted-foreground sm:text-lg">
+              A full gallery of repairs, servicing, diagnostics, and maintenance work carried out for customers across Telford and nearby areas.
+            </p>
           </div>
-        ))}
-      </div>
 
-      {/* Infinite gallery */}
-      <div className="overflow-hidden relative" style={{ height: "55vh", minHeight: 280 }}>
-        {images.length > 0 ? (
-          <InfiniteGallery images={images} />
-        ) : (
-          <div className="w-full h-full flex items-center justify-center text-muted-foreground text-sm bg-muted/20 min-h-[280px]">
-            Loading…
+          <div className="flex flex-col gap-3 sm:flex-row">
+            <a
+              href={phoneHref}
+              className="inline-flex items-center justify-center gap-3 rounded-full bg-primary px-6 py-4 text-sm font-bold uppercase tracking-[0.18em] text-primary-foreground transition hover:-translate-y-0.5 hover:brightness-105"
+            >
+              <Phone className="h-4 w-4" />
+              Call {phoneDisplay}
+            </a>
+            <a
+              href={whatsappHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-3 rounded-full bg-emerald-600 px-6 py-4 text-sm font-bold uppercase tracking-[0.18em] text-white transition hover:-translate-y-0.5 hover:bg-emerald-500"
+            >
+              <MessageCircle className="h-4 w-4" />
+              WhatsApp
+            </a>
           </div>
-        )}
-      </div>
-
-      <p className="text-center text-xs text-muted-foreground py-2 opacity-55">
-        Drag to explore · tap any photo to enlarge
-      </p>
-
-      {/* Star rating */}
-      <div className="px-6 py-3 border-t border-border">
-        <div className="flex items-center justify-center gap-1 mb-1">
-          {[...Array(5)].map((_, i) => (
-            <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-          ))}
         </div>
-        <p className="text-center text-xs text-muted-foreground">
-          Rated 5★ by customers across Shropshire
-        </p>
-      </div>
 
-      {/* Reviews */}
-      <Reviews />
-
-      {/* Bottom CTA */}
-      <div className="bg-background border-t border-border p-4 grid grid-cols-2 gap-3">
-        <a
-          href="tel:07426443009"
-          className="flex items-center justify-center gap-2 bg-primary text-primary-foreground py-3 rounded-xl font-bold text-sm uppercase tracking-wider"
-        >
-          <Phone className="w-4 h-4" />
-          Call Aaron
-        </a>
-        <a
-          href="https://wa.me/447426443009?text=Hi%20Aaron%2C%20I%20saw%20your%20work%20gallery%20and%20I%27d%20like%20to%20book%20a%20job."
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center justify-center gap-2 bg-green-600 text-white py-3 rounded-xl font-bold text-sm uppercase tracking-wider"
-        >
-          <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-          </svg>
-          WhatsApp
-        </a>
-      </div>
-    </div>
+        <WorkGalleryGrid items={workGallery} />
+      </section>
+    </main>
   )
 }
