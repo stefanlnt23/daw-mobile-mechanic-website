@@ -275,6 +275,7 @@ export default function Home() {
                     aria-hidden="true"
                     className="object-cover object-center"
                     sizes="(min-width: 640px) 33vw, 100vw"
+                    priority
                   />
                 </div>
                 <div className="flex min-h-[132px] flex-col items-center justify-center px-4 py-2.5 text-center">
@@ -293,6 +294,7 @@ export default function Home() {
                     aria-hidden="true"
                     className="object-cover object-center"
                     sizes="(min-width: 640px) 33vw, 100vw"
+                    priority
                   />
                 </div>
                 <div className="flex min-h-[132px] flex-col items-center justify-center px-4 py-2.5 text-center">
@@ -311,6 +313,7 @@ export default function Home() {
                     aria-hidden="true"
                     className="object-cover object-center"
                     sizes="(min-width: 640px) 33vw, 100vw"
+                    priority
                   />
                   <a
                     href={googleMapsHref}
@@ -346,7 +349,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="defer-section mx-auto max-w-7xl px-4 pb-8 lg:px-8 lg:pb-12">
+        <section className="mx-auto max-w-7xl px-4 pb-8 lg:px-8 lg:pb-12">
           <div className="rounded-[2rem] border border-border/80 bg-card/70 px-5 py-6 shadow-sm">
             <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
               <div className="max-w-xl">
@@ -385,7 +388,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="services" className="defer-section mx-auto max-w-7xl px-4 py-16 lg:px-8 lg:py-24">
+        <section id="services" className="mx-auto max-w-7xl px-4 py-16 lg:px-8 lg:py-24">
           <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
             <div>
               <p className="text-xs font-bold uppercase tracking-[0.24em] text-primary">Services</p>
@@ -435,7 +438,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="gallery" className="defer-section mx-auto max-w-7xl px-4 py-16 lg:px-8 lg:py-24">
+        <section id="gallery" className="mx-auto max-w-7xl px-4 py-16 lg:px-8 lg:py-24">
           <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
             <div>
               <p className="text-xs font-bold uppercase tracking-[0.24em] text-primary">Gallery</p>
@@ -456,7 +459,7 @@ export default function Home() {
 
         <DawReviews limit={3} />
 
-        <section id="why-daw" className="defer-section border-y border-border/70 bg-card/55 py-16 lg:py-24">
+        <section id="why-daw" className="border-y border-border/70 bg-card/55 py-16 lg:py-24">
           <div className="mx-auto max-w-7xl px-4 lg:px-8">
             <div className="max-w-2xl">
               <p className="text-xs font-bold uppercase tracking-[0.24em] text-primary">Why DAW</p>
@@ -491,7 +494,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="defer-section mx-auto max-w-7xl px-4 py-16 lg:px-8 lg:py-20">
+        <section className="mx-auto max-w-7xl px-4 py-16 lg:px-8 lg:py-20">
           <div className="rounded-[2.5rem] border border-border/80 bg-card p-6 shadow-[0_18px_50px_rgba(10,42,61,0.08)] md:p-8">
             <div className="max-w-3xl">
               <p className="text-xs font-bold uppercase tracking-[0.24em] text-primary">Where We Cover</p>
@@ -538,7 +541,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="defer-section mx-auto max-w-7xl px-4 py-16 lg:px-8 lg:py-24">
+        <section className="mx-auto max-w-7xl px-4 py-16 lg:px-8 lg:py-24">
           <div className="grid gap-5 lg:grid-cols-2">
             {faqs.map((faq) => (
               <article key={faq.question} className="rounded-[2rem] border border-border/80 bg-card p-6">
@@ -549,7 +552,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="contact" className="defer-section mx-auto max-w-7xl px-4 pb-10 lg:px-8 lg:pb-20">
+        <section id="contact" className="mx-auto max-w-7xl px-4 pb-10 lg:px-8 lg:pb-20">
           <div className="overflow-hidden rounded-[2.5rem] border border-border/80 bg-[linear-gradient(135deg,#0a2a3d_0%,#103b55_58%,#cf6a2d_160%)] px-6 py-10 text-white shadow-[0_24px_90px_rgba(10,42,61,0.22)] sm:px-10 lg:px-14 lg:py-14">
             <p className="text-xs font-bold uppercase tracking-[0.24em] text-white/65">Contact DAW</p>
             <h2 className="mt-4 max-w-3xl font-display text-4xl uppercase leading-none sm:text-5xl lg:text-6xl">

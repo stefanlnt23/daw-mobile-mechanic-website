@@ -91,7 +91,7 @@ export function DawReviews({ limit = 6 }: DawReviewsProps) {
   const visibleReviews = reviews.slice(0, limit)
 
   return (
-    <section className="defer-section mx-auto max-w-7xl px-4 py-16 lg:px-8 lg:py-24">
+    <section className="mx-auto max-w-7xl px-4 py-16 lg:px-8 lg:py-24">
       <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
         <div className="max-w-3xl">
           <GoogleBadge />
