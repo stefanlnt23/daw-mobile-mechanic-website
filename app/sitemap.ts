@@ -2,6 +2,8 @@ import type { MetadataRoute } from "next"
 
 const SITE_URL = "https://dawmobilemechanic.co.uk"
 
+export const dynamic = "force-static"
+
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {

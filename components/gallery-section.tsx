@@ -1,21 +1,11 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useRef, useState } from "react"
 import { motion } from "framer-motion"
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
+import { galleryImages } from "@/lib/gallery-images"
 import { Lightbox } from "./lightbox"
-
-function useGalleryImages() {
-  const [images, setImages] = useState<string[]>([])
-  useEffect(() => {
-    fetch("/api/gallery")
-      .then((r) => r.json())
-      .then((d) => setImages(d.images ?? []))
-      .catch(() => {})
-  }, [])
-  return images
-}
 
 /* ─────────────────────────────────────────────
    DESKTOP: Infinite drag portal
@@ -386,7 +376,7 @@ function MobileStrip({ images }: { images: string[] }) {
    Main exported section
 ───────────────────────────────────────────── */
 export function GallerySection() {
-  const images = useGalleryImages()
+  const images = galleryImages
 
   return (
     <section id="our-work" aria-label="Our past work gallery" className="relative py-12 lg:py-16 overflow-hidden">
