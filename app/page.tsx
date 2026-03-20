@@ -24,10 +24,28 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
+    type: "website",
+    locale: "en_GB",
+    siteName: "DAW Mobile Mechanic",
     title: "Mobile Mechanic Telford | DAW Mobile Mechanic",
     description:
       "On-site car repairs and servicing in Telford and surrounding areas. Mobile diagnostics, MOT repairs, brakes, suspension, steering, exhausts, and timing belts.",
     url: "/",
+    images: [
+      {
+        url: "/socials.png",
+        width: 1536,
+        height: 1024,
+        alt: "DAW Mobile Mechanic mobile mechanic social preview",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "DAW Mobile Mechanic | Broken Down? Call DAW.",
+    description:
+      "Mobile mechanic covering Telford and surrounding areas with fast mobile-friendly contact options.",
+    images: ["/socials.png"],
   },
 }
 
