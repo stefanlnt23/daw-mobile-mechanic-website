@@ -294,103 +294,152 @@ export default function Home() {
             </div>
             </div>
 
-            <div className="relative z-10 mt-8 rounded-[2rem] border border-border/80 bg-card/72 px-5 py-5 shadow-sm">
-              <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-                <div className="max-w-xl">
+            <section id="services" className="relative z-10 mt-10">
+              <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+                <div>
                   <p className="text-xs font-bold uppercase tracking-[0.24em] text-primary">Services</p>
-                  <p className="mt-2 text-sm leading-6 text-muted-foreground sm:text-base">
-                    The main jobs DAW handles across Telford and surrounding areas.
-                  </p>
+                  <h2 className="mt-3 max-w-2xl font-display text-4xl uppercase leading-none text-foreground sm:text-5xl">
+                    The jobs people call DAW for most
+                  </h2>
                 </div>
+              </div>
 
-                <div className="flex flex-wrap gap-2.5">
-                  {services.map((service) => (
-                    <a
-                      key={service.title}
-                      href="#services"
-                      className="inline-flex items-center rounded-full border border-border/80 bg-background/80 px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-foreground transition hover:border-primary/50 hover:text-primary"
-                    >
-                      {service.title}
-                    </a>
-                  ))}
-                </div>
+              <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+                {services.map((service) => (
+                  <article key={service.title} className="group relative overflow-hidden rounded-[2rem] border border-border/80 bg-card shadow-[0_18px_60px_rgba(0,0,0,0.24)]">
+                    <div className="relative aspect-[4/2.6] sm:aspect-[4/3.1]">
+                      <Image
+                        src={service.image}
+                        alt={service.alt}
+                        fill
+                        className="object-cover transition duration-500 group-hover:scale-[1.04]"
+                      />
+                      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,15,30,0.28)_0%,rgba(10,15,30,0.18)_42%,rgba(10,15,30,0.88)_100%)]" />
+                      <div className="absolute inset-x-0 bottom-0 p-6 text-white sm:p-8">
+                        <h3 className="font-display text-[1.7rem] uppercase leading-[0.92] text-white [text-shadow:0_2px_14px_rgba(0,0,0,0.45)] sm:text-[2rem] lg:text-[2.15rem] xl:text-[2.35rem]">
+                          {service.title}
+                        </h3>
+                      </div>
+                    </div>
+                    <div className="border-t border-border/70 bg-card px-6 py-6 sm:px-7">
+                      <p className="text-sm leading-7 text-muted-foreground sm:text-[15px]">
+                        {service.copy}
+                      </p>
+                      <div className="mt-5">
+                        <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-primary">
+                          Includes
+                        </p>
+                        <ul className="mt-3 space-y-2">
+                          {service.includes.map((item) => (
+                            <li key={item} className="flex items-start gap-3 text-sm text-foreground">
+                              <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
+                              <span>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </section>
+
+          </div>
+        </section>
+
+        <section id="gallery" className="mx-auto max-w-7xl px-4 py-16 lg:px-8 lg:py-24">
+          <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.24em] text-primary">Gallery</p>
+              <h2 className="mt-3 font-display text-4xl uppercase leading-none text-foreground sm:text-5xl">
+                Recent Work
+              </h2>
+            </div>
+            <Link
+              href="/our-work"
+              className="inline-flex items-center justify-center rounded-full bg-primary px-7 py-3.5 text-sm font-bold uppercase tracking-[0.18em] text-primary-foreground shadow-[0_16px_36px_rgba(230,57,70,0.28)] transition hover:-translate-y-0.5 hover:brightness-105"
+            >
+              View Full Work Gallery
+            </Link>
+          </div>
+
+          <WorkCarousel items={featuredWork} />
+        </section>
+
+        <section className="mx-auto max-w-7xl px-4 pb-8 lg:px-8 lg:pb-12">
+          <div className="grid gap-3 sm:grid-cols-3 sm:items-start">
+            <div className="overflow-hidden rounded-3xl border border-border/80 bg-card/80 shadow-sm">
+              <div className="relative aspect-[16/5.2] border-b border-border/70 bg-card/60">
+                <Image
+                  src="/card-bg/hundredsdone.webp"
+                  alt=""
+                  fill
+                  aria-hidden="true"
+                  className="object-cover object-center"
+                  sizes="(min-width: 640px) 33vw, 100vw"
+                />
+              </div>
+              <div className="flex min-h-[132px] flex-col items-center justify-center px-4 py-2.5 text-center">
+                <p className="text-sm font-black uppercase tracking-[0.18em] text-foreground/80">Experience</p>
+                <p className="mt-1 font-display text-[1.4rem] uppercase leading-none text-foreground">Hundreds Done</p>
+                <p className="mt-1.5 max-w-[28ch] text-[13px] leading-5 font-medium text-foreground/80">A wide range of servicing, repair, and diagnostic jobs carried out for local drivers.</p>
               </div>
             </div>
 
-            <div className="relative z-10 mt-6 grid gap-3 sm:grid-cols-3 sm:items-start">
-              <div className="overflow-hidden rounded-3xl border border-border/80 bg-card/80 shadow-sm">
-                <div className="relative aspect-[16/5.2] border-b border-border/70 bg-card/60">
-                  <Image
-                    src="/card-bg/hundredsdone.webp"
-                    alt=""
-                    fill
-                    aria-hidden="true"
-                    className="object-cover object-center"
-                    sizes="(min-width: 640px) 33vw, 100vw"
-                  />
-                </div>
-                <div className="flex min-h-[132px] flex-col items-center justify-center px-4 py-2.5 text-center">
-                  <p className="text-sm font-black uppercase tracking-[0.18em] text-foreground/80">Experience</p>
-                  <p className="mt-1 font-display text-[1.4rem] uppercase leading-none text-foreground">Hundreds Done</p>
-                  <p className="mt-1.5 max-w-[28ch] text-[13px] leading-5 font-medium text-foreground/80">A wide range of servicing, repair, and diagnostic jobs carried out for local drivers.</p>
-                </div>
+            <div className="overflow-hidden rounded-3xl border border-border/80 bg-card/80 shadow-sm">
+              <div className="relative aspect-[16/5.2] border-b border-border/70 bg-card/60">
+                <Image
+                  src="/card-bg/quote.webp"
+                  alt=""
+                  fill
+                  aria-hidden="true"
+                  className="object-cover object-center"
+                  sizes="(min-width: 640px) 33vw, 100vw"
+                />
               </div>
-
-              <div className="overflow-hidden rounded-3xl border border-border/80 bg-card/80 shadow-sm">
-                <div className="relative aspect-[16/5.2] border-b border-border/70 bg-card/60">
-                  <Image
-                    src="/card-bg/quote.webp"
-                    alt=""
-                    fill
-                    aria-hidden="true"
-                    className="object-cover object-center"
-                    sizes="(min-width: 640px) 33vw, 100vw"
-                  />
-                </div>
-                <div className="flex min-h-[132px] flex-col items-center justify-center px-4 py-2.5 text-center">
-                  <p className="text-sm font-black uppercase tracking-[0.18em] text-foreground/80">Pricing</p>
-                  <p className="mt-1 font-display text-[1.4rem] uppercase leading-none text-foreground">Quote First</p>
-                  <p className="mt-1.5 max-w-[28ch] text-[13px] leading-5 font-medium text-foreground/80">Clear advice and a straightforward quote before any work starts, with no garage runaround.</p>
-                </div>
+              <div className="flex min-h-[132px] flex-col items-center justify-center px-4 py-2.5 text-center">
+                <p className="text-sm font-black uppercase tracking-[0.18em] text-foreground/80">Pricing</p>
+                <p className="mt-1 font-display text-[1.4rem] uppercase leading-none text-foreground">Quote First</p>
+                <p className="mt-1.5 max-w-[28ch] text-[13px] leading-5 font-medium text-foreground/80">Clear advice and a straightforward quote before any work starts, with no garage runaround.</p>
               </div>
+            </div>
 
-              <div className="overflow-hidden rounded-3xl border border-border/80 bg-card/80 shadow-sm">
-                <div className="relative aspect-[16/5.2] border-b border-border/70 bg-card/60">
-                  <Image
-                    src="/card-bg/5stars.webp"
-                    alt=""
-                    fill
-                    aria-hidden="true"
-                    className="object-cover object-center"
-                    sizes="(min-width: 640px) 33vw, 100vw"
-                  />
-                  <a
-                    href={googleMapsHref}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="absolute right-3 top-3 inline-flex items-center gap-2 rounded-full border border-white/75 bg-background/92 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.12em] text-foreground shadow-sm transition hover:border-primary/50 hover:text-primary sm:backdrop-blur-sm"
-                  >
-                    View On Google
-                  </a>
-                </div>
-                <div className="flex min-h-[132px] flex-col items-center justify-center px-4 py-2.5 text-center">
-                  <p className="text-sm font-black uppercase tracking-[0.18em] text-foreground/80">Trust</p>
-                  <div className="mt-1 flex flex-col items-center gap-1.5">
-                    <p className="font-display text-[1.4rem] uppercase leading-none text-foreground">5.0 Rated</p>
-                    <div className="flex items-center gap-2 text-[13px] font-medium text-foreground/80">
-                      <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4" />
-                        <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
-                        <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05" />
-                        <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335" />
-                      </svg>
-                      <span>57 Google reviews</span>
-                    </div>
-                    <div className="flex items-center gap-1 text-primary">
-                      {Array.from({ length: 5 }).map((_, index) => (
-                        <Star key={index} className="h-3.5 w-3.5 fill-current" />
-                      ))}
-                    </div>
+            <div className="overflow-hidden rounded-3xl border border-border/80 bg-card/80 shadow-sm">
+              <div className="relative aspect-[16/5.2] border-b border-border/70 bg-card/60">
+                <Image
+                  src="/card-bg/5stars.webp"
+                  alt=""
+                  fill
+                  aria-hidden="true"
+                  className="object-cover object-center"
+                  sizes="(min-width: 640px) 33vw, 100vw"
+                />
+                <a
+                  href={googleMapsHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="absolute right-3 top-3 inline-flex items-center gap-2 rounded-full border border-white/75 bg-background/92 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.12em] text-foreground shadow-sm transition hover:border-primary/50 hover:text-primary sm:backdrop-blur-sm"
+                >
+                  View On Google
+                </a>
+              </div>
+              <div className="flex min-h-[132px] flex-col items-center justify-center px-4 py-2.5 text-center">
+                <p className="text-sm font-black uppercase tracking-[0.18em] text-foreground/80">Trust</p>
+                <div className="mt-1 flex flex-col items-center gap-1.5">
+                  <p className="font-display text-[1.4rem] uppercase leading-none text-foreground">5.0 Rated</p>
+                  <div className="flex items-center gap-2 text-[13px] font-medium text-foreground/80">
+                    <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4" />
+                      <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
+                      <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05" />
+                      <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335" />
+                    </svg>
+                    <span>57 Google reviews</span>
+                  </div>
+                  <div className="flex items-center gap-1 text-primary">
+                    {Array.from({ length: 5 }).map((_, index) => (
+                      <Star key={index} className="h-3.5 w-3.5 fill-current" />
+                    ))}
                   </div>
                 </div>
               </div>
@@ -398,7 +447,9 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-7xl px-4 pb-8 lg:px-8 lg:pb-12">
+        <DawReviews limit={3} />
+
+        <section className="mx-auto max-w-7xl px-4 py-16 lg:px-8 lg:py-12">
           <div className="rounded-[2rem] border border-border/80 bg-card/70 px-5 py-6 shadow-sm">
             <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
               <div className="max-w-xl">
@@ -436,77 +487,6 @@ export default function Home() {
             </div>
           </div>
         </section>
-
-        <section id="services" className="mx-auto max-w-7xl px-4 py-16 lg:px-8 lg:py-24">
-          <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-            <div>
-              <p className="text-xs font-bold uppercase tracking-[0.24em] text-primary">Services</p>
-              <h2 className="mt-3 max-w-2xl font-display text-4xl uppercase leading-none text-foreground sm:text-5xl">
-                The jobs people call DAW for most
-              </h2>
-            </div>
-          </div>
-
-          <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-            {services.map((service) => (
-              <article key={service.title} className="group relative overflow-hidden rounded-[2rem] border border-border/80 bg-card shadow-[0_18px_60px_rgba(0,0,0,0.24)]">
-                <div className="relative aspect-[4/2.6] sm:aspect-[4/3.1]">
-                  <Image
-                    src={service.image}
-                    alt={service.alt}
-                    fill
-                    className="object-cover transition duration-500 group-hover:scale-[1.04]"
-                  />
-                  <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,15,30,0.28)_0%,rgba(10,15,30,0.18)_42%,rgba(10,15,30,0.88)_100%)]" />
-                  <div className="absolute inset-x-0 bottom-0 p-6 text-white sm:p-8">
-                    <h3 className="font-display text-[1.7rem] uppercase leading-[0.92] text-white [text-shadow:0_2px_14px_rgba(0,0,0,0.45)] sm:text-[2rem] lg:text-[2.15rem] xl:text-[2.35rem]">
-                      {service.title}
-                    </h3>
-                  </div>
-                </div>
-                <div className="border-t border-border/70 bg-card px-6 py-6 sm:px-7">
-                  <p className="text-sm leading-7 text-muted-foreground sm:text-[15px]">
-                    {service.copy}
-                  </p>
-                  <div className="mt-5">
-                    <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-primary">
-                      Includes
-                    </p>
-                    <ul className="mt-3 space-y-2">
-                      {service.includes.map((item) => (
-                        <li key={item} className="flex items-start gap-3 text-sm text-foreground">
-                          <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section id="gallery" className="mx-auto max-w-7xl px-4 py-16 lg:px-8 lg:py-24">
-          <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
-            <div>
-              <p className="text-xs font-bold uppercase tracking-[0.24em] text-primary">Gallery</p>
-              <h2 className="mt-3 font-display text-4xl uppercase leading-none text-foreground sm:text-5xl">
-                Recent Work
-              </h2>
-            </div>
-            <Link
-              href="/our-work"
-              className="inline-flex items-center justify-center rounded-full bg-primary px-7 py-3.5 text-sm font-bold uppercase tracking-[0.18em] text-primary-foreground shadow-[0_16px_36px_rgba(230,57,70,0.28)] transition hover:-translate-y-0.5 hover:brightness-105"
-            >
-              View Full Work Gallery
-            </Link>
-          </div>
-
-          <WorkCarousel items={featuredWork} />
-        </section>
-
-        <DawReviews limit={3} />
 
         <section id="why-daw" className="border-y border-border/70 bg-card/55 py-16 lg:py-24">
           <div className="mx-auto max-w-7xl px-4 lg:px-8">

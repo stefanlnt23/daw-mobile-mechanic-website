@@ -38,16 +38,17 @@ export function HomeHeader({
 }: HomeHeaderProps) {
   return (
     <header className="sticky top-0 z-50 border-b border-border/70 bg-background/94 md:bg-background/88 md:backdrop-blur-xl">
-      <div className="mx-auto flex max-w-7xl flex-col gap-3 px-4 py-4 lg:px-8">
+      <div className="mx-auto flex max-w-7xl flex-col gap-3 px-4 py-3 lg:px-8">
         <div className="flex items-center justify-between">
           <a href="#" className="flex items-center">
-            <div className="relative h-16 w-[15rem] flex-shrink-0 sm:w-[18rem] md:w-[20rem]">
+            <div className="relative h-[2.75rem] w-[10.7rem] flex-shrink-0 sm:h-[2.95rem] sm:w-[11.5rem] md:h-[3.1rem] md:w-[12.3rem] lg:h-[3.25rem] lg:w-[12.9rem]">
               <Image
-                src="/daw-logo.svg"
+                src="/daw-logo-tight.png"
                 alt="DAW Mobile Mechanic logo"
                 fill
-                className="object-contain"
-                sizes="(min-width: 768px) 320px, (min-width: 640px) 288px, 240px"
+                className="object-contain object-left"
+                sizes="(min-width: 1024px) 206px, (min-width: 768px) 197px, (min-width: 640px) 184px, 171px"
+                priority
               />
             </div>
           </a>
