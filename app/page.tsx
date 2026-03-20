@@ -7,7 +7,6 @@ import {
   MessageCircle,
   Phone,
   Star,
-  Wrench,
 } from "lucide-react"
 import { WorkCarousel } from "@/components/work-carousel"
 import { featuredWork } from "@/lib/work-gallery"
@@ -173,9 +172,15 @@ export default function Home() {
     <>
       <header className="sticky top-0 z-50 border-b border-border/70 bg-background/88 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 lg:px-8">
-          <a href="#" className="flex items-center gap-3">
-            <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-primary/30 bg-primary/12 text-primary shadow-[0_10px_30px_rgba(207,106,45,0.18)]">
-              <Wrench className="h-5 w-5" />
+          <a href="#" className="flex items-center gap-4">
+            <div className="relative h-12 w-40 flex-shrink-0">
+              <Image
+                src="/daw-logo.svg"
+                alt="DAW Mobile Mechanic logo"
+                fill
+                className="object-contain"
+                sizes="160px"
+              />
             </div>
             <div>
               <p className="font-display text-2xl uppercase leading-none tracking-[0.18em] text-foreground">
@@ -380,7 +385,7 @@ export default function Home() {
           <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
             {services.map((service) => (
               <article key={service.title} className="group relative overflow-hidden rounded-[2rem] border border-border/80 bg-card shadow-[0_18px_60px_rgba(10,42,61,0.08)]">
-                <div className="relative aspect-[4/4.6]">
+                <div className="relative aspect-[4/2.6] sm:aspect-[4/3.1] lg:aspect-[4/4.1] xl:aspect-[4/4.6]">
                   <Image
                     src={service.image}
                     alt={service.alt}
@@ -389,7 +394,7 @@ export default function Home() {
                   />
                   <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,42,61,0.48)_0%,rgba(10,42,61,0.28)_30%,rgba(10,42,61,0.28)_70%,rgba(6,18,26,0.72)_100%)]" />
                   <div className="absolute inset-0 flex items-center justify-center p-6 text-center text-white sm:p-8">
-                    <h3 className="font-display text-[2.1rem] uppercase leading-[0.92] text-white [text-shadow:0_2px_14px_rgba(0,0,0,0.45)] sm:text-[2.35rem]">
+                    <h3 className="font-display text-[1.7rem] uppercase leading-[0.92] text-white [text-shadow:0_2px_14px_rgba(0,0,0,0.45)] sm:text-[2rem] lg:text-[2.15rem] xl:text-[2.35rem]">
                       {service.title}
                     </h3>
                   </div>
@@ -669,11 +674,22 @@ export default function Home() {
 
       <footer className="border-t border-border/70 bg-card/55">
         <div className="mx-auto flex max-w-7xl flex-col gap-6 px-4 py-8 text-sm text-muted-foreground lg:flex-row lg:items-center lg:justify-between lg:px-8">
-          <div>
-            <p className="font-display text-2xl uppercase leading-none text-foreground">DAW Mobile Mechanic</p>
+          <div className="flex items-center gap-5">
+            <div className="relative h-14 w-28 flex-shrink-0">
+              <Image
+                src="/daw-logo.svg"
+                alt="DAW Mobile Mechanic logo"
+                fill
+                className="object-contain"
+                sizes="112px"
+              />
+            </div>
+            <div>
+              <p className="font-display text-2xl uppercase leading-none text-foreground">DAW Mobile Mechanic</p>
             <p className="mt-2 max-w-xl leading-7">
               Mobile repairs, servicing, diagnostics, and maintenance for drivers across Telford and surrounding areas.
             </p>
+            </div>
           </div>
           <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center sm:gap-5">
             <a href={phoneHref} className="transition hover:text-foreground">

@@ -65,7 +65,7 @@ type OpenStatusProps = {
 }
 
 export function OpenStatus({ className }: OpenStatusProps) {
-  const [status, setStatus] = useState(() => getOpenState(new Date()))
+  const [status, setStatus] = useState<ReturnType<typeof getOpenState> | null>(null)
 
   useEffect(() => {
     const update = () => setStatus(getOpenState(new Date()))
@@ -74,14 +74,20 @@ export function OpenStatus({ className }: OpenStatusProps) {
     return () => window.clearInterval(interval)
   }, [])
 
+  const resolvedStatus = status ?? {
+    isOpen: false,
+    label: "Checking hours",
+    timeLabel: "--:--:--",
+  }
+
   return (
     <div className={className}>
       <span
-        className={`inline-block h-2.5 w-2.5 rounded-full ${status.isOpen ? "bg-emerald-500" : "bg-red-500"}`}
+        className={`inline-block h-2.5 w-2.5 rounded-full ${resolvedStatus.isOpen ? "bg-emerald-500" : "bg-red-500"}`}
         aria-hidden="true"
       />
-      <span>{status.label}</span>
-      <span className="opacity-70">UK {status.timeLabel}</span>
+      <span>{resolvedStatus.label}</span>
+      <span className="opacity-70">UK {resolvedStatus.timeLabel}</span>
     </div>
   )
 }

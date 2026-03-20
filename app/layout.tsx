@@ -58,10 +58,10 @@ export const metadata: Metadata = {
       "Mobile mechanic covering Telford and surrounding areas. Servicing, MOT repairs, diagnostics, brakes, suspension, steering, exhausts, timing belts, and more.",
     images: [
       {
-        url: "/placeholder-user.jpg",
+        url: "/daw-logo.svg",
         width: 1200,
         height: 630,
-        alt: "DAW Mobile Mechanic placeholder owner portrait",
+        alt: "DAW Mobile Mechanic logo",
       },
     ],
   },
@@ -70,7 +70,7 @@ export const metadata: Metadata = {
     title: "DAW Mobile Mechanic | Broken Down? Call DAW.",
     description:
       "Mobile mechanic covering Telford and surrounding areas with fast mobile-friendly contact options.",
-    images: ["/placeholder-user.jpg"],
+    images: ["/daw-logo.svg"],
   },
   robots: {
     index: true,
@@ -84,8 +84,8 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/favicon.png",
-    apple: "/favicon.png",
+    icon: "/daw-logo.svg",
+    apple: "/daw-logo.svg",
   },
   category: "automotive",
 }
