@@ -24,42 +24,52 @@ const MUTED = "rgba(16,36,50,0.7)"
 const MUTED_DIM = "rgba(16,36,50,0.46)"
 const BORDER = "rgba(16,36,50,0.12)"
 
-export function CoverageMap() {
+type CoverageMapProps = {
+  compact?: boolean
+}
+
+export function CoverageMap({ compact = false }: CoverageMapProps) {
   return (
     <section
       id="coverage"
       aria-label="Service coverage area"
-      className="rounded-[2rem] border border-border/80 bg-card p-8 shadow-[0_18px_50px_rgba(10,42,61,0.08)]"
+      className={
+        compact
+          ? ""
+          : "rounded-[2rem] border border-border/80 bg-card p-8 shadow-[0_18px_50px_rgba(10,42,61,0.08)]"
+      }
     >
       <div>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-10"
-        >
-          <span className="text-xs font-bold uppercase tracking-[0.24em] text-primary">
-            Where We Cover
-          </span>
-          <h2 className="mt-3 font-display text-4xl uppercase leading-none text-foreground sm:text-5xl">
-            Coverage Area
-          </h2>
-          <p className="mt-4 max-w-xl text-sm leading-7 text-muted-foreground sm:text-base">
-            Based in Telford and covering up to roughly 20 miles around it. If you&apos;re nearby and not sure, just call or WhatsApp.
-          </p>
-        </motion.div>
+        {!compact && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-10"
+          >
+            <span className="text-xs font-bold uppercase tracking-[0.24em] text-primary">
+              Where We Cover
+            </span>
+            <h2 className="mt-3 font-display text-4xl uppercase leading-none text-foreground sm:text-5xl">
+              Coverage Area
+            </h2>
+            <p className="mt-4 max-w-xl text-sm leading-7 text-muted-foreground sm:text-base">
+              Based in Telford and covering up to roughly 20 miles around it. If you&apos;re nearby and not sure, just call or WhatsApp.
+            </p>
+          </motion.div>
+        )}
 
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mx-auto max-w-2xl"
+          className={`mx-auto ${compact ? "max-w-2xl" : "max-w-2xl"}`}
         >
-          <div className="rounded-[1.5rem] border border-border/80 bg-background/70 p-6 sm:p-8">
+          <div className={`rounded-[1.5rem] border border-border/80 bg-background/70 ${compact ? "p-3" : "p-6 sm:p-8"}`}>
             <svg
               viewBox="0 0 100 90"
-              className="w-full h-auto"
+              className={`h-auto w-full ${compact ? "max-h-[420px]" : ""}`}
               aria-label="Map showing service radius around Telford"
             >
               <rect x="4" y="4" width="92" height="82" rx="10" fill="rgba(255,255,255,0.28)" />
@@ -181,7 +191,7 @@ export function CoverageMap() {
               />
             </svg>
 
-            <div className="mt-5 flex flex-wrap gap-2">
+            <div className={`flex flex-wrap gap-2 ${compact ? "mt-2" : "mt-5"}`}>
               {["Telford", "Wellington", "Madeley", "Oakengates", "Shifnal", "Newport"].map((place) => (
                 <div
                   key={place}
@@ -198,14 +208,16 @@ export function CoverageMap() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-8 text-center"
+          className={`${compact ? "mt-4" : "mt-8"} text-center`}
         >
-          <p className="mb-4 text-muted-foreground">
+          <p className={`text-muted-foreground ${compact ? "mb-3 text-sm font-medium" : "mb-4"}`}>
             Not sure if you&apos;re covered?
           </p>
           <a
             href="tel:07360078879"
-            className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-4 text-sm font-bold uppercase tracking-[0.18em] text-primary-foreground transition hover:-translate-y-0.5 hover:brightness-105"
+            className={`inline-flex items-center gap-2 rounded-full bg-primary font-bold uppercase tracking-[0.18em] text-primary-foreground transition hover:-translate-y-0.5 hover:brightness-105 ${
+              compact ? "px-6 py-3 text-sm" : "px-7 py-4 text-sm"
+            }`}
           >
             <Phone className="h-4 w-4" />
             Check Your Area

@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next"
 import { Analytics } from "@vercel/analytics/next"
 import { Barlow_Condensed, Space_Grotesk } from "next/font/google"
 import { StructuredData } from "@/components/structured-data"
+import { PrivacyBanner } from "@/components/privacy-banner"
 import "./globals.css"
 
 const SITE_URL = "https://dawmobilemechanic.co.uk"
@@ -107,6 +108,7 @@ export default function RootLayout({
       </head>
       <body className={`${spaceGrotesk.variable} ${barlowCondensed.variable} font-sans antialiased`}>
         {children}
+        <PrivacyBanner />
         <Analytics />
       </body>
     </html>

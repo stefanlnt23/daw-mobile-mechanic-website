@@ -15,7 +15,7 @@
   --secondary: #d9e4e8;
   --secondary-foreground: #102432;
   --muted: #ece4d7;
-  --muted-foreground: #5e6d78;
+  --muted-foreground: #435562;
   --accent: #0a2a3d;
   --accent-foreground: #fffaf4;
   --destructive: #c5352d;
@@ -91,6 +91,7 @@
 
   body {
     @apply bg-background text-foreground;
+    font-weight: 500;
     background-image:
       linear-gradient(rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.35)),
       radial-gradient(circle at top left, rgba(207, 106, 45, 0.06), transparent 28%),
@@ -125,6 +126,11 @@
 
 .work-carousel-track:hover {
   animation-play-state: paused;
+}
+
+.defer-section {
+  content-visibility: auto;
+  contain-intrinsic-size: 960px;
 }
 
 @keyframes car-logo-scroll {

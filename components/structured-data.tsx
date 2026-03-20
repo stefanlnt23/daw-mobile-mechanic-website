@@ -1,18 +1,43 @@
 export function StructuredData() {
+  const siteUrl = "https://dawmobilemechanic.co.uk"
+  const businessId = `${siteUrl}/#business`
+  const serviceAreas = [
+    "Telford",
+    "Wellington",
+    "Madeley",
+    "Oakengates",
+    "Shifnal",
+    "Newport",
+    "Ironbridge",
+    "Broseley",
+    "Bridgnorth",
+    "Shropshire",
+  ]
+  const services = [
+    "Mobile servicing",
+    "MOT repairs",
+    "Brakes and suspension repairs",
+    "Car diagnostics",
+    "Steering repairs",
+    "Exhaust repairs",
+    "Timing belt replacement",
+  ]
+
   const localBusiness = {
     "@context": "https://schema.org",
     "@type": "AutoRepair",
-    "@id": "https://dawmobilemechanic.co.uk/#business",
+    "@id": businessId,
     name: "DAW Mobile Mechanic",
     description:
-      "DAW Mobile Mechanic covers Telford and around 20 miles beyond it. Services include servicing, MOT repairs, suspension, brakes, diagnostics, steering, exhausts, timing belts, and general mobile mechanic work.",
-    url: "https://dawmobilemechanic.co.uk",
+      "Mobile mechanic in Telford serving Telford and surrounding areas in Shropshire. On-site servicing, MOT repairs, brakes, suspension, diagnostics, steering, exhausts, timing belts, and general car repairs.",
+    url: siteUrl,
     telephone: "+447360078879",
     email: "dawmobilemechanic@outlook.com",
-    image: "https://dawmobilemechanic.co.uk/placeholder-user.jpg",
+    image: `${siteUrl}/placeholder-user.jpg`,
     priceRange: "££",
     currenciesAccepted: "GBP",
     paymentAccepted: "Cash, Bank Transfer",
+    slogan: "Broken Down? Call DAW.",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Telford",
@@ -34,28 +59,33 @@ export function StructuredData() {
         },
         geoRadius: "32187",
       },
-      { "@type": "City", name: "Telford", containedInPlace: { "@type": "AdministrativeArea", name: "Shropshire" } },
-      { "@type": "City", name: "Wellington", containedInPlace: { "@type": "AdministrativeArea", name: "Shropshire" } },
-      { "@type": "City", name: "Shifnal", containedInPlace: { "@type": "AdministrativeArea", name: "Shropshire" } },
-      { "@type": "City", name: "Newport", containedInPlace: { "@type": "AdministrativeArea", name: "Shropshire" } },
+      ...serviceAreas.map((name) => ({
+        "@type": "Place",
+        name,
+      })),
     ],
+    serviceArea: {
+      "@type": "GeoCircle",
+      geoMidpoint: {
+        "@type": "GeoCoordinates",
+        latitude: 52.6784,
+        longitude: -2.4453,
+      },
+      geoRadius: "32187",
+    },
+    knowsAbout: services,
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "Mobile mechanic services",
-      itemListElement: [
-        "Servicing",
-        "MOT repairs",
-        "Suspension",
-        "Brakes",
-        "Diagnostics",
-        "Steering",
-        "Exhausts",
-        "Timing belts",
-      ].map((service) => ({
+      itemListElement: services.map((service) => ({
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
           name: service,
+          areaServed: serviceAreas.map((name) => ({
+            "@type": "Place",
+            name,
+          })),
         },
       })),
     },
@@ -72,14 +102,27 @@ export function StructuredData() {
         opens: "08:00",
         closes: "13:00",
       },
-      {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: "Sunday",
-        opens: "00:00",
-        closes: "00:00",
-      },
     ],
-    sameAs: ["https://wa.me/447360078879"],
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: "+447360078879",
+      contactType: "customer service",
+      areaServed: "GB",
+      availableLanguage: "en-GB",
+    },
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "5.0",
+      reviewCount: "57",
+      bestRating: "5",
+      worstRating: "1",
+    },
+    sameAs: [
+      "https://wa.me/447360078879",
+      "https://www.facebook.com/profile.php?id=61576953417451",
+      "https://www.instagram.com/dawmobilemechanic",
+      "https://maps.app.goo.gl/TNWxsrNMaq3E5wJi7",
+    ],
   }
 
   const faqSchema = {
@@ -117,10 +160,30 @@ export function StructuredData() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "DAW Mobile Mechanic",
-    url: "https://dawmobilemechanic.co.uk",
-    description: "Mobile mechanic website for customers in and around Telford.",
+    url: siteUrl,
+    description: "Mobile mechanic website for customers in Telford and surrounding areas in Shropshire.",
     publisher: {
-      "@id": "https://dawmobilemechanic.co.uk/#business",
+      "@id": businessId,
+    },
+  }
+
+  const webPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${siteUrl}/#webpage`,
+    url: siteUrl,
+    name: "Mobile Mechanic Telford | DAW Mobile Mechanic",
+    description:
+      "Mobile mechanic in Telford for on-site servicing, diagnostics, brakes, suspension, MOT repairs, steering, exhausts, and timing belts.",
+    isPartOf: {
+      "@id": siteUrl,
+    },
+    about: {
+      "@id": businessId,
+    },
+    primaryImageOfPage: {
+      "@type": "ImageObject",
+      url: `${siteUrl}/header-img/hero-team.png`,
     },
   }
 
@@ -129,6 +192,7 @@ export function StructuredData() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusiness) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webSiteSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }} />
     </>
   )
 }

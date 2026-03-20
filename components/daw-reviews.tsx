@@ -91,7 +91,7 @@ export function DawReviews({ limit = 6 }: DawReviewsProps) {
   const visibleReviews = reviews.slice(0, limit)
 
   return (
-    <section className="mx-auto max-w-7xl px-4 py-16 lg:px-8 lg:py-24">
+    <section className="defer-section mx-auto max-w-7xl px-4 py-16 lg:px-8 lg:py-24">
       <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
         <div className="max-w-3xl">
           <GoogleBadge />
@@ -103,11 +103,11 @@ export function DawReviews({ limit = 6 }: DawReviewsProps) {
               <span className="font-display text-4xl uppercase leading-none text-foreground">5.0</span>
               <Stars />
             </div>
-            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+            <p className="text-sm font-bold uppercase tracking-[0.16em] text-muted-foreground">
               57 Google Reviews
             </p>
           </div>
-          <p className="mt-4 max-w-2xl text-base leading-7 text-muted-foreground">
+          <p className="mt-4 max-w-2xl text-base leading-7 font-medium text-muted-foreground">
             Recent customer feedback highlighting fair pricing, clear communication, punctuality, diagnostics, cambelts, and convenient mobile repairs.
           </p>
         </div>
@@ -129,8 +129,8 @@ export function DawReviews({ limit = 6 }: DawReviewsProps) {
               <p className="font-display text-2xl uppercase leading-none text-foreground">{review.name}</p>
               <Stars />
             </div>
-            <p className="mt-2 text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">{review.meta}</p>
-            <p className="mt-4 text-sm leading-7 text-muted-foreground">{review.text}</p>
+            <p className="mt-2 text-xs font-bold uppercase tracking-[0.16em] text-muted-foreground">{review.meta}</p>
+            <p className="mt-4 text-sm leading-7 font-medium text-muted-foreground">{review.text}</p>
           </article>
         ))}
       </div>
