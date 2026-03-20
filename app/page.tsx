@@ -742,6 +742,22 @@ export default function Home() {
             </Link>
           </div>
         </div>
+        <div className="border-t border-border/60">
+          <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-4 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between lg:px-8">
+            <p>© {new Date().getFullYear()} DAW Mobile Mechanic. All rights reserved.</p>
+            <p>
+              Designed and developed by{" "}
+              <a
+                href="https://web-force.info"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-foreground transition hover:text-primary"
+              >
+                Stefan Lenta at Web-Force.info
+              </a>
+            </p>
+          </div>
+        </div>
       </footer>
     </>
   )
