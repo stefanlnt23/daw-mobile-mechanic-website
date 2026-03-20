@@ -214,7 +214,13 @@ const faqs = [
 export default function Home() {
   return (
     <>
-      <HomeHeader phoneDisplay={phoneDisplay} phoneHref={phoneHref} />
+      <HomeHeader
+        phoneDisplay={phoneDisplay}
+        phoneHref={phoneHref}
+        googleMapsHref={googleMapsHref}
+        facebookHref={facebookHref}
+        instagramHref={instagramHref}
+      />
 
       <main className="pb-24 md:pb-10">
         <section className="relative overflow-hidden">
@@ -230,8 +236,8 @@ export default function Home() {
               </div>
 
               <h1 className="mt-8 max-w-3xl font-display text-5xl uppercase leading-[0.88] tracking-tight text-foreground sm:text-6xl lg:text-8xl">
-                Broken Down?
-                <span className="mt-2 block text-primary">Call DAW.</span>
+                Mobile Workshop
+                <span className="mt-2 block text-primary">That Comes To You.</span>
               </h1>
 
               <p className="mt-6 max-w-2xl text-lg leading-8 text-muted-foreground sm:text-xl">
@@ -252,11 +258,16 @@ export default function Home() {
                   href={whatsappHref}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-3 rounded-full border border-emerald-600/40 bg-emerald-600 px-7 py-4 text-sm font-bold uppercase tracking-[0.18em] text-white transition hover:-translate-y-0.5 hover:bg-emerald-500"
+                  className="hidden items-center justify-center gap-3 rounded-full border border-emerald-600/40 bg-emerald-600 px-7 py-4 text-sm font-bold uppercase tracking-[0.18em] text-white transition hover:-translate-y-0.5 hover:bg-emerald-500 sm:inline-flex"
                 >
                   <MessageCircle className="h-4 w-4" />
                   WhatsApp DAW
                 </a>
+              </div>
+
+              <div className="mt-4 flex items-center justify-start gap-2 text-sm font-semibold text-muted-foreground sm:hidden">
+                <MessageCircle className="h-4 w-4 text-emerald-500" />
+                <span>WhatsApp is pinned in the bottom bar for quick messages.</span>
               </div>
             </div>
 
@@ -283,7 +294,30 @@ export default function Home() {
             </div>
             </div>
 
-            <div className="relative z-10 mt-10 grid gap-3 sm:grid-cols-3 sm:items-start">
+            <div className="relative z-10 mt-8 rounded-[2rem] border border-border/80 bg-card/72 px-5 py-5 shadow-sm">
+              <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+                <div className="max-w-xl">
+                  <p className="text-xs font-bold uppercase tracking-[0.24em] text-primary">Services</p>
+                  <p className="mt-2 text-sm leading-6 text-muted-foreground sm:text-base">
+                    The main jobs DAW handles across Telford and surrounding areas.
+                  </p>
+                </div>
+
+                <div className="flex flex-wrap gap-2.5">
+                  {services.map((service) => (
+                    <a
+                      key={service.title}
+                      href="#services"
+                      className="inline-flex items-center rounded-full border border-border/80 bg-background/80 px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-foreground transition hover:border-primary/50 hover:text-primary"
+                    >
+                      {service.title}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="relative z-10 mt-6 grid gap-3 sm:grid-cols-3 sm:items-start">
               <div className="overflow-hidden rounded-3xl border border-border/80 bg-card/80 shadow-sm">
                 <div className="relative aspect-[16/5.2] border-b border-border/70 bg-card/60">
                   <Image
