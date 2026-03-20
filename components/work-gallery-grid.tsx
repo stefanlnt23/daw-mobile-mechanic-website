@@ -20,7 +20,7 @@ export function WorkGalleryGrid({ items }: WorkGalleryGridProps) {
             key={item.file}
             type="button"
             onClick={() => setCurrentIndex(index)}
-            className="group overflow-hidden rounded-[2rem] border border-border/80 bg-card text-left shadow-[0_18px_50px_rgba(10,42,61,0.08)]"
+            className="group overflow-hidden rounded-[2rem] border border-border/80 bg-card text-left shadow-[0_18px_50px_rgba(0,0,0,0.24)]"
           >
             <div className="relative aspect-[4/3] overflow-hidden">
               <Image

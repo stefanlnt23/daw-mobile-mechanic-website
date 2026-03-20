@@ -21,7 +21,7 @@ export function WorkCarousel({ items }: WorkCarouselProps) {
           <Link
             key={`${item.file}-${index}`}
             href="/our-work"
-            className="group block w-[16rem] flex-shrink-0 overflow-hidden rounded-[2rem] border border-border/80 bg-card shadow-[0_18px_50px_rgba(10,42,61,0.08)] sm:w-[18rem]"
+            className="group block w-[16rem] flex-shrink-0 overflow-hidden rounded-[2rem] border border-border/80 bg-card shadow-[0_18px_50px_rgba(0,0,0,0.24)] sm:w-[18rem]"
           >
             <div className="relative aspect-[4/3] overflow-hidden">
               <Image

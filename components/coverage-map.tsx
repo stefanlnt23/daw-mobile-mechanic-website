@@ -15,14 +15,14 @@ const towns = [
   { name: "Ironbridge", x: 46, y: 67 },
 ]
 
-const PRIMARY = "#cf6a2d"
-const PRIMARY_DIM = "rgba(207,106,45,0.34)"
-const PRIMARY_FAINT = "rgba(207,106,45,0.09)"
-const PRIMARY_SUBTLE = "rgba(207,106,45,0.16)"
-const PRIMARY_HALF = "rgba(207,106,45,0.72)"
-const MUTED = "rgba(16,36,50,0.7)"
-const MUTED_DIM = "rgba(16,36,50,0.46)"
-const BORDER = "rgba(16,36,50,0.12)"
+const PRIMARY = "#e63946"
+const PRIMARY_DIM = "rgba(230,57,70,0.34)"
+const PRIMARY_FAINT = "rgba(230,57,70,0.1)"
+const PRIMARY_SUBTLE = "rgba(230,57,70,0.18)"
+const PRIMARY_HALF = "rgba(230,57,70,0.72)"
+const MUTED = "rgba(136,153,187,0.82)"
+const MUTED_DIM = "rgba(136,153,187,0.56)"
+const BORDER = "rgba(136,153,187,0.18)"
 
 type CoverageMapProps = {
   compact?: boolean
@@ -36,7 +36,7 @@ export function CoverageMap({ compact = false }: CoverageMapProps) {
       className={
         compact
           ? ""
-          : "rounded-[2rem] border border-border/80 bg-card p-8 shadow-[0_18px_50px_rgba(10,42,61,0.08)]"
+          : "rounded-[2rem] border border-border/80 bg-card p-8 shadow-[0_18px_50px_rgba(0,0,0,0.24)]"
       }
     >
       <div>
@@ -72,33 +72,33 @@ export function CoverageMap({ compact = false }: CoverageMapProps) {
               className={`h-auto w-full ${compact ? "max-h-[420px]" : ""}`}
               aria-label="Map showing service radius around Telford"
             >
-              <rect x="4" y="4" width="92" height="82" rx="10" fill="rgba(255,255,255,0.28)" />
+              <rect x="4" y="4" width="92" height="82" rx="10" fill="rgba(17,27,51,0.86)" />
 
               <path
                 d="M16,20 C28,26 36,26 46,22 C60,16 71,16 84,22"
                 fill="none"
-                stroke="rgba(84,154,196,0.28)"
+                stroke="rgba(136,153,187,0.28)"
                 strokeWidth="1.6"
                 strokeLinecap="round"
               />
               <path
                 d="M20,30 C34,36 44,37 57,34 C68,31 77,34 86,40"
                 fill="none"
-                stroke="rgba(16,36,50,0.08)"
+                stroke="rgba(136,153,187,0.12)"
                 strokeWidth="1"
                 strokeDasharray="2,3"
               />
               <path
                 d="M12,56 C24,52 35,51 48,54 C58,56 72,62 86,60"
                 fill="none"
-                stroke="rgba(16,36,50,0.08)"
+                stroke="rgba(136,153,187,0.12)"
                 strokeWidth="1"
                 strokeDasharray="2,3"
               />
 
               <path
                 d="M18,12 L58,8 L82,18 L88,40 L80,66 L66,80 L42,84 L20,74 L12,55 L11,30 Z"
-                fill="rgba(207,106,45,0.03)"
+                fill="rgba(230,57,70,0.05)"
                 stroke={BORDER}
                 strokeWidth="0.7"
                 strokeDasharray="2,2"
@@ -118,7 +118,7 @@ export function CoverageMap({ compact = false }: CoverageMapProps) {
                 cx="48"
                 cy="48"
                 r="14"
-                fill="rgba(207,106,45,0.05)"
+                fill="rgba(230,57,70,0.06)"
                 stroke={PRIMARY_SUBTLE}
                 strokeWidth="0.5"
               />
@@ -185,7 +185,7 @@ export function CoverageMap({ compact = false }: CoverageMapProps) {
               <path
                 d="M27,58 L39,42 L48,48 L56,46 L68,60"
                 fill="none"
-                stroke="rgba(16,36,50,0.16)"
+                stroke="rgba(136,153,187,0.22)"
                 strokeWidth="0.8"
                 strokeDasharray="1.5,2"
               />

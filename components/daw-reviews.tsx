@@ -124,7 +124,7 @@ export function DawReviews({ limit = 6 }: DawReviewsProps) {
 
       <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
         {visibleReviews.map((review) => (
-          <article key={review.name} className="rounded-[2rem] border border-border/80 bg-card p-6 shadow-[0_18px_50px_rgba(10,42,61,0.08)]">
+          <article key={review.name} className="rounded-[2rem] border border-border/80 bg-card p-6 shadow-[0_18px_50px_rgba(0,0,0,0.24)]">
             <div className="flex items-center justify-between gap-4">
               <p className="font-display text-2xl uppercase leading-none text-foreground">{review.name}</p>
               <Stars />

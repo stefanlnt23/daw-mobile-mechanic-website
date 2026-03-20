@@ -36,7 +36,7 @@ export default function AreasWeServePage() {
           Back to Home
         </Link>
 
-        <div className="mt-8 rounded-[2.5rem] border border-border/80 bg-card p-8 shadow-[0_18px_50px_rgba(10,42,61,0.08)] md:p-10">
+        <div className="mt-8 rounded-[2.5rem] border border-border/80 bg-card p-8 shadow-[0_18px_50px_rgba(0,0,0,0.24)] md:p-10">
           <p className="text-xs font-bold uppercase tracking-[0.24em] text-primary">Service Area</p>
           <h1 className="mt-3 font-display text-5xl uppercase leading-[0.9] text-foreground sm:text-6xl">
             Areas We Serve

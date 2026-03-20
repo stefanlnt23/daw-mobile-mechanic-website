@@ -4,39 +4,39 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: #f5efe5;
-  --foreground: #102432;
-  --card: #fffaf4;
-  --card-foreground: #102432;
-  --popover: #fffaf4;
-  --popover-foreground: #102432;
-  --primary: #cf6a2d;
-  --primary-foreground: #fffaf4;
-  --secondary: #d9e4e8;
-  --secondary-foreground: #102432;
-  --muted: #ece4d7;
-  --muted-foreground: #435562;
-  --accent: #0a2a3d;
-  --accent-foreground: #fffaf4;
-  --destructive: #c5352d;
-  --destructive-foreground: #fffaf4;
-  --border: #d8cfc1;
-  --input: #d8cfc1;
-  --ring: #cf6a2d;
-  --chart-1: #cf6a2d;
-  --chart-2: #0a2a3d;
-  --chart-3: #7e8f98;
-  --chart-4: #d9e4e8;
-  --chart-5: #f0b189;
+  --background: #0a0f1e;
+  --foreground: #ffffff;
+  --card: #111b33;
+  --card-foreground: #ffffff;
+  --popover: #111b33;
+  --popover-foreground: #ffffff;
+  --primary: #e63946;
+  --primary-foreground: #ffffff;
+  --secondary: #0d1529;
+  --secondary-foreground: #ffffff;
+  --muted: #0d1529;
+  --muted-foreground: #8899bb;
+  --accent: #0d1529;
+  --accent-foreground: #ffffff;
+  --destructive: #e63946;
+  --destructive-foreground: #ffffff;
+  --border: #24314f;
+  --input: #24314f;
+  --ring: #e63946;
+  --chart-1: #e63946;
+  --chart-2: #ffffff;
+  --chart-3: #8899bb;
+  --chart-4: #111b33;
+  --chart-5: #0d1529;
   --radius: 1rem;
-  --sidebar: #fffaf4;
-  --sidebar-foreground: #102432;
-  --sidebar-primary: #cf6a2d;
-  --sidebar-primary-foreground: #fffaf4;
-  --sidebar-accent: #0a2a3d;
-  --sidebar-accent-foreground: #fffaf4;
-  --sidebar-border: #d8cfc1;
-  --sidebar-ring: #cf6a2d;
+  --sidebar: #0d1529;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #e63946;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #111b33;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #24314f;
+  --sidebar-ring: #e63946;
 }
 
 @theme inline {
@@ -93,16 +93,16 @@
     @apply bg-background text-foreground;
     font-weight: 500;
     background-image:
-      linear-gradient(rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.35)),
-      radial-gradient(circle at top left, rgba(207, 106, 45, 0.06), transparent 28%),
-      linear-gradient(rgba(16, 36, 50, 0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(16, 36, 50, 0.04) 1px, transparent 1px);
+      radial-gradient(circle at top left, rgba(230, 57, 70, 0.14), transparent 26%),
+      radial-gradient(circle at top right, rgba(136, 153, 187, 0.08), transparent 24%),
+      linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
     background-size: auto, auto, 28px 28px, 28px 28px;
     background-position: 0 0, 0 0, 0 0, 0 0;
   }
 
   ::selection {
-    background: rgba(207, 106, 45, 0.18);
+    background: rgba(230, 57, 70, 0.28);
   }
 }
 

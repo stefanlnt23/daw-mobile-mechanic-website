@@ -218,8 +218,8 @@ export default function Home() {
 
       <main className="pb-24 md:pb-10">
         <section className="relative overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(207,106,45,0.18),transparent_38%),radial-gradient(circle_at_bottom_right,rgba(10,42,61,0.16),transparent_34%)]" />
-          <div className="absolute inset-x-0 top-0 h-[28rem] bg-[linear-gradient(180deg,rgba(10,42,61,0.09),transparent)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(230,57,70,0.18),transparent_38%),radial-gradient(circle_at_bottom_right,rgba(136,153,187,0.14),transparent_34%)]" />
+          <div className="absolute inset-x-0 top-0 h-[28rem] bg-[linear-gradient(180deg,rgba(255,255,255,0.045),transparent)]" />
 
           <div className="mx-auto max-w-7xl px-4 py-6 lg:px-8 lg:py-12">
             <div className="grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-center">
@@ -264,9 +264,9 @@ export default function Home() {
               <div className="grid gap-5 lg:pl-6">
                 <div className="relative flex min-h-[24rem] items-end justify-center overflow-visible sm:min-h-[31rem] lg:min-h-[40rem]">
                   <div className="absolute left-1/2 top-[10%] h-52 w-52 -translate-x-1/2 rounded-full bg-primary/12 blur-3xl sm:h-64 sm:w-64 lg:h-72 lg:w-72" />
-                  <div className="absolute right-[8%] top-[22%] h-40 w-40 rounded-full bg-[#0a2a3d]/10 blur-3xl sm:h-52 sm:w-52 lg:h-60 lg:w-60" />
+                  <div className="absolute right-[8%] top-[22%] h-40 w-40 rounded-full bg-white/8 blur-3xl sm:h-52 sm:w-52 lg:h-60 lg:w-60" />
                   <div className="absolute bottom-[10%] left-[10%] h-32 w-32 rounded-full bg-primary/10 blur-3xl sm:h-40 sm:w-40 lg:h-48 lg:w-48" />
-                  <div className="absolute bottom-[2%] left-[14%] right-[10%] h-14 rounded-full bg-[#0a2a3d]/12 blur-2xl" />
+                  <div className="absolute bottom-[2%] left-[14%] right-[10%] h-14 rounded-full bg-white/10 blur-2xl" />
 
                   <div className="relative z-10 w-[132%] max-w-[52rem] sm:w-[124%] lg:w-[148%] lg:-translate-x-4">
                     <Image
@@ -275,7 +275,7 @@ export default function Home() {
                       width={1200}
                       height={1250}
                       priority
-                      className="h-auto w-full object-contain object-bottom drop-shadow-[0_32px_70px_rgba(10,42,61,0.22)]"
+                      className="h-auto w-full object-contain object-bottom drop-shadow-[0_32px_70px_rgba(0,0,0,0.32)]"
                     />
                   </div>
                 </div>
@@ -418,7 +418,7 @@ export default function Home() {
 
           <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
             {services.map((service) => (
-              <article key={service.title} className="group relative overflow-hidden rounded-[2rem] border border-border/80 bg-card shadow-[0_18px_60px_rgba(10,42,61,0.08)]">
+              <article key={service.title} className="group relative overflow-hidden rounded-[2rem] border border-border/80 bg-card shadow-[0_18px_60px_rgba(0,0,0,0.24)]">
                 <div className="relative aspect-[4/2.6] sm:aspect-[4/3.1]">
                   <Image
                     src={service.image}
@@ -426,7 +426,7 @@ export default function Home() {
                     fill
                     className="object-cover transition duration-500 group-hover:scale-[1.04]"
                   />
-                  <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,42,61,0.42)_0%,rgba(10,42,61,0.2)_42%,rgba(6,18,26,0.78)_100%)]" />
+                  <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,15,30,0.28)_0%,rgba(10,15,30,0.18)_42%,rgba(10,15,30,0.88)_100%)]" />
                   <div className="absolute inset-x-0 bottom-0 p-6 text-white sm:p-8">
                     <h3 className="font-display text-[1.7rem] uppercase leading-[0.92] text-white [text-shadow:0_2px_14px_rgba(0,0,0,0.45)] sm:text-[2rem] lg:text-[2.15rem] xl:text-[2.35rem]">
                       {service.title}
@@ -466,7 +466,7 @@ export default function Home() {
             </div>
             <Link
               href="/our-work"
-              className="inline-flex items-center justify-center rounded-full bg-primary px-7 py-3.5 text-sm font-bold uppercase tracking-[0.18em] text-primary-foreground shadow-[0_16px_36px_rgba(207,106,45,0.22)] transition hover:-translate-y-0.5 hover:brightness-105"
+              className="inline-flex items-center justify-center rounded-full bg-primary px-7 py-3.5 text-sm font-bold uppercase tracking-[0.18em] text-primary-foreground shadow-[0_16px_36px_rgba(230,57,70,0.28)] transition hover:-translate-y-0.5 hover:brightness-105"
             >
               View Full Work Gallery
             </Link>
@@ -488,7 +488,7 @@ export default function Home() {
 
             <div className="mt-10 grid gap-5 lg:grid-cols-3">
               {reasons.map((reason) => (
-                <article key={reason.title} className="group relative overflow-hidden rounded-[2rem] border border-border/80 bg-card shadow-[0_18px_60px_rgba(10,42,61,0.08)]">
+              <article key={reason.title} className="group relative overflow-hidden rounded-[2rem] border border-border/80 bg-card shadow-[0_18px_60px_rgba(0,0,0,0.24)]">
                   <div className="relative aspect-[4/4.8]">
                     <Image
                       src={reason.image}
@@ -496,7 +496,7 @@ export default function Home() {
                       fill
                       className="object-cover transition duration-500 group-hover:scale-[1.04]"
                     />
-                    <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,42,61,0.03)_6%,rgba(10,42,61,0.24)_34%,rgba(10,42,61,0.72)_64%,rgba(6,18,26,0.96)_100%)]" />
+                    <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,15,30,0.08)_6%,rgba(10,15,30,0.28)_34%,rgba(10,15,30,0.76)_64%,rgba(10,15,30,0.96)_100%)]" />
                     <div className="absolute inset-x-0 bottom-0 p-6 text-white sm:p-7">
                       <h3 className="font-display text-[2rem] uppercase leading-[0.92] text-white [text-shadow:0_2px_12px_rgba(0,0,0,0.45)] sm:text-[2.2rem]">
                         {reason.title}
@@ -513,7 +513,7 @@ export default function Home() {
         </section>
 
         <section className="mx-auto max-w-7xl px-4 py-16 lg:px-8 lg:py-20">
-          <div className="rounded-[2.5rem] border border-border/80 bg-card p-6 shadow-[0_18px_50px_rgba(10,42,61,0.08)] md:p-8">
+          <div className="rounded-[2.5rem] border border-border/80 bg-card p-6 shadow-[0_18px_50px_rgba(0,0,0,0.24)] md:p-8">
             <div className="max-w-3xl">
               <p className="text-xs font-bold uppercase tracking-[0.24em] text-primary">Where We Cover</p>
               <h2 className="mt-3 font-display text-4xl uppercase leading-none text-foreground sm:text-5xl">
@@ -571,7 +571,7 @@ export default function Home() {
         </section>
 
         <section id="contact" className="mx-auto max-w-7xl px-4 pb-10 lg:px-8 lg:pb-20">
-          <div className="overflow-hidden rounded-[2.5rem] border border-border/80 bg-[linear-gradient(135deg,#0a2a3d_0%,#103b55_58%,#cf6a2d_160%)] px-6 py-10 text-white shadow-[0_24px_90px_rgba(10,42,61,0.22)] sm:px-10 lg:px-14 lg:py-14">
+          <div className="overflow-hidden rounded-[2.5rem] border border-border/80 bg-[linear-gradient(135deg,#0a0f1e_0%,#0d1529_58%,#e63946_165%)] px-6 py-10 text-white shadow-[0_24px_90px_rgba(0,0,0,0.34)] sm:px-10 lg:px-14 lg:py-14">
             <p className="text-xs font-bold uppercase tracking-[0.24em] text-white/65">Contact DAW</p>
             <h2 className="mt-4 max-w-3xl font-display text-4xl uppercase leading-none sm:text-5xl lg:text-6xl">
               Need a mobile mechanic in or around Telford?
@@ -686,7 +686,7 @@ export default function Home() {
       <div className="fixed bottom-6 right-6 z-50 hidden flex-col gap-3 md:flex">
         <a
           href={phoneHref}
-          className="inline-flex items-center gap-3 rounded-full bg-primary px-5 py-4 text-sm font-bold uppercase tracking-[0.18em] text-primary-foreground shadow-[0_16px_36px_rgba(207,106,45,0.35)] transition hover:-translate-y-0.5 hover:brightness-105"
+          className="inline-flex items-center gap-3 rounded-full bg-primary px-5 py-4 text-sm font-bold uppercase tracking-[0.18em] text-primary-foreground shadow-[0_16px_36px_rgba(230,57,70,0.35)] transition hover:-translate-y-0.5 hover:brightness-105"
         >
           <Phone className="h-4 w-4" />
           Call Now
