@@ -726,13 +726,13 @@ export default function Home() {
       <footer className="border-t border-border/70 bg-card/55">
         <div className="mx-auto flex max-w-7xl flex-col gap-6 px-4 py-8 text-sm text-muted-foreground lg:flex-row lg:items-center lg:justify-between lg:px-8">
           <div className="flex items-center gap-5">
-            <div className="relative h-14 w-28 flex-shrink-0">
+            <div className="relative h-20 w-40 flex-shrink-0 sm:h-24 sm:w-48">
               <Image
                 src="/daw-logo.svg"
                 alt="DAW Mobile Mechanic logo"
                 fill
                 className="object-contain"
-                sizes="112px"
+                sizes="(min-width: 640px) 192px, 160px"
               />
             </div>
             <div>

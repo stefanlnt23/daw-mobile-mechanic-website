@@ -31,13 +31,13 @@ export function HomeHeader({ phoneDisplay, phoneHref }: HomeHeaderProps) {
     <header className="sticky top-0 z-50 border-b border-border/70 bg-background/88 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 lg:px-8">
         <a href="#" className="flex items-center gap-4">
-          <div className="relative h-12 w-40 flex-shrink-0">
+          <div className="relative h-16 w-48 flex-shrink-0 sm:h-18 sm:w-56">
             <Image
               src="/daw-logo.svg"
               alt="DAW Mobile Mechanic logo"
               fill
               className="object-contain"
-              sizes="160px"
+              sizes="(min-width: 640px) 224px, 192px"
             />
           </div>
           <div className="hidden sm:block">
