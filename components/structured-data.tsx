@@ -1,6 +1,7 @@
 export function StructuredData() {
   const siteUrl = "https://dawmobilemechanic.co.uk"
   const businessId = `${siteUrl}/#business`
+  const googleMapsUrl = "https://maps.app.goo.gl/TNWxsrNMaq3E5wJi7"
   const serviceAreas = [
     "Telford",
     "Wellington",
@@ -40,8 +41,10 @@ export function StructuredData() {
     slogan: "Broken Down? Call DAW.",
     address: {
       "@type": "PostalAddress",
+      streetAddress: "Brookes Ave., Overdale",
       addressLocality: "Telford",
       addressRegion: "Shropshire",
+      postalCode: "TF3 5FP",
       addressCountry: "GB",
     },
     geo: {
@@ -113,7 +116,7 @@ export function StructuredData() {
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: "5.0",
-      reviewCount: "57",
+      reviewCount: "58",
       bestRating: "5",
       worstRating: "1",
     },
@@ -121,7 +124,7 @@ export function StructuredData() {
       "https://wa.me/447360078879",
       "https://www.facebook.com/profile.php?id=61576953417451",
       "https://www.instagram.com/dawmobilemechanic",
-      "https://maps.app.goo.gl/TNWxsrNMaq3E5wJi7",
+      googleMapsUrl,
     ],
   }
 

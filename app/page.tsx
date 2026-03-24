@@ -236,14 +236,19 @@ export default function Home() {
               </div>
 
               <h1 className="mt-8 max-w-3xl font-display text-5xl uppercase leading-[0.88] tracking-tight text-foreground sm:text-6xl lg:text-8xl">
-                Mobile Workshop
-                <span className="mt-2 block text-primary">That Comes To You.</span>
+                Mobile Mechanic
+                <span className="mt-2 block text-primary">Telford</span>
+                <span className="mt-2 block text-foreground">That Comes To You.</span>
               </h1>
 
               <p className="mt-6 max-w-2xl text-lg leading-8 text-muted-foreground sm:text-xl">
                 Mobile mechanic support across Telford and surrounding areas. Servicing, MOT repairs,
                 brakes, suspension, diagnostics, steering, exhausts, timing belts, and more, without
                 the garage runaround.
+              </p>
+
+              <p className="mt-4 max-w-2xl text-sm font-medium uppercase tracking-[0.14em] text-foreground/78 sm:text-[15px]">
+                Based on Brookes Ave., Overdale, Telford TF3 5FP and covering up to roughly 20 miles around Telford.
               </p>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -268,6 +273,15 @@ export default function Home() {
               <div className="mt-4 flex items-center justify-start gap-2 text-sm font-semibold text-muted-foreground sm:hidden">
                 <MessageCircle className="h-4 w-4 text-emerald-500" />
                 <span>WhatsApp is pinned in the bottom bar for quick messages.</span>
+              </div>
+
+              <div className="mt-5">
+                <Link
+                  href="/mobile-mechanic-telford"
+                  className="inline-flex items-center text-sm font-bold uppercase tracking-[0.16em] text-primary transition hover:text-foreground"
+                >
+                  More about mobile mechanic services in Telford
+                </Link>
               </div>
             </div>
 
@@ -434,7 +448,7 @@ export default function Home() {
                       <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05" />
                       <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335" />
                     </svg>
-                    <span>57 Google reviews</span>
+                    <span>58 Google reviews</span>
                   </div>
                   <div className="flex items-center gap-1 text-primary">
                     {Array.from({ length: 5 }).map((_, index) => (
@@ -659,7 +673,7 @@ export default function Home() {
             <div className="mt-8 flex flex-col gap-3 text-sm text-white/78 sm:flex-row sm:flex-wrap sm:items-center sm:gap-6">
               <div className="inline-flex items-center gap-2">
                 <MapPin className="h-4 w-4 text-primary" />
-                Telford, United Kingdom
+                Brookes Ave., Overdale, Telford TF3 5FP
               </div>
               <div className="inline-flex items-center gap-2">
                 <Clock3 className="h-4 w-4 text-primary" />
