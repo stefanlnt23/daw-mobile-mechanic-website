@@ -237,21 +237,40 @@ export default function Home() {
                 Telford + 20 Miles Radius
               </div>
 
-              <h1 className="mt-8 max-w-3xl font-display text-5xl uppercase leading-[0.88] tracking-tight text-foreground sm:text-6xl lg:text-8xl">
+              <div className="relative mt-8 min-h-[24rem] overflow-hidden sm:hidden">
+                <h1 className="relative z-10 max-w-[7.25rem] font-display text-5xl uppercase leading-[0.88] tracking-tight text-foreground">
+                  Mobile Mechanic
+                  <span className="mt-2 block text-primary">Telford</span>
+                  <span className="mt-2 block text-foreground">That Comes To You.</span>
+                </h1>
+
+                <div className="pointer-events-none absolute right-[-10rem] top-[-1.5rem] z-10 w-[39rem]">
+                  <Image
+                    src={dawHeroImage}
+                    alt="DAW Mobile Mechanic mechanic standing with arms folded"
+                    sizes="39rem"
+                    className="h-auto w-full object-contain object-bottom drop-shadow-[0_24px_50px_rgba(0,0,0,0.26)]"
+                  />
+                </div>
+              </div>
+
+              <h1 className="mt-8 hidden max-w-3xl font-display text-5xl uppercase leading-[0.88] tracking-tight text-foreground sm:block sm:text-6xl lg:text-8xl">
                 Mobile Mechanic
                 <span className="mt-2 block text-primary">Telford</span>
                 <span className="mt-2 block text-foreground">That Comes To You.</span>
               </h1>
 
-              <p className="mt-6 max-w-2xl text-lg leading-8 text-foreground sm:text-xl">
-                Mobile mechanic support across Telford and surrounding areas. Servicing, MOT repairs,
-                brakes, suspension, diagnostics, steering, exhausts, timing belts, and more, without
-                the garage runaround.
-              </p>
+              <div className="mt-1 sm:mt-0">
+                <p className="max-w-2xl text-lg leading-8 text-foreground sm:mt-6 sm:text-xl">
+                  Mobile mechanic support across Telford and surrounding areas. Servicing, MOT repairs,
+                  brakes, suspension, diagnostics, steering, exhausts, timing belts, and more, without
+                  the garage runaround.
+                </p>
 
-              <p className="mt-4 max-w-2xl text-sm font-medium uppercase tracking-[0.14em] text-foreground sm:text-[15px]">
-                Based on Brookes Ave., Overdale, Telford TF3 5FP and covering up to roughly 20 miles around Telford.
-              </p>
+                <p className="mt-4 max-w-2xl text-sm font-medium uppercase tracking-[0.14em] text-foreground sm:text-[15px]">
+                  Based on Brookes Ave., Overdale, Telford TF3 5FP and covering up to roughly 20 miles around Telford.
+                </p>
+              </div>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <a
@@ -287,7 +306,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="relative z-0">
+            <div className="relative z-0 hidden sm:block">
               <div className="grid gap-5 lg:pl-6">
                 <div className="relative flex min-h-[24rem] items-end justify-center overflow-visible sm:min-h-[31rem] lg:min-h-[40rem]">
                   <div className="absolute left-1/2 top-[10%] hidden h-52 w-52 -translate-x-1/2 rounded-full bg-primary/12 blur-3xl sm:block sm:h-64 sm:w-64 lg:h-72 lg:w-72" />
@@ -296,12 +315,12 @@ export default function Home() {
                   <div className="absolute bottom-[2%] left-[14%] right-[10%] hidden h-14 rounded-full bg-white/10 blur-2xl sm:block" />
 
                   <div className="relative z-0 w-[300%] max-w-[138rem] -translate-y-2 sm:w-[275%] sm:-translate-y-3 lg:w-[340%] lg:-translate-x-28 lg:-translate-y-4">
-                    <div className="pointer-events-none absolute bottom-[8%] left-[-64%] right-[-42%] z-0 opacity-20 sm:bottom-[8%] sm:left-[-66%] sm:right-[-36%] lg:bottom-[8%] lg:left-[-82%] lg:right-[-50%]">
+                    <div className="pointer-events-none absolute bottom-[8%] left-[-64%] right-[-42%] z-0 opacity-12 sm:bottom-[8%] sm:left-[-66%] sm:right-[-36%] lg:bottom-[8%] lg:left-[-82%] lg:right-[-50%]">
                       <Image
                         src={vanHeroImage}
                         alt="DAW Mobile Mechanic van"
                         sizes="(max-width: 1024px) 100vw, 138rem"
-                        className="h-auto w-full object-contain object-bottom saturate-[0.46] brightness-[0.5] contrast-[0.82] drop-shadow-[0_20px_40px_rgba(0,0,0,0.06)]"
+                        className="h-auto w-full object-contain object-bottom saturate-[0.38] brightness-[0.44] contrast-[0.78] drop-shadow-[0_16px_32px_rgba(0,0,0,0.04)]"
                       />
                     </div>
 
