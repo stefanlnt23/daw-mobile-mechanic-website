@@ -15,6 +15,8 @@ import { CoverageMap } from "@/components/coverage-map"
 import { DawReviews } from "@/components/daw-reviews"
 import { OpenStatus } from "@/components/open-status"
 import { HomeHeader } from "@/components/home-header"
+import dawHeroImage from "../daw.png"
+import vanHeroImage from "../van.png"
 
 export const metadata: Metadata = {
   title: "Mobile Mechanic Telford | On-Site Car Repairs",
@@ -229,8 +231,8 @@ export default function Home() {
 
           <div className="mx-auto max-w-7xl px-4 py-6 lg:px-8 lg:py-12">
             <div className="grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-center">
-            <div className="relative z-10 pt-0 lg:pt-4">
-              <div className="inline-flex items-center gap-2 rounded-full border border-border/80 bg-card/75 px-4 py-2 text-xs font-bold uppercase tracking-[0.24em] text-muted-foreground">
+            <div className="relative z-20 pt-0 lg:pt-4">
+              <div className="inline-flex items-center gap-2 rounded-full border border-border/80 bg-card/85 px-4 py-2 text-xs font-bold uppercase tracking-[0.24em] text-foreground">
                 <span className="h-2 w-2 rounded-full bg-primary" />
                 Telford + 20 Miles Radius
               </div>
@@ -241,13 +243,13 @@ export default function Home() {
                 <span className="mt-2 block text-foreground">That Comes To You.</span>
               </h1>
 
-              <p className="mt-6 max-w-2xl text-lg leading-8 text-muted-foreground sm:text-xl">
+              <p className="mt-6 max-w-2xl text-lg leading-8 text-foreground sm:text-xl">
                 Mobile mechanic support across Telford and surrounding areas. Servicing, MOT repairs,
                 brakes, suspension, diagnostics, steering, exhausts, timing belts, and more, without
                 the garage runaround.
               </p>
 
-              <p className="mt-4 max-w-2xl text-sm font-medium uppercase tracking-[0.14em] text-foreground/78 sm:text-[15px]">
+              <p className="mt-4 max-w-2xl text-sm font-medium uppercase tracking-[0.14em] text-foreground sm:text-[15px]">
                 Based on Brookes Ave., Overdale, Telford TF3 5FP and covering up to roughly 20 miles around Telford.
               </p>
 
@@ -270,7 +272,7 @@ export default function Home() {
                 </a>
               </div>
 
-              <div className="mt-4 flex items-center justify-start gap-2 text-sm font-semibold text-muted-foreground sm:hidden">
+              <div className="mt-4 flex items-center justify-start gap-2 text-sm font-semibold text-foreground sm:hidden">
                 <MessageCircle className="h-4 w-4 text-emerald-500" />
                 <span>WhatsApp is pinned in the bottom bar for quick messages.</span>
               </div>
@@ -285,7 +287,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="relative z-10">
+            <div className="relative z-0">
               <div className="grid gap-5 lg:pl-6">
                 <div className="relative flex min-h-[24rem] items-end justify-center overflow-visible sm:min-h-[31rem] lg:min-h-[40rem]">
                   <div className="absolute left-1/2 top-[10%] hidden h-52 w-52 -translate-x-1/2 rounded-full bg-primary/12 blur-3xl sm:block sm:h-64 sm:w-64 lg:h-72 lg:w-72" />
@@ -293,15 +295,24 @@ export default function Home() {
                   <div className="absolute bottom-[10%] left-[10%] hidden h-32 w-32 rounded-full bg-primary/10 blur-3xl sm:block sm:h-40 sm:w-40 lg:h-48 lg:w-48" />
                   <div className="absolute bottom-[2%] left-[14%] right-[10%] hidden h-14 rounded-full bg-white/10 blur-2xl sm:block" />
 
-                  <div className="relative z-10 w-[132%] max-w-[52rem] sm:w-[124%] lg:w-[148%] lg:-translate-x-4">
-                    <Image
-                      src="/header-img/hero-team.webp"
-                      alt="DAW Mobile Mechanic team standing in front of a van"
-                      width={1200}
-                      height={1250}
-                    sizes="(max-width: 1024px) 100vw, 52rem"
-                    className="h-auto w-full object-contain object-bottom drop-shadow-[0_32px_70px_rgba(0,0,0,0.32)]"
-                  />
+                  <div className="relative z-0 w-[300%] max-w-[138rem] -translate-y-2 sm:w-[275%] sm:-translate-y-3 lg:w-[340%] lg:-translate-x-28 lg:-translate-y-4">
+                    <div className="pointer-events-none absolute bottom-[8%] left-[-64%] right-[-42%] z-0 opacity-20 sm:bottom-[8%] sm:left-[-66%] sm:right-[-36%] lg:bottom-[8%] lg:left-[-82%] lg:right-[-50%]">
+                      <Image
+                        src={vanHeroImage}
+                        alt="DAW Mobile Mechanic van"
+                        sizes="(max-width: 1024px) 100vw, 138rem"
+                        className="h-auto w-full object-contain object-bottom saturate-[0.46] brightness-[0.5] contrast-[0.82] drop-shadow-[0_20px_40px_rgba(0,0,0,0.06)]"
+                      />
+                    </div>
+
+                    <div className="relative z-10 ml-auto w-[176%] -translate-y-8 sm:w-[156%] sm:-translate-y-10 lg:w-[136%] lg:translate-x-14 lg:-translate-y-14">
+                      <Image
+                        src={dawHeroImage}
+                        alt="DAW Mobile Mechanic team standing in front of a van"
+                        sizes="(max-width: 1024px) 100vw, 128rem"
+                        className="h-auto w-full object-contain object-bottom drop-shadow-[0_32px_70px_rgba(0,0,0,0.32)]"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>

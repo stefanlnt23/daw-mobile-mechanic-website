@@ -186,7 +186,7 @@ export function StructuredData() {
     },
     primaryImageOfPage: {
       "@type": "ImageObject",
-      url: `${siteUrl}/header-img/hero-team.webp`,
+      url: `${siteUrl}/header-img/hero-team.png`,
     },
   }
 
