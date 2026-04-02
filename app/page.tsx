@@ -237,7 +237,7 @@ export default function Home() {
                 Telford + 20 Miles Radius
               </div>
 
-              <div className="relative mt-8 min-h-[24rem] overflow-hidden sm:hidden">
+              <div className="relative mt-8 -mx-4 min-h-[24rem] overflow-hidden px-4 sm:hidden">
                 <h1 className="relative z-10 max-w-[7.25rem] font-display text-5xl uppercase leading-[0.88] tracking-tight text-foreground">
                   Mobile Mechanic
                   <span className="mt-2 block text-primary">Telford</span>
