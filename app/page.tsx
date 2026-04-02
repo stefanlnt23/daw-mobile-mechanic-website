@@ -244,7 +244,7 @@ export default function Home() {
                   <span className="mt-2 block text-foreground">That Comes To You.</span>
                 </h1>
 
-                <div className="pointer-events-none absolute right-[-10rem] top-[-1.5rem] z-10 w-[39rem]">
+                <div className="pointer-events-none absolute right-[-17rem] top-[-1.5rem] z-10 w-[39rem] min-[390px]:right-[-14rem] min-[430px]:right-[-11rem]">
                   <Image
                     src={dawHeroImage}
                     alt="DAW Mobile Mechanic mechanic standing with arms folded"
