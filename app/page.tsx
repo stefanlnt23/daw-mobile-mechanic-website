@@ -821,12 +821,12 @@ export default function Home() {
             <p>
               Designed and developed by{" "}
               <a
-                href="https://web-force.info"
+                href="https://built4trades.co.uk"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-semibold text-foreground transition hover:text-primary"
               >
-                Stefan Lenta at Web-Force.info
+                Stefan Lenta at built4trades.co.uk
               </a>
             </p>
           </div>

@@ -61,14 +61,14 @@ export function Footer() {
             </div>
 
             <p className="text-xs text-muted-foreground">
-              Design by{" "}
+              Designed and developed by{" "}
               <a
-                href="https://web-force.info"
+                href="https://built4trades.co.uk"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-primary hover:underline"
               >
-                Web-force.info
+                Stefan Lenta at built4trades.co.uk
               </a>
             </p>
           </div>
