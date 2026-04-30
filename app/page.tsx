@@ -15,6 +15,7 @@ import { CoverageMap } from "@/components/coverage-map"
 import { DawReviews } from "@/components/daw-reviews"
 import { OpenStatus } from "@/components/open-status"
 import { HomeHeader } from "@/components/home-header"
+import { StructuredData } from "@/components/structured-data"
 import dawHeroImage from "../daw.png"
 import vanHeroImage from "../van.png"
 
@@ -216,6 +217,7 @@ const faqs = [
 export default function Home() {
   return (
     <>
+      <StructuredData />
       <HomeHeader
         phoneDisplay={phoneDisplay}
         phoneHref={phoneHref}

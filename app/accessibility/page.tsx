@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "Accessibility Statement",
   description: "Accessibility Statement for the DAW Mobile Mechanic website.",
   alternates: { canonical: "/accessibility" },
-  robots: { index: true, follow: true },
+  robots: { index: false, follow: true },
 }
 
 export default function AccessibilityStatement() {

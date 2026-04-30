@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "Terms & Conditions",
   description: "Terms and Conditions for DAW Mobile Mechanic mobile mechanic services.",
   alternates: { canonical: "/terms" },
-  robots: { index: true, follow: true },
+  robots: { index: false, follow: true },
 }
 
 export default function TermsAndConditions() {

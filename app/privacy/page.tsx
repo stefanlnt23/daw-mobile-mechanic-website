@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "Privacy Policy",
   description: "Privacy Policy for DAW Mobile Mechanic and how personal data is handled under UK GDPR.",
   alternates: { canonical: "/privacy" },
-  robots: { index: true, follow: true },
+  robots: { index: false, follow: true },
 }
 
 export default function PrivacyPolicy() {

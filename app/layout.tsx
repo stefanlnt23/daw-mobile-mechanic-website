@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next"
 import { Barlow_Condensed, Space_Grotesk } from "next/font/google"
-import { StructuredData } from "@/components/structured-data"
 import { PrivacyBanner } from "@/components/privacy-banner"
 import "./globals.css"
 
@@ -45,13 +44,9 @@ export const metadata: Metadata = {
     telephone: true,
     email: true,
   },
-  alternates: {
-    canonical: "/",
-  },
   openGraph: {
     type: "website",
     locale: "en_GB",
-    url: SITE_URL,
     siteName: "DAW Mobile Mechanic",
     title: "DAW Mobile Mechanic | Broken Down? Call DAW.",
     description:
@@ -102,9 +97,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        <StructuredData />
-      </head>
+      <head />
       <body className={`${spaceGrotesk.variable} ${barlowCondensed.variable} font-sans antialiased`}>
         {children}
         <PrivacyBanner />
